@@ -1,0 +1,38 @@
+
+/** Your theme modifications here **/
+
+.navbar-left li a {
+	color: #999999;
+	font-size: 12px;
+	display: block;
+}
+
+/*.navbar-left li a:hover {
+	background-color: #D9534F !important;
+	color: black !important;
+	text-decoration: none;
+}*/
+
+/*.navbar-left li a:visited {
+	background-color: #D9534F !important;
+	color: black !important;
+	text-decoration: none;
+}*/
+
+.active a {
+	background-color: #D9534F !important;
+	color: black !important;
+	text-decoration: none;
+}
+
+.box {
+  background: #fff;
+  margin: 10px 10px 10px 10px !important;
+  border: solid 1px #e6e6e6;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px !important;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
