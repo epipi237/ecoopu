@@ -29,7 +29,6 @@
 
                             <div class="col-md-6">
                                 <input type="password" required="" class="form-control" name="password">
-
                                 @if ($errors->has('password'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('password') }}</strong>

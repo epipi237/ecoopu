@@ -359,9 +359,7 @@
 
                 <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                 <hr>
-
                 <h4>Stay in touch</h4>
-
                 <p class="social">
                     <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
                     <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
@@ -384,16 +382,12 @@
 
 <!-- *** FOOTER END *** -->
 
-
-
-
         <!-- *** COPYRIGHT ***
         _________________________________________________________ -->
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
                     <p class="pull-left">© 2016 eCoopu.</p>
-
                 </div>
                 <div class="col-md-6">
                 </p>

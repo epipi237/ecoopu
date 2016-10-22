@@ -77,6 +77,7 @@ class AdminAuthController extends Controller
     {
         return Admin::create([
             'name' => $data['name'],
+            'name' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
