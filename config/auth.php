@@ -35,6 +35,7 @@ return [
     |
     */
 
+//Authenticating guards
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -45,6 +46,16 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'user' =>[
+            'driver' => 'session',
+            'provider' => 'user',
+    ],
+        'admin' => [
+             'driver' => 'session',
+             'provider' => 'admin',
+    ],
+
     ],
 
     /*
@@ -64,11 +75,17 @@ return [
     |
     */
 
+//User Providers
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+    ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +112,7 @@ return [
     |
     */
 
+//Resetting Password 
     'passwords' => [
         'users' => [
             'provider' => 'users',
@@ -102,6 +120,14 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+        'admins' => [
+            'provider' => 'admin',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+    ],
+    
     ],
 
 ];

@@ -61,41 +61,9 @@
         <div class="container">
             <div class="col-md-6 pull-right" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                    </li>
-                    <li><a href="register.html">Register</a>
-                    </li>
-                    <li><a href="contact.html">Contact</a>
-                    </li>
-                    <li><a href="#">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Customer login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="email">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="password">
-                            </div>
-
-                            <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
-                            </p>
-
-
-                            <!-- Authentication Links -->
-<!--                     @if (Auth::guest())
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
@@ -103,27 +71,22 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
-
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
-                    @endif -->
-
-
-                </form>
-
-                <p class="text-center text-muted">Not registered yet?</p>
-                <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
-
+                    @endif
+                    <li><a href="#">Contact</a>
+                    </li>
+                    <li><a href="#">Privacy</a>
+                    </li>
+                </ul>
             </div>
         </div>
+
     </div>
-</div>
 
-</div>
-
-<!-- *** TOP BAR END *** -->
+    <!-- *** TOP BAR END *** -->
 
     <!-- *** NAVBAR ***
     _________________________________________________________ -->
@@ -144,7 +107,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.html">
+                    <a class="btn btn-default navbar-toggle" href="#">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Creat an order list</span>
                     </a>
                 </div>
@@ -155,8 +118,15 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="index.html">Home</a>
+
+                    @if(Auth::guest())
+                    <li>
+                        <a class="" href="{{ url('/') }}">Home</a>
                     </li>
+                    @else 
+                    <li class="active"><a href="{{ url('/home') }}">Home</a>
+                    </li>
+                    @endif
 
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Market Places <b class="caret"></b></a>
@@ -166,62 +136,62 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="index.html">Denmark</a>
+                                                <li><a href="#">Denmark</a>
                                                 </li>
 
-                                                <li><a href="category.html">America</a>
+                                                <li><a href="#">America</a>
                                                 </li>
 
-                                                <li><a href="category-right.html">Germany</a>
+                                                <li><a href="#">Germany</a>
                                                 </li>
 
-                                                <li><a href="category-full.html">Australia</a>
+                                                <li><a href="#">Australia</a>
                                                 </li>
 
-                                                <li><a href="detail.html">Austria</a>
+                                                <li><a href="#">Austria</a>
                                                 </li>
 
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="register.html">Hungary</a>
+                                                <li><a href="#">Hungary</a>
                                                 </li>
-                                                <li><a href="customer-orders.html">Italy</a>
+                                                <li><a href="#">Italy</a>
                                                 </li>
-                                                <li><a href="customer-order.html">India</a>
+                                                <li><a href="#">India</a>
                                                 </li>
-                                                <li><a href="customer-wishlist.html">China</a>
+                                                <li><a href="#">China</a>
                                                 </li>
-                                                <li><a href="customer-account.html">United Kingdom</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <ul>
-                                                <li><a href="basket.html">Dubai</a>
-                                                </li>
-                                                <li><a href="checkout1.html">Japan</a>
-                                                </li>
-                                                <li><a href="checkout2.html">Netherland</a>
-                                                </li>
-                                                <li><a href="checkout3.html">Ukraine</a>
-                                                </li>
-                                                <li><a href="checkout4.html">South Africa</a>
+                                                <li><a href="#">United Kingdom</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="blog.html">Belgium</a>
+                                                <li><a href="#">Dubai</a>
                                                 </li>
-                                                <li><a href="post.html">South Korea</a>
+                                                <li><a href="#">Japan</a>
                                                 </li>
-                                                <li><a href="faq.html">Ireland</a>
+                                                <li><a href="#">Netherland</a>
                                                 </li>
-                                                <li><a href="text.html">Turkey</a>
+                                                <li><a href="#">Ukraine</a>
                                                 </li>
-                                                <li><a href="text-right.html">Poland</a>
+                                                <li><a href="#">South Africa</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <ul>
+                                                <li><a href="#">Belgium</a>
+                                                </li>
+                                                <li><a href="#">South Korea</a>
+                                                </li>
+                                                <li><a href="#">Ireland</a>
+                                                </li>
+                                                <li><a href="#">Turkey</a>
+                                                </li>
+                                                <li><a href="#">Poland</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -282,7 +252,6 @@
     @yield('content')
 
 
-
  <!-- *** FOOTER ***
  _____________________________________________________________ -->
  <div id="footer" data-animate="fadeInUp">
@@ -309,10 +278,20 @@
                 <h4>User section</h4>
 
                 <ul>
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">Login</a></li>
+                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                        </ul>
                     </li>
-                    <li><a href="register.html">Regiter</a>
-                    </li>
+                    @endif
                 </ul>
 
                 <hr class="hidden-md hidden-lg hidden-sm">
