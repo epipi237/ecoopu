@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        eCoopu : e-commerce template
+        eCoopu
     </title>
 
     <!-- Fonts -->
     <link rel="icon" type="image/png" href="{{URL::to('images')}}/logo.gif">
 
+
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <meta name="keywords" content="">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
-
+    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <!-- styles -->
     <link href="{{URL::to('assets')}}/css/font-awesome.css" rel="stylesheet">
@@ -26,7 +27,6 @@
     <link href="{{URL::to('assets')}}/css/animate.min.css" rel="stylesheet">
     <link href="{{URL::to('assets')}}/css/owl.carousel.css" rel="stylesheet">
     <link href="{{URL::to('assets')}}/css/owl.theme.css" rel="stylesheet">
-
     <!-- theme stylesheet -->
     <link href="{{URL::to('assets')}}/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
 
@@ -34,10 +34,6 @@
     <link href="{{URL::to('assets')}}/css/custom.css" rel="stylesheet">
 
     <script src="js/respond.min.js"></script>
-
-
-
-
     <link rel="shortcut icon" href="favicon.png">
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
@@ -54,7 +50,6 @@
 </head>
 <body id="app-layout">
 
-
     <!-- *** TOPBAR ***
     _________________________________________________________ -->
     <div id="top">
@@ -63,7 +58,7 @@
                 <ul class="menu">
 
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
+                    @if(Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
@@ -72,6 +67,7 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
@@ -80,6 +76,7 @@
                     </li>
                     <li><a href="#">Privacy</a>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -94,7 +91,7 @@
     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="{{ url('/') }}" data-animate-hover="bounce">
                     <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="hidden-xs">
                     <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs"><span class="sr-only">eCoopu - go to homepage</span>
                 </a>
@@ -120,11 +117,11 @@
                 <ul class="nav navbar-nav navbar-left">
 
                     @if(Auth::guest())
-                    <li>
+                    <li class="active">
                         <a class="" href="{{ url('/') }}">Home</a>
                     </li>
                     @else 
-                    <li class="active"><a href="{{ url('/home') }}">Home</a>
+                    <li class=""><a href="{{ url('/home') }}">Home</a>
                     </li>
                     @endif
 
@@ -246,7 +243,6 @@
     <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
-
 
 
     @yield('content')
@@ -400,6 +396,9 @@
 
     <!-- *** SCRIPTS TO INCLUDE ***
     _________________________________________________________ -->
+
+    <!-- JavaScripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{URL::to('assets')}}/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{URL::to('assets')}}/js/jquery.cookie.js"></script>
@@ -410,5 +409,6 @@
     <script type="text/javascript" src="{{URL::to('assets')}}/js/front.js"></script>
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
 </body>
 </html>

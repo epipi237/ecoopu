@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading text-center">Register new Admin</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/register') }}">
                         {{ csrf_field() }}
@@ -28,7 +28,7 @@
                         <label class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
-                                <input type="text" required="" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" required="" class="form-control" name="username" value="{{ old('name') }}">
                                 @if ($errors->has('username'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('username') }}</strong>
