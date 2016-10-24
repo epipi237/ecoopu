@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -28,7 +27,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+   // protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -40,6 +39,41 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+
+    protected function authenticated($request, $user){
+        //dd($user);
+        if($user->role == 'admin'){
+           
+        return view('admin.home'); //redirect to admin panel
+    }
+        else {
+          
+        return view('home'); //redirect to standard user homepage
+    }
+    }
+
+    public function update(Request $request, $id)
+    {
+      $user = User::with('users')->find($id);
+      if(!$User) {
+        return response('User not found', 404);
+    }
+
+    $UserInfo = $User->user_info;
+    if(!$UserInfo) {
+        $UserInfo = new UserInfo();
+        $UserInfo->user_id = $id;
+        $UserInfo->save();
+    }
+
+    try {
+        $values = Input::only($UserInfo->getFillable());
+        $UserInfo->update($values);
+    } catch(Exception $ex) {
+        return response($ex->getMessage(), 400);
+    }
+}
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -50,9 +84,10 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'username' => 'required|min:3',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+            ]);
     }
 
     /**
@@ -65,8 +100,9 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            ]);
     }
 }

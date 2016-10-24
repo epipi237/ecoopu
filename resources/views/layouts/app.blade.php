@@ -71,6 +71,7 @@
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
+                    <li><a href="{{ URL::route('account') }}"><i class=""></i>Edit Profile</a></li>
                     @endif
                     <li><a href="#">Contact</a>
                     </li>
@@ -122,7 +123,7 @@
                     </li>
                     @else 
                     <li class=""><a href="{{ url('/home') }}">Home</a>
-                    </li>
+                    </li> 
                     @endif
 
                     <li class="dropdown yamm-fw">
