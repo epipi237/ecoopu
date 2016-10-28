@@ -25,3 +25,12 @@ Route::get('admin/add/new', 'AdminController@addAdmin')->name('addAdmin');
 Route::post('admin/add/new', 'AdminController@register')->name('addAdmin');
 
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
+
+  /*
+  |
+  |
+  |Pages route
+  |
+  |
+  */
+Route::get('pages/create/orderlist', 'OrderController@index')->name('create_order');

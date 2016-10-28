@@ -12,7 +12,6 @@
     <!-- Fonts -->
     <link rel="icon" type="image/png" href="{{URL::to('images')}}/logo.gif">
 
-
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
@@ -105,9 +104,11 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="#">
+                     @if(!Auth::guest())
+                    <a class="btn btn-default navbar-toggle" href="{{ route('create_order') }}">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Creat an order list</span>
                     </a>
+                    @endif
                 </div>
             </div>
 
@@ -175,7 +176,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        
+
                                         <div class="col-sm-3">
                                             <ul>
                                                 <li><a href="#">Belgium</a>
@@ -212,7 +213,7 @@
 
                 @if(!Auth::guest())
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
+                    <a href="{{ route('create_order') }}" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
                 </div>
                 @endif
                 <!--/.nav-collapse -->
