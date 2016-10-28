@@ -116,7 +116,6 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-
                     @if(Auth::guest())
                     <li class="active">
                         <a class="" href="{{ url('/') }}">Home</a>
@@ -136,21 +135,17 @@
                                             <ul>
                                                 <li><a href="#">Denmark</a>
                                                 </li>
-
                                                 <li><a href="#">America</a>
                                                 </li>
-
                                                 <li><a href="#">Germany</a>
                                                 </li>
-
                                                 <li><a href="#">Australia</a>
                                                 </li>
-
                                                 <li><a href="#">Austria</a>
                                                 </li>
-
                                             </ul>
                                         </div>
+
                                         <div class="col-sm-3">
                                             <ul>
                                                 <li><a href="#">Hungary</a>
@@ -165,6 +160,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+
                                         <div class="col-sm-3">
                                             <ul>
                                                 <li><a href="#">Dubai</a>
@@ -179,6 +175,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        
                                         <div class="col-sm-3">
                                             <ul>
                                                 <li><a href="#">Belgium</a>
@@ -213,9 +210,11 @@
 
             <div class="navbar-buttons">
 
+                @if(!Auth::guest())
                 <div class="navbar-collapse collapse right" id="basket-overview">
                     <a href="basket.html" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
                 </div>
+                @endif
                 <!--/.nav-collapse -->
                 <div class="navbar-collapse collapse right" id="search-not-mobile">
                     <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
@@ -237,7 +236,6 @@
 
             </div>
             <!--/.nav-collapse -->
-
         </div>
         <!-- /.container -->
     </div>

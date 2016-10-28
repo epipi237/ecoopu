@@ -39,12 +39,10 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
-
     protected function authenticated($request, $user){
         //dd($user);
-        if($user->role == 'admin'){
-           
-        return view('admin.home'); //redirect to admin panel
+        if($user->role === 'admin'){
+        return view('admin.index'); //redirect to admin panel
     }
         else {
           
@@ -84,7 +82,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'username' => 'required|min:3',
+            'username' => 'required|min:3|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
             ]);
