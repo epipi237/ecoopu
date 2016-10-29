@@ -8,7 +8,9 @@ use App\User;
 use App\OrderItem;
 use App\Order;
 use Validator;
+use App\Orderlist_address;
 use Auth;
+use App\country;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Input;
@@ -32,14 +34,16 @@ class OrderController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function order(){
-    	return view('pages.order');
+        $orders=Order::whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(8);
+        $countries=country::all();
+     //   dd($orders);
+    	return view('pages.order',compact('orders','countries'));
     }
 
     public function create(){
     	$rules = array(
     		'shop' => 'required|max:255',
-    		'location' => 'required',
-    		'duration' => 'required',
+    		'duration' => 'required|integer',
     		);
     	$messages = array(
     		'required' => 'The :attribute is required.',
@@ -54,21 +58,34 @@ class OrderController extends Controller{
     		$order = new Order;
     		$order->user_id=Auth::user()->id;
     		$order->shop = Request::input('shop');
-    		$order->location = Request::input('location');
-    		$order->duration = Request::input('duration');
+    		//$order->location = Request::input('location');
+            $days=Request::input('duration');
+            $date=date('Y-m-d', strtotime(date('Y-m-d'). "+ $days days")).' '.date('H:i:s');
+    		$order->duration =$date ;
+            $order->country_id=Request::input('market');
     		$order->save();
+            $address=new Orderlist_address;
+            $address->description=Request::input('location');
+            $address->user_id=Auth::user()->id;
+            $address->order_id=$order->id;
+            $address->save();
 
     		$orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
     		$orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
-    		return view('pages.orderlist', compact('orders','orderItems'));
+    		return Redirect::back()->with('message','successfully created');
     	} 
 
     }
 
-    public function orderlist(){
-    	$orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
-    	$orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
+    public function orderlist($id){
+        $orders=order::find($id);
+    	$orderItems =OrderItem::where('user_id', Auth::user()->id)->where('order_id',$id)->get();
     	return view('pages.orderlist', compact('orderItems','orders'));
+    }
+    public function removeitem($id){
+        $item=orderItem::find($id);
+        $item->delete();
+        return \Redirect::back()->with('message','successfully deleted');
     }
 
     public function createOrderList(){
@@ -90,8 +107,10 @@ class OrderController extends Controller{
     		$orderItem->user_id=Auth::user()->id;
     		$orderItem->product = Request::input('product');
     		$orderItem->quantity = Request::input('quantity');
+            $orderItem->order_id=Request::input('orderid');
+            $orderid=Request::input('orderid');
     		$orderItem->save();
-    		return view('pages.orderlist');
+    		return \Redirect("pages/create/orderlist/$orderid");
     	}
 
     }

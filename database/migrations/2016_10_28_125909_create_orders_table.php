@@ -16,8 +16,9 @@ class CreateOrdersTable extends Migration
         {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('order_id');
             $table->string('shop');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->string('duration');
             $table->timestamps();
         });
