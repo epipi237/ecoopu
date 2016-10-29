@@ -14,6 +14,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('address');
+            $table->string('phone');
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->enum('role', ['user','admin','client']);
@@ -22,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
     }
+    
     /**
      * Reverse the migrations.
      *

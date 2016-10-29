@@ -16,12 +16,12 @@ class CreateOrderItemsTable extends Migration
         {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('order_id');
             $table->string('product');
             $table->integer('quantity');
             $table->timestamps();
         });
     }
- 
     public function down()
     {
         Schema::drop('order_items');

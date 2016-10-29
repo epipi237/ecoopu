@@ -42,11 +42,11 @@ class AdminController extends Controller
     public function register(){
 
         $rules = array(
-         'name' => 'required|max:255',
-         'username' => 'required|min:3|unique:users',
-         'email' => 'required|email|max:255|unique:users',
-         'password' => 'required|min:6|confirmed',
-         );
+           'name' => 'required|max:255',
+           'username' => 'required|min:3|unique:users',
+           'email' => 'required|email|max:255|unique:users',
+           'password' => 'required|min:6|confirmed',
+           );
 
         $messages = array(
             'required' => 'The :attribute is required.',
@@ -70,4 +70,33 @@ class AdminController extends Controller
             return view('admin.index');
         }
     }
+
+    public function getMarket(){
+        $markets = Country::all();
+        return view('admin.market', compact('markets'));
+    }
+
+    public function addMarket(){
+        $rules = array(
+           'name' => 'required|max:255',
+           );
+        $messages = array(
+            'required' => 'The :attribute is required.',
+            'same'  => 'The :others must match.'
+            );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return Redirect::back()->withErrors($validator)->withInput();
+
+        } else {
+            $country = new Country;
+            $country->name = Request::input('name');
+            $admin->save();
+            return view('admin.market');
+        }
+    }
+
+
+
 }
