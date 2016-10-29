@@ -15,6 +15,7 @@ class CreateOrderlistAddressesTable extends Migration
         {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('order_id');
             $table->string('description');
             $table->timestamps();
         });

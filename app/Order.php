@@ -15,5 +15,8 @@ class Order extends Model
     	
         return $this->hasMany('App\OrderItem');
     }
+    public function country(){
+    	return $this->belongsTo('App\country');
+    }
 }
 

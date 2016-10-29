@@ -4,12 +4,13 @@
 <div class="container">
 
 	<div class="panel panel-default">
-		<div class="panel-heading">Name of Shop: <b>{{$orders->shop}}</b> &#160; &#160; &#160; &#160; Location: <b>{{$orders->location}}</b>
-			<a href="#"> <span class="pull-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button></span></a>
+		<div class="panel-heading">Name of Shop: <b>{{$orders->shop}}</b>  
 		</div> 
-		 
+
 		<div class="panel-body">
 			<div class="row">
+					 			<button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button>
+
 				<div class="col-md-8">
 
 					<table class="table table-striped">
@@ -25,11 +26,11 @@
 								<td>{{ $orderItem->product }}</td>
 								<!-- <td>{{ $orderItem->shop }}</td> -->
 								<td>{{ $orderItem->quantity }}</td>
-								<td><a href="#"><button class="btn btn-info">Edit</button></a><a href="#">  <button class="btn btn-danger">Remove</button></a></td>
+								<td><a href="/itemremove/{{$orderItem->id}}">  <button class="btn btn-danger">Remove</button></a></td>
 							</tr>
 							@endforeach
 							<br>
-							<p>Order List Duraton: 2 Days  <button class="btn btn-info">Edit time</button> <button class="btn btn-danger">Close</button></p>
+							<p>Order List Duraton: 2 Days  </p>
 						</tbody>
 					</table>
 				</div>
@@ -73,7 +74,7 @@
 
 						<div class="col-md-6">
 							<input id="quantity" type="number" class="form-control" name="quantity" value="{{ old('quantity') }}">
-
+                             <input type="hidden" name="orderid" value="{{$orders->id}}">
 							@if ($errors->has('quantity'))
 							<span class="help-block">
 								<strong>{{ $errors->first('quantity') }}</strong>
