@@ -104,7 +104,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                     @if(!Auth::guest())
+                    @if(!Auth::guest())
                     <a class="btn btn-default navbar-toggle" href="{{ route('create_order') }}">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Creat an order list</span>
                     </a>
@@ -409,6 +409,5 @@
     <script type="text/javascript" src="{{URL::to('assets')}}/js/front.js"></script>
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-
 </body>
 </html>

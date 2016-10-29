@@ -2,59 +2,43 @@
 @section('content')
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-6">
-			<a href="#"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Product</button></a>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Name of Shop: <b>Vaummmmiii Super market</b> &#160; &#160; &#160; &#160; Location: <b>Buea</b>
+			<a href="#"> <span class="pull-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button></span></a>
+		</div> 
+
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-8">
+
+					<table class="table table-striped">
+						<thead>
+							<td>Product name</td>
+							<!-- <td>Shop</td> -->
+							<td>Quantity</td>
+							<td>Action</td>
+						</thead>
+						<tbody>
+							@foreach($orderItems as $orderItem)
+							<tr>
+								<td>{{ $orderItem->product }}</td>
+								<!-- <td>{{ $orderItem->shop }}</td> -->
+								<td>{{ $orderItem->quantity }}</td>
+								<td><a href="#"><button class="btn btn-info">Edit</button></a><a href="#">  <button class="btn btn-danger">Remove</button></a></td>
+							</tr>
+							@endforeach
+							<br>
+							<p>Order List Duraton: {{ $orderItem->created_at }}  <button class="btn btn-info">Edit time</button> <button class="btn btn-danger">Close</button></p>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8">
-			<table class="table table-striped">
-				<thead>
-					<td>Name</td>
-					<td>Shop</td>
-					<td>Quantity</td>
-					<td>Action</td>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Shoes</td>
-						<td>Supermarket 1</td>
-						<td>2</td>
-						<td><a href="#"><button class="btn btn-danger">Remove</button></a> </td>
-					</tr>
-					<tr>
-						<td>Bags</td>
-						<td>Supermarket 2</td>
-						<td>2</td>
-						<td><a href="#"><button class="btn btn-danger">Remove</button></a> </td>
-					</tr>
-					<tr>
-						<td>Clothes</td>
-						<td>Supermarket 3</td>
-						<td>2</td>
-						<td><a href="#"><button class="btn btn-danger">Remove</button></a> </td>
-					</tr>
-					<tr>
-						<td>Books</td>
-						<td>Supermarket 4</td>
-						<td>2</td>
-						<td><a href="#"><button class="btn btn-danger">Remove</button></a> </td>
-					</tr>
-					<tr>
-						<td>Jeweries</td>
-						<td>Supermarket 5</td>
-						<td>2</td>
-						<td><a href="#"><button class="btn btn-danger">Remove</button></a> </td>
-					</tr>
-					<br>
-					<p>Orderlist Duraton: 2 days : 5hrs : 2s remaining  <button class="btn btn-info">Edit time</button> <button class="btn btn-danger">Close</button></p>
-				</tbody>
-			</table>
-		</div>
+
+
 	</div>
 </div>
-
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -69,15 +53,14 @@
 			<div class="modal-body">
 
 
-				<form class="form-horizontal" role="form" method="POST" action="#">
+				<form class="form-horizontal" role="form" method="POST" action="{{route('create_order')}}">
 					{{ csrf_field() }}
 
 					<div class="form-group{{ $errors->has('product') ? ' has-error' : '' }}">
 						<label for="product" class="col-md-4 control-label">Product Name:</label>
 
 						<div class="col-md-6">
-							<input id="product" type="text" class="form-control" name="name" value="{{ old('product') }}">
-
+							<input id="product" type="text" class="form-control" name="product" value="{{ old('product') }}">
 							@if ($errors->has('product'))
 							<span class="help-block">
 								<strong>{{ $errors->first('product') }}</strong>
@@ -104,7 +87,7 @@
 						<label for="quantity" class="col-md-4 control-label">Quantity</label>
 
 						<div class="col-md-6">
-							<input id="quantity" type="number" class="form-control" name="email" value="{{ old('quantity') }}">
+							<input id="quantity" type="number" class="form-control" name="quantity" value="{{ old('quantity') }}">
 
 							@if ($errors->has('quantity'))
 							<span class="help-block">
@@ -122,7 +105,6 @@
 						</div>
 					</div>
 				</form>
-
 
 			</div>
 			<div class="modal-footer">

@@ -34,3 +34,5 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
   |
   */
 Route::get('pages/create/orderlist', 'OrderController@index')->name('create_order');
+Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
+

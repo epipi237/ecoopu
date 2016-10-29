@@ -10,8 +10,7 @@ class CreateShopsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('shops', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
