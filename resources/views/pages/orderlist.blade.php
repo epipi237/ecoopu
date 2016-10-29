@@ -4,10 +4,10 @@
 <div class="container">
 
 	<div class="panel panel-default">
-		<div class="panel-heading">Name of Shop: <b>Vaummmmiii Super market</b> &#160; &#160; &#160; &#160; Location: <b>Buea</b>
+		<div class="panel-heading">Name of Shop: <b>{{$orders->shop}}</b> &#160; &#160; &#160; &#160; Location: <b>{{$orders->location}}</b>
 			<a href="#"> <span class="pull-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button></span></a>
 		</div> 
-
+		 
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-8">
@@ -29,7 +29,7 @@
 							</tr>
 							@endforeach
 							<br>
-							<p>Order List Duraton: {{ $orderItem->created_at }}  <button class="btn btn-info">Edit time</button> <button class="btn btn-danger">Close</button></p>
+							<p>Order List Duraton: 2 Days  <button class="btn btn-info">Edit time</button> <button class="btn btn-danger">Close</button></p>
 						</tbody>
 					</table>
 				</div>
@@ -69,20 +69,6 @@
 						</div>
 					</div>
 
-					<div class="form-group{{ $errors->has('shop') ? ' has-error' : '' }}">
-						<label for="name" class="col-md-4 control-label">Shop Name:</label>
-
-						<div class="col-md-6">
-							<input id="shop" type="text" class="form-control" name="shop" value="{{ old('shop') }}">
-
-							@if ($errors->has('shop'))
-							<span class="help-block">
-								<strong>{{ $errors->first('shop') }}</strong>
-							</span>
-							@endif
-						</div>
-					</div>
-
 					<div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
 						<label for="quantity" class="col-md-4 control-label">Quantity</label>
 
@@ -114,6 +100,5 @@
 
 	</div>
 </div>
-
 
 @endsection

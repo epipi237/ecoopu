@@ -16,13 +16,16 @@ class CreateOrdersTable extends Migration
         {
             $table->increments('id');
             $table->integer('user_id');
+            $table->string('shop');
+            $table->string('location');
+            $table->string('duration');
             $table->timestamps();
         });
     }
- 
+    
     public function down()
     {
         Schema::drop('orders');
     }
 }
- 
+

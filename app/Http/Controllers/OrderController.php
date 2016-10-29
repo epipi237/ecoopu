@@ -6,6 +6,7 @@ use Request;
 use App\Http\Requests;
 use App\User;
 use App\OrderItem;
+use App\Order;
 use Validator;
 use Auth;
 use App\Http\Controllers\Controller;
@@ -30,44 +31,67 @@ class OrderController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-    	$orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
-    	return view('pages.orderlist', compact('orderItems'));
+    public function order(){
+    	return view('pages.order');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function createOrderList(){;
-
+    public function create(){
     	$rules = array(
     		'shop' => 'required|max:255',
-    		'product' => 'required',
-    		'quantity' => 'required',
+    		'location' => 'required',
+    		'duration' => 'required',
     		);
-
     	$messages = array(
     		'required' => 'The :attribute is required.',
     		'same'  => 'The :others must match.'
     		);
-
     	$validator = Validator::make(Input::all(), $rules);
-
     	if ($validator->fails()) {
     		$messages = $validator->messages();
     		return Redirect::back()->withErrors($validator)->withInput();
 
     	} else {
+    		$order = new Order;
+    		$order->user_id=Auth::user()->id;
+    		$order->shop = Request::input('shop');
+    		$order->location = Request::input('location');
+    		$order->duration = Request::input('duration');
+    		$order->save();
 
+    		$orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
+    		$orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
+    		return view('pages.orderlist', compact('orders','orderItems'));
+    	} 
+
+    }
+
+    public function orderlist(){
+    	$orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
+    	$orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
+    	return view('pages.orderlist', compact('orderItems','orders'));
+    }
+
+    public function createOrderList(){
+    	$rules = array(
+    		'product' => 'required',
+    		'quantity' => 'required',
+    		);
+    	$messages = array(
+    		'required' => 'The :attribute is required.',
+    		'same'  => 'The :others must match.'
+    		);
+    	$validator = Validator::make(Input::all(), $rules);
+    	if ($validator->fails()) {
+    		$messages = $validator->messages();
+    		return Redirect::back()->withErrors($validator)->withInput();
+
+    	} else {
     		$orderItem = new OrderItem;
     		$orderItem->user_id=Auth::user()->id;
-    		$orderItem->shop = Request::input('shop');
     		$orderItem->product = Request::input('product');
     		$orderItem->quantity = Request::input('quantity');
     		$orderItem->save();
-    		return Redirect::back();
+    		return view('pages.orderlist');
     	}
 
     }

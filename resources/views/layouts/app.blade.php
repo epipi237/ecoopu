@@ -105,7 +105,7 @@
                         <i class="fa fa-search"></i>
                     </button>
                     @if(!Auth::guest())
-                    <a class="btn btn-default navbar-toggle" href="{{ route('create_order') }}">
+                    <a class="btn btn-default navbar-toggle" href="{{ route('order') }}">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Creat an order list</span>
                     </a>
                     @endif
@@ -213,7 +213,7 @@
 
                 @if(!Auth::guest())
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="{{ route('create_order') }}" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
+                    <a href="{{ route('order') }}" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
                 </div>
                 @endif
                 <!--/.nav-collapse -->
@@ -409,5 +409,14 @@
     <script type="text/javascript" src="{{URL::to('assets')}}/js/front.js"></script>
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker3').datetimepicker({
+                format: 'LT'
+            });
+        });
+    </script>
+    
 </body>
 </html>
