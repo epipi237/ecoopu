@@ -14,15 +14,12 @@
                                     <td>Action</td>
                                 </thead>
                                 <tbody>
-                                @foreach($markets as $market)
-                                    @if(!$market->isEmpty())
+
+                                    @foreach($markets as $market)
                                     <tr>
                                         <td>{{ $market->name }}</td>
-                                        <td><a href="#"><button class="btn btn-info">Edit</button></a><a href="#">  <button class="btn btn-danger">Remove</button></a></td>
+                                        <td><a href="/marketplaceremove/{{$market->id}}">  <button class="btn btn-danger">Remove</button></a></td>
                                     </tr>
-                                    @else
-                                    No Market place has been added for now.
-                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>
@@ -50,7 +47,7 @@
                 <h4 class="modal-title text-center">Add Market place</h4>
             </div>
             <div class="modal-body">
-               <form class="form-horizontal" role="form" method="POST" action="{{ route('market') }}">
+             <form class="form-horizontal" role="form" method="POST" action="{{ route('market') }}">
                 {{ csrf_field() }}
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

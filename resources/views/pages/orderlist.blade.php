@@ -9,7 +9,7 @@
 
 		<div class="panel-body">
 			<div class="row">
-					 			<button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button>
+				<button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button>
 
 				<div class="col-md-8">
 
@@ -74,7 +74,7 @@
 
 						<div class="col-md-6">
 							<input id="quantity" type="number" class="form-control" name="quantity" value="{{ old('quantity') }}">
-                             <input type="hidden" name="orderid" value="{{$orders->id}}">
+							<input type="hidden" name="orderid" value="{{$orders->id}}">
 							@if ($errors->has('quantity'))
 							<span class="help-block">
 								<strong>{{ $errors->first('quantity') }}</strong>

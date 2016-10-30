@@ -25,12 +25,12 @@
 						<div class="form-group">
 							<label for="duration" class="col-md-4 control-label">Market Place</label>
 							<div class="col-md-6">
+
 								<select class="form-control" name='market'>
 									@foreach($countries as $c)
 									<option value="{{$c->id}}">{{$c->name}}</option>
 									@endforeach
 								</select>
-
 
 								@if ($errors->has('duration'))
 								<span class="help-block">
@@ -51,6 +51,7 @@
 								@endif
 							</div>
 						</div>
+
 						<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
 							<label for="location" class="col-md-4 control-label">Delivery location</label>
 							<div class="col-md-6">
@@ -63,8 +64,6 @@
 							</div>
 						</div>
 
-
-						
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
@@ -78,7 +77,6 @@
 		</div>
 	</div>
 </div>
-
 
 <div id="hot">
 
@@ -126,23 +124,5 @@
 		<span align="center">{{$orders->links()}}</span>
 
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	@endsection

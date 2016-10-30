@@ -27,7 +27,10 @@ Route::post('admin/add/new','AdminController@register')->name('addAdmin');
 Route::get('/admin/add/market-places','AdminController@getMarket')->name('market');
 Route::post('/admin/add/market-places','AdminController@addMarket')->name('market');
 
+Route::get('marketplaceremove/{id}','AdminController@removemarket');
+
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
+
   /*
   |
   |
@@ -40,5 +43,5 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
   Route::post('pages/create/order', 'OrderController@create')->name('order');
   Route::get('pages/create/orderlist/{id}', 'OrderController@orderlist')->name('create_order');
   Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
-Route::get('itemremove/{id}','OrderController@removeitem');
+  Route::get('itemremove/{id}','OrderController@removeitem');
 

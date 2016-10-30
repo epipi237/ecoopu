@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Request;
 use App\Http\Requests;
 use App\User;
+use App\country;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -73,7 +74,7 @@ class AdminController extends Controller
 
     public function getMarket(){
         $markets = Country::all();
-        return view('admin.market', compact('markets'));
+        return view('admin.market',compact('markets'));
     }
 
     public function addMarket(){
@@ -92,9 +93,17 @@ class AdminController extends Controller
         } else {
             $country = new Country;
             $country->name = Request::input('name');
-            $admin->save();
-            return view('admin.market');
+            $country->save();
+
+            $markets = Country::all();
+            return view('admin.market',compact('markets'));
         }
+    }
+
+    public function removemarket($id){
+        $item=country::find($id);
+        $item->delete();
+        return \Redirect::back()->with('message','successfully deleted');
     }
 
 

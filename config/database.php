@@ -58,7 +58,7 @@ return [
             'port' => '3306',
             'database' => 'ecoopu',
             'username' => 'root',
-            'password' => '',
+            'password' => 'daddy',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
