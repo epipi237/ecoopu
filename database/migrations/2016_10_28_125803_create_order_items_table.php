@@ -22,8 +22,7 @@ class CreateOrderItemsTable extends Migration
             $table->timestamps();
         });
     }
-    public function down()
-    {
+    public function down(){
         Schema::drop('order_items');
     }
 }

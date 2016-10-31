@@ -37,7 +37,7 @@ class OrderController extends Controller{
         $orders=Order::whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(8);
         $countries=country::all();
      //   dd($orders);
-    	return view('pages.order',compact('orders','countries'));
+        return view('pages.order',compact('orders','countries'));
     }
 
     public function create(){
@@ -61,26 +61,27 @@ class OrderController extends Controller{
     		//$order->location = Request::input('location');
             $days=Request::input('duration');
             $date=date('Y-m-d', strtotime(date('Y-m-d'). "+ $days days")).' '.date('H:i:s');
-    		$order->duration =$date ;
+            $order->duration =$date ;
             $order->country_id=Request::input('market');
-    		$order->save();
+            $order->save();
             $address=new Orderlist_address;
             $address->description=Request::input('location');
             $address->user_id=Auth::user()->id;
             $address->order_id=$order->id;
             $address->save();
 
-    		$orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
-    		$orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
-    		return Redirect::back()->with('message','successfully created');
-    	} 
+            $orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
+            $orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
+            return Redirect::back()->with('message','successfully created');
+        } 
 
     }
 
     public function orderlist($id){
         $orders=order::find($id);
-    	$orderItems =OrderItem::where('user_id', Auth::user()->id)->where('order_id',$id)->get();
-    	return view('pages.orderlist', compact('orderItems','orders'));
+        $countries = country::all();
+        $orderItems =OrderItem::where('user_id', Auth::user()->id)->where('order_id',$id)->get();
+        return view('pages.orderlist', compact('orderItems','orders','countries'));
     }
     public function removeitem($id){
         $item=orderItem::find($id);
@@ -109,10 +110,17 @@ class OrderController extends Controller{
     		$orderItem->quantity = Request::input('quantity');
             $orderItem->order_id=Request::input('orderid');
             $orderid=Request::input('orderid');
-    		$orderItem->save();
-    		return \Redirect("pages/create/orderlist/$orderid");
-    	}
+            $orderItem->save();
+            return \Redirect("pages/create/orderlist/$orderid");
+        }
 
+    }
+
+    public function marketplace($id){
+        $orders=Order::whereUserId(Auth::user()->id)->where('country_id',$id)->orderBy('id','desc')->paginate(8);
+        $countries=country::all();
+     //  dd($orders);
+        return view('pages.order',compact('orders','countries'));
     }
 
     /**

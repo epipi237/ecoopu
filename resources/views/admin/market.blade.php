@@ -4,31 +4,34 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Market Places <a href="#"> <span class="pull-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Market Place(s)</button></span></a></div>
+                <div class="panel-heading">Market Places</div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <table class="table table-striped">
-                                <thead>
-                                    <td>Name</td>
-                                    <td>Action</td>
-                                </thead>
-                                <tbody>
+                 <a href="#"> <span class="pull-right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Market Place(s)</button></span></a>
+                 <div class="row">
+                    <div class="col-md-8">
 
-                                    @foreach($markets as $market)
-                                    <tr>
-                                        <td>{{ $market->name }}</td>
-                                        <td><a href="/marketplaceremove/{{$market->id}}">  <button class="btn btn-danger">Remove</button></a></td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <td>Name</td>
+                                <td>Action</td>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach($markets as $market)
+                                <tr>
+                                    <td>{{ $market->name }}</td>
+                                    <td><a href="/marketplaceremove/{{$market->id}}">  <button class="btn btn-danger">Remove</button></a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

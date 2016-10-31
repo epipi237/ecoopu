@@ -126,28 +126,24 @@
                     </li> 
                     @endif
 
-                    <li class="dropdown yamm-fw">
+                    <li class="dropdown">
+                        @if(Auth::check())
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Market Places <b class="caret"></b></a>
+                        @endif
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Denmark</a>
+                                                @foreach($countries as $country)
+                                                <li><a href="/pages/market-places/{{$country->id}}">{{$country->name}}</a>
                                                 </li>
-                                                <li><a href="#">America</a>
-                                                </li>
-                                                <li><a href="#">Germany</a>
-                                                </li>
-                                                <li><a href="#">Australia</a>
-                                                </li>
-                                                <li><a href="#">Austria</a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </div>
 
-                                        <div class="col-sm-3">
+<!--                                         <div class="col-sm-3">
                                             <ul>
                                                 <li><a href="#">Hungary</a>
                                                 </li>
@@ -190,7 +186,8 @@
                                                 <li><a href="#">Poland</a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> -->
+
                                     </div>
                                 </div>
                                 <!-- /.yamm-content -->
@@ -257,15 +254,15 @@
                 <h4>Pages</h4>
 
                 <ul>
-                    <li><a href="text.html">Home</a>
+                    <li><a href="#">Home</a>
                     </li>
-                    <li><a href="text.html">Market Places</a>
+                    <li><a href="#">Market Places</a>
                     </li>
-                    <li><a href="text.html">About us</a>
+                    <li><a href="#">About us</a>
                     </li>
-                    <li><a href="text.html">Contact Us</a>
+                    <li><a href="#">Contact Us</a>
                     </li>
-                    <li><a href="faq.html">FAQ</a>
+                    <li><a href="#">FAQ</a>
                     </li>
                 </ul>
 
@@ -302,23 +299,23 @@
                 <h5>Men</h5>
 
                 <ul>
-                    <li><a href="category.html">T-shirts</a>
+                    <li><a href="#">T-shirts</a>
                     </li>
-                    <li><a href="category.html">Shirts</a>
+                    <li><a href="#">Shirts</a>
                     </li>
-                    <li><a href="category.html">Accessories</a>
+                    <li><a href="#">Accessories</a>
                     </li>
                 </ul>
 
                 <h5>Ladies</h5>
                 <ul>
-                    <li><a href="category.html">T-shirts</a>
+                    <li><a href="#">T-shirts</a>
                     </li>
-                    <li><a href="category.html">Skirts</a>
+                    <li><a href="#">Skirts</a>
                     </li>
-                    <li><a href="category.html">Pants</a>
+                    <li><a href="#">Pants</a>
                     </li>
-                    <li><a href="category.html">Accessories</a>
+                    <li><a href="#">Accessories</a>
                     </li>
                 </ul>
 
@@ -340,7 +337,7 @@
                     <strong></strong>
                 </p>
 
-                <a href="contact.html">Go to contact page</a>
+                <a href="#">Go to contact page</a>
 
                 <hr class="hidden-md hidden-lg">
 

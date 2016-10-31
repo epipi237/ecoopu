@@ -1,5 +1,7 @@
 <?php
 
+use App\country;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,12 +14,23 @@
 */
 
 Route::get('/', function () {
-	return view('welcome');
+	$countries = country::all();
+	return view('welcome',compact('countries'));
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/login', function () {
+	$countries = country::all();
+	return view('auth.login',compact('countries'));
+});
+Route::get('/register', function () {
+	$countries = country::all();
+	return view('auth.register',compact('countries'));
+});
+
 Route::get('user/edit/account','SettingsAccount@index')->name('account');
 Route::post('user/edit/account','SettingsAccount@update')->name('account');
 
@@ -44,4 +57,5 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
   Route::get('pages/create/orderlist/{id}', 'OrderController@orderlist')->name('create_order');
   Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
   Route::get('itemremove/{id}','OrderController@removeitem');
+  Route::get('pages/market-places/{id}', 'OrderController@marketplace');
 

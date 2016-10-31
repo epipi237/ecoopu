@@ -102,9 +102,7 @@
 						$date2=date_create(date('Y-m-d H:i:s'));
 						$DateInterval=date_diff($date1,$date2);
 						echo '<b>Time Left</b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
-
 						?>
-
 					</p>
 					<p class="social text-center">
 						<a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
@@ -124,5 +122,6 @@
 		<span align="center">{{$orders->links()}}</span>
 
 	</div>
+</div>
 
-	@endsection
+@endsection
