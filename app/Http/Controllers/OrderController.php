@@ -119,8 +119,10 @@ class OrderController extends Controller{
     public function marketplace($id){
         $orders=Order::whereUserId(Auth::user()->id)->where('country_id',$id)->orderBy('id','desc')->paginate(8);
         $countries=country::all();
+        $country = country::find($id);
+        // dd($country);
      //  dd($orders);
-        return view('pages.order',compact('orders','countries'));
+        return view('pages.marketplaces',compact('orders','countries','country'));
     }
 
     /**
