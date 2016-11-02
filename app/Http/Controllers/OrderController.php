@@ -74,7 +74,6 @@ class OrderController extends Controller{
             $orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
             return Redirect::back()->with('message','successfully created');
         } 
-
     }
 
     public function orderlist($id){
@@ -113,7 +112,6 @@ class OrderController extends Controller{
             $orderItem->save();
             return \Redirect("pages/create/orderlist/$orderid");
         }
-
     }
 
     public function marketplace($id){
@@ -130,8 +128,7 @@ class OrderController extends Controller{
      *
      * @return Response
      */
-    public function store()
-    {
+    public function store(){
         //
     }
 
@@ -141,8 +138,7 @@ class OrderController extends Controller{
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id){
         //
     }
 
@@ -152,8 +148,7 @@ class OrderController extends Controller{
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         //
     }
 
@@ -163,8 +158,7 @@ class OrderController extends Controller{
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
-    {
+    public function update($id){
         //
     }
 
@@ -174,8 +168,7 @@ class OrderController extends Controller{
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         //
     }
 

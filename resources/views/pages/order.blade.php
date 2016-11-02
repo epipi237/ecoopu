@@ -93,7 +93,7 @@
 			@foreach($orders as $order)
 			<div class="col-sm-3">
 				<div class="box same-height clickable">
-					<h3><a href="#">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
+					<h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
 					<p>{{$order->shop}}
 					</p>
 					<p>

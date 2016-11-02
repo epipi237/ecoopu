@@ -9,7 +9,18 @@
 
 		<div class="panel-body">
 			<div class="row">
-				<button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button>
+
+				<?php 
+				$mytime1=date_create($orders->duration);
+				$mytime2=date_create(date('Y-m-d H:i:s'));
+				if ($mytime2 < $mytime1) {
+					echo '<button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button>';
+				} else {
+
+					//
+				}
+
+				?>
 
 				<div class="col-md-8">
 
@@ -18,7 +29,15 @@
 							<td>Product name</td>
 							<!-- <td>Shop</td> -->
 							<td>Quantity</td>
-							<td>Action</td>
+
+							<?php 
+							$mytime1=date_create($orders->duration);
+							$mytime2=date_create(date('Y-m-d H:i:s'));
+							if ($mytime2 < $mytime1) {
+								echo '<td>Action</td>';
+							} 
+							?>
+							
 						</thead>
 						<tbody>
 							@foreach($orderItems as $orderItem)
@@ -26,11 +45,28 @@
 								<td>{{ $orderItem->product }}</td>
 								<!-- <td>{{ $orderItem->shop }}</td> -->
 								<td>{{ $orderItem->quantity }}</td>
-								<td><a href="/itemremove/{{$orderItem->id}}">  <button class="btn btn-danger">Remove</button></a></td>
+
+								<?php 
+								$mytime1=date_create($orders->duration);
+								$mytime2=date_create(date('Y-m-d H:i:s'));
+								if ($mytime2 < $mytime1) {
+									echo "<td><a href=/itemremove/$orderItem->id>  <button class='btn btn-danger'>Remove</button></a></td>";
+								} else {
+
+									//
+								}
+								?>
+
 							</tr>
 							@endforeach
 							<br>
-							<p>Order List Duraton: 2 Days  </p>
+							<p><?php 
+								$date1=date_create($orders->duration);
+								$date2=date_create(date('Y-m-d H:i:s'));
+								$DateInterval=date_diff($date1,$date2);
+								echo '<b>OrderList count down: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s) left';
+								?>
+							</p>
 						</tbody>
 					</table>
 				</div>
