@@ -66,3 +66,14 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 
   Route::get('removeorder/{id}','OrderController@removeorder');
 
+
+  /*
+  |
+  |
+  |Shop route
+  |
+  |
+  */
+
+  Route::get('shop/index', 'ShopController@index')->name('shop_index');
+  Route::post('pages/create/order', 'OrderController@create')->name('order');

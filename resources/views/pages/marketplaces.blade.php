@@ -20,8 +20,8 @@
 			<div class="col-sm-3">
 				<div class="box same-height clickable">
 					<h3><a href="#">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
-					<p>{{$order->shop}}
-					</p>
+					<p>Shop: {{$order->shop}}</p>
+					<p>Country: <b>{{$order->country->name}}</b></p>
 					<p>
 						<?php 
 						$date1=date_create($order->duration);

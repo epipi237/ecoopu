@@ -42,34 +42,36 @@ class AuthController extends Controller
     protected function authenticated($request, $user){
         //dd($user);
         if($user->role === 'admin'){
-        return view('admin.index'); //redirect to admin panel
+        return \Redirect('/admin/dashboard'); //redirect to admin panel
     }
-        else {
-          
+    elseif ($user->role === 'shop') {
+     return \Redirect('/shop/index');
+ }
+ else{
         return view('home'); //redirect to standard user homepage
     }
-    }
+}
 
-    public function update(Request $request, $id)
-    {
-      $user = User::with('users')->find($id);
-      if(!$User) {
-        return response('User not found', 404);
-    }
+public function update(Request $request, $id)
+{
+  $user = User::with('users')->find($id);
+  if(!$User) {
+    return response('User not found', 404);
+}
 
-    $UserInfo = $User->user_info;
-    if(!$UserInfo) {
-        $UserInfo = new UserInfo();
-        $UserInfo->user_id = $id;
-        $UserInfo->save();
-    }
+$UserInfo = $User->user_info;
+if(!$UserInfo) {
+    $UserInfo = new UserInfo();
+    $UserInfo->user_id = $id;
+    $UserInfo->save();
+}
 
-    try {
-        $values = Input::only($UserInfo->getFillable());
-        $UserInfo->update($values);
-    } catch(Exception $ex) {
-        return response($ex->getMessage(), 400);
-    }
+try {
+    $values = Input::only($UserInfo->getFillable());
+    $UserInfo->update($values);
+} catch(Exception $ex) {
+    return response($ex->getMessage(), 400);
+}
 }
 
     /**
