@@ -28,7 +28,8 @@
 							echo '<b>Time Left</b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
 							?>
 						</p>
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('price') }}">
+
+						<form class="form-horizontal" role="form" method="POST" action="{{route('shop_index')}}">
 							{{ csrf_field() }}
 
 							<input type="hidden" name="order_id" value="{{$order->id}}">
