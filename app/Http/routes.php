@@ -1,5 +1,6 @@
 <?php
 
+use App\Order;
 use App\country;
 
 /*
@@ -15,7 +16,8 @@ use App\country;
 
 Route::get('/', function () {
 	$countries = country::all();
-	return view('welcome',compact('countries'));
+	$orders=order::where('duration','>',date('Y-m-d H:i:s'))->orderBy('id','desc')->paginate(4);
+	return view('welcome',compact('countries','orders'));
 });
 
 Route::auth();
@@ -54,8 +56,13 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 
   Route::get('pages/create/order', 'OrderController@order')->name('order');
   Route::post('pages/create/order', 'OrderController@create')->name('order');
+
+  Route::get('pages/orderlist/expired', 'OrderController@expired')->name('expired');
+
   Route::get('pages/create/orderlist/{id}', 'OrderController@orderlist')->name('create_order');
   Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
   Route::get('itemremove/{id}','OrderController@removeitem');
   Route::get('pages/market-places/{id}', 'OrderController@marketplace');
+
+  Route::get('removeorder/{id}','OrderController@removeorder');
 
