@@ -77,3 +77,8 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 
   Route::get('shop/index', 'ShopController@index')->name('shop_index');
   Route::post('shop/index', 'ShopController@addprice')->name('shop_index');
+  Route::post('shop/index', 'ShopController@addshop')->name('addshop');
+
+  Route::get('shop/add/price/{id}', 'ShopController@orderlist')->name('order_price');
+  Route::post('shop/add/price', 'ShopController@addprice')->name('order_price');
+

@@ -52,7 +52,7 @@
 								if ($mytime2 < $mytime1) {
 									echo "<td><a href=/itemremove/$orderItem->id>  <button class='btn btn-danger'>Remove</button></a></td>";
 								} elseif ($mytime2 > $mytime1) {
-								
+
 								} 
 								?>
 
@@ -86,7 +86,6 @@
 				<h4 class="modal-title text-center">Add items to Orderlist</h4>
 			</div>
 			<div class="modal-body">
-
 
 				<form class="form-horizontal" role="form" method="POST" action="{{route('create_order')}}">
 					{{ csrf_field() }}

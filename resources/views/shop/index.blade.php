@@ -105,8 +105,7 @@
                         <i class="fa fa-search"></i>
                     </button>
                     @if(!Auth::guest())
-                    <a class="btn btn-default navbar-toggle" href="{{ route('expired') }}">
-                        <i class=""></i>  <span class="hidden-xs">Expired order List</span>
+                        <button class="btn btn-default navbar-toggle" data-toggle="modal" data-target="#myModal"><i class=""></i><span class="hidden-xs">Add Shop</span></button>
                     </a>
                     @endif
                 </div>
@@ -126,7 +125,8 @@
                     </li> 
                     @endif
 
-<!--                     <li class="dropdown">
+
+                 <!--   <li class="dropdown">
                         @if(Auth::check())
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Market Places <b class="caret"></b></a>
                         @endif
@@ -164,9 +164,10 @@
             <div class="navbar-buttons">
 
                 @if(!Auth::guest())
-<!--                 <div class="navbar-collapse collapse right" id="">
-                    <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Expired orderlist</span></a>
-                </div> -->
+                <div class="navbar-collapse collapse right" id="">
+                   <!--  <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Add Shop</span></a> -->
+                   <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Add Shop</button>
+                </div>
 
                 @endif
                 <!--/.nav-collapse -->
@@ -199,6 +200,68 @@
 
 
     @yield('content')
+
+
+
+    <!-- Modal for shop owners to add shops-->
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Add Shop</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <form class="form-horizontal" role="form" method="POST" action="{{route('addshop')}}">
+                    {{ csrf_field() }}
+
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label for="name" class="col-md-4 control-label">Shop Name:</label>
+
+                        <div class="col-md-6">
+                            <input id="product" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                            @if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                        <label for="location" class="col-md-4 control-label">Location:</label>
+                        <div class="col-md-6">
+                            <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}">
+                            @if ($errors->has('location'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('location') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-btn fa-add"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
  <!-- *** FOOTER ***
