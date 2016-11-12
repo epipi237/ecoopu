@@ -104,7 +104,7 @@
                         <div class="col-sm-3">
                             <div class="box same-height clickable">
                                 <h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a 
-                                @if(Auth::check)
+                                @if(Auth::check())
                                  @if($order->user->id==Auth::user()->id)
                                  href="/pages/create/orderlist/{{$order->id}}">
                                 Add items
