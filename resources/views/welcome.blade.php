@@ -95,69 +95,52 @@
                     </div>
                 </div>
 
+
                 <div class="container">
-                   <div class="same-height-row">
-                       <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>10 days : 5Hrs : 2s remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
-                            </p>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>20 days : 5Hrs : 2mins remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            </p>
-                        </div>
-                    </div>
+                    <div class="same-height-row">
 
-                    <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>2 days : 5Hrs : 2mins remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                          
-                            </p>
+                        @foreach($orders as $order)
+                        <div class="col-sm-3">
+                            <div class="box same-height clickable">
+                                <h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
+                                <p>Shop: {{$order->shop}}</p>
+                                <p>Country: <b>{{$order->country->name}}</b></p>
+                                <p>
+                                    <?php 
+                                    $date1=date_create($order->duration);
+                                    $date2=date_create(date('Y-m-d H:i:s'));
+                                    $DateInterval=date_diff($date1,$date2);
+                                    echo '<b>Time Left: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
+                                    ?>
+                                </p>
+                                <p class="social text-center">
+                                    <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
+                                </p>
+                            </div>
                         </div>
+                        @endforeach
+                        <!-- /.row -->
                     </div>
-
-                    <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>1 days : 5Hrs : 2mins remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            </p>
-                        </div>
-                    </div>
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
+
 
             </div>
 
+            <div class="container center" >
+                <span align="center">{{$orders->links()}}</span>
+
+            </div>
+            <!-- /.product-slider -->
         </div>
-        <!-- /.product-slider -->
+        <!-- /.container -->
+
     </div>
-    <!-- /.container -->
+    <!-- /#hot -->
 
-</div>
-<!-- /#hot -->
-
-<!-- *** HOT END *** -->
+    <!-- *** HOT END *** -->
 
             <!-- *** GET INSPIRED ***
             _________________________________________________________ -->
@@ -212,4 +195,4 @@
         </div>
         <!-- /#content -->
 
-@endsection
+        @endsection

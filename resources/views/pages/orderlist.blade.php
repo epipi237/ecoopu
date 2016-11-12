@@ -22,7 +22,7 @@
 
 				?>
 
-				<div class="col-md-8">
+				<div class="col-md-8"> 
 
 					<table class="table table-striped">
 						<thead>
@@ -51,10 +51,9 @@
 								$mytime2=date_create(date('Y-m-d H:i:s'));
 								if ($mytime2 < $mytime1) {
 									echo "<td><a href=/itemremove/$orderItem->id>  <button class='btn btn-danger'>Remove</button></a></td>";
-								} else {
+								} elseif ($mytime2 > $mytime1) {
 
-									//
-								}
+								} 
 								?>
 
 							</tr>
@@ -87,7 +86,6 @@
 				<h4 class="modal-title text-center">Add items to Orderlist</h4>
 			</div>
 			<div class="modal-body">
-
 
 				<form class="form-horizontal" role="form" method="POST" action="{{route('create_order')}}">
 					{{ csrf_field() }}

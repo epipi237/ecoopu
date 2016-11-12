@@ -28,10 +28,12 @@ class SettingsAccount extends Controller
 			'username' => 'required|min:3',
 			'email' => 'required|email|max:255',
 			);
+
 		$messages = array(
 			'required' => 'The :attribute is required.',
 			'same'  => 'The :others must match.'
 			);
+		
 		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->fails()) {
 			$messages = $validator->messages();

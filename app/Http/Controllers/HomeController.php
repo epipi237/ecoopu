@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\country;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $countries = country::all();
-        return view('home', compact('countries'));
+       $orders=order::where('duration','>',date('Y-m-d H:i:s'))->orderBy('id','desc')->paginate(4);
+        return view('home', compact('countries','orders'));
     }
 }

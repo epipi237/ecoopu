@@ -123,6 +123,18 @@ class OrderController extends Controller{
         return view('pages.marketplaces',compact('orders','countries','country'));
     }
 
+    public function expired(){
+        $countries=country::all();
+        $orders=order::where('duration','<',date('Y-m-d H:i:s'))->paginate(4);
+        return view('pages.expiredorder', compact('countries','orders'));
+    }
+
+        public function removeorder($id){
+        $item=order::find($id);
+        $item->delete();
+        return \Redirect::back()->with('message','successfully deleted');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
