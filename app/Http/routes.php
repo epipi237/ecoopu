@@ -17,6 +17,9 @@ Route::get('/', function () {
 	$countries = country::all();
 	return view('welcome',compact('countries'));
 });
+Route::get('/test',function(){
+  return view('emails.welcome');
+});
 
 Route::auth();
 
