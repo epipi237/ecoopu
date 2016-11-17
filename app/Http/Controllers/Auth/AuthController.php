@@ -2,6 +2,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Order;
+use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -45,10 +47,12 @@ class AuthController extends Controller
         return \Redirect('/admin/dashboard'); //redirect to admin panel
     }
     elseif ($user->role === 'shop') {
-     return \Redirect('/shop/index');
- }
- else{
-        return view('home'); //redirect to standard user homepage
+       return \Redirect('/shop/index');
+   }
+   else{
+    $orders = order::where('duration','>',date('Y-m-d H:i:s'))->whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(4);
+    $countries = country::all();
+        return view('home',compact('orders','countries')); //redirect to standard user homepage
     }
 }
 
@@ -101,23 +105,23 @@ try {
      */
     protected function create(array $data)
     {
-         Mail::send('emails.welcome', $data, function ($message) {
+       Mail::send('emails.welcome', $data, function ($message) {
 
         $message->from('vauvaumi@gmail.com', 'testing this email');
 
         $message->to('webshinobishost@gmail.com')->subject('Learning Laravel test email');
 
     });
-        return User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'address' => $data['address'],
-            'phone' => $data['phone'],
-            'role' => $data['role'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            ]);
+       return User::create([
+        'name' => $data['name'],
+        'username' => $data['username'],
+        'address' => $data['address'],
+        'phone' => $data['phone'],
+        'role' => $data['role'],
+        'email' => $data['email'],
+        'password' => bcrypt($data['password']),
+        ]);
 
        
-    }
+   }
 }
