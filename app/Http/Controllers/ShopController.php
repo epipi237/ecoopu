@@ -33,9 +33,11 @@ class ShopController extends Controller
      */
 
     public function index(){
-    	$countries = country::all();
-    	$orders=order::where('duration','>',date('Y-m-d H:i:s'))->orderBy('id','desc')->paginate(4);
-    	return view('shop.home',compact('countries','orders'));	
+
+       $user = Auth::user()->id;
+        $countries = country::all();
+        $orders=order::join('shops', 'orders.shop', '=', 'shops.name')->where('shops.user_id', $user)->where('duration','>',date('Y-m-d H:i:s'))->orderBy('orders.id','desc')->paginate(4);
+        return view('shop.home',compact('countries','orders'));	
     }
 
     // public function addprice(){
