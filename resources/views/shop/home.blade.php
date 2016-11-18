@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if (session('status'))
+<div class="alert alert-success">
+	{{ session('status') }}
+</div>
+@endif
+
 <div id="hot">
 
 	<div class="box">
@@ -22,7 +28,7 @@
 						</p>
 
 						<p>
-							<a href="/shop/add/price/{{$order->id}}"><button type="button" class="btn btn-info"> Enter Price</button></a>
+							<a href="/shop/add/price/{{$order->id}}"><button type="button" class="btn btn-info"> View More</button></a>
 						</p>
 
 						<p class="social text-center">

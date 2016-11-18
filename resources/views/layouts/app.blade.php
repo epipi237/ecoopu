@@ -439,13 +439,13 @@
                     ',left='+verticalPos+',top='+horisontalPos+
                     ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
 
-                if (popup) {
+                if (popup){
                     popup.focus();
                     e.preventDefault();
                 }
 
             });
-            
+
         });
     </script>
     
