@@ -49,7 +49,20 @@
 
 </head>
 <body id="app-layout">
+<div id="fb-root"></div>
 
+        <script>
+window.fbAsyncInit = function() {
+FB.init({appId: '1342308649136602', status: true, cookie: true,
+xfbml: true});
+};
+(function() {
+var e = document.createElement('script'); e.async = true;
+e.src = document.location.protocol +
+'//connect.facebook.net/en_US/all.js';
+document.getElementById('fb-root').appendChild(e);
+}());
+</script>
     <!-- *** TOPBAR ***
     _________________________________________________________ -->
     <div id="top">
@@ -449,5 +462,19 @@
         });
     </script>
     
+<script type="text/javascript">
+function share(name,link,picture,caption,description){
+FB.ui(
+{
+method: 'feed',
+name: name,
+link: link,
+picture: picture,
+caption: caption,
+description: description,
+message: ''
+});  
+}
+</script>
 </body>
 </html>
