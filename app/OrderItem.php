@@ -9,8 +9,8 @@ class OrderItem extends Model
 
 
 	protected $table='order_items';
-	public function product()
-	{
+	
+	public function order(){
 		return $this->belongsTo('App\Order');
 	}
 }

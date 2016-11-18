@@ -74,7 +74,7 @@
                     </li> 
                     @endif
 
-                    <li class="dropdown yamm-fw">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Market Places <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -82,60 +82,13 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Denmark</a>
+                                                @foreach($countries as $country)
+                                                <li><a href="/pages/market-places/{{$country->id}}">{{$country->name}}</a>
                                                 </li>
-                                                <li><a href="#">America</a>
-                                                </li>
-                                                <li><a href="#">Germany</a>
-                                                </li>
-                                                <li><a href="#">Australia</a>
-                                                </li>
-                                                <li><a href="#">Austria</a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <ul>
-                                                <li><a href="#">Hungary</a>
-                                                </li>
-                                                <li><a href="#">Italy</a>
-                                                </li>
-                                                <li><a href="#">India</a>
-                                                </li>
-                                                <li><a href="#">China</a>
-                                                </li>
-                                                <li><a href="#">United Kingdom</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <ul>
-                                                <li><a href="#">Dubai</a>
-                                                </li>
-                                                <li><a href="#">Japan</a>
-                                                </li>
-                                                <li><a href="#">Netherland</a>
-                                                </li>
-                                                <li><a href="#">Ukraine</a>
-                                                </li>
-                                                <li><a href="#">South Africa</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <ul>
-                                                <li><a href="#">Belgium</a>
-                                                </li>
-                                                <li><a href="#">South Korea</a>
-                                                </li>
-                                                <li><a href="#">Ireland</a>
-                                                </li>
-                                                <li><a href="#">Turkey</a>
-                                                </li>
-                                                <li><a href="#">Poland</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <!-- /.yamm-content -->
@@ -155,14 +108,14 @@
             </div>
 
             <div class="navbar-buttons">
-               <div class="nav navbar-nav pull-right">
-                   <!-- Authentication Links -->
-                   @if(Auth::guest())
-                   <li><a href="{{ url('/login') }}">Login</a></li>
-                   @else
-                   <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
-                    <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
-                   <li class="dropdown">
+             <div class="nav navbar-nav pull-right">
+                 <!-- Authentication Links -->
+                 @if(Auth::guest())
+                 <li><a href="{{ url('/login') }}">Login</a></li>
+                 @else
+                 <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
+                 <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
+                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>

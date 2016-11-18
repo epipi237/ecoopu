@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 
 <div id="all">
@@ -104,18 +105,18 @@
                         <div class="col-sm-3">
                             <div class="box same-height clickable">
                                 <h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a 
-                                @if(Auth::check())
-                                 @if($order->user->id==Auth::user()->id)
-                                 href="/pages/create/orderlist/{{$order->id}}">
-                                Add items
-                                 @else
-                                 href="/pages/create/orderlist/{{$order->id}}">
-                                Join List 
-                                @endif         
-                                @else
-                                href="/login">
-                                Join List 
-                                @endif
+                                    @if(Auth::check())
+                                    @if($order->user->id==Auth::user()->id)
+                                    href="/pages/create/orderlist/{{$order->id}}">
+                                    Add items
+                                    @else
+                                    href="/pages/create/orderlist/{{$order->id}}">
+                                    Join List 
+                                    @endif         
+                                    @else
+                                    href="/login">
+                                    Join List 
+                                    @endif
 
 
                                 </a>)</a></h3>
@@ -129,10 +130,18 @@
                                     echo '<b>Time Left: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
                                     ?>
                                 </p>
-                                <p class="social text-center">
-                                    <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
+                                <!-- <p class="social text-center">
+                                    <a href="{{url('/facebook')}}" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                                    <a href="{{url('/twitter')}}" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
+                                </p> -->
+
+                                <p>
+                                    @include('share.share', [
+                                    'url' => request()->fullUrl(),
+                                    'description' => 'Join by orderlist to shop from {{$order->shop}}',
+                                    ])
                                 </p>
+                                
                             </div>
                         </div>
                         @endforeach

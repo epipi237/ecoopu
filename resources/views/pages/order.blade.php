@@ -92,7 +92,7 @@
 		<div class="same-height-row">
 			@foreach($orders as $order)
 			<div class="col-sm-3">
-				<div class="box same-height clickable">
+				<div class="box same-height">
 					<h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
 					<p>Shop: {{$order->shop}}
 					</p>
@@ -104,10 +104,18 @@
 						echo '<b>Time Left</b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
 						?>
 					</p>
-					<p class="social text-center">
+<!-- 					<p class="social text-center">
 						<a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
 						<a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
+					</p> -->
+
+					<p>
+						@include('share.share', [
+						'url' => request()->fullUrl(),
+						'description' => 'Join my orderlist to shop with me from {{$order->shop}}',
+						])
 					</p>
+
 				</div>
 			</div>
 			@endforeach

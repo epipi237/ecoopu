@@ -18,3 +18,17 @@ nano database.php
 exit
 git pull ecoopu master
 exit
+git pull ecoopu master
+git add .
+git commit -m "server changes"
+git pull ecoopu master
+cd config
+nano database.php 
+php artisan serve
+cd ..
+php artisan serve
+php artisan migrate
+composer install
+php composer.phar install
+php artisan migrate
+exit
