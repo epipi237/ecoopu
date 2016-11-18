@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="eCoopu.The best" />
+<meta property="og:description"        content="eCoopu is an awesome platform that helps you in making better deals by buying together with other people.Join eC oopu and make better buying deals." />
 
     <title>
         eCoopu
