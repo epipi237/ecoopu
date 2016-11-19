@@ -110,7 +110,7 @@ try {
 
         $message->from('vauvaumi@gmail.com', 'testing this email');
 
-        $message->to($data['email'])->subject("Welcome to eCoopu $data['username']");
+        $message->to("$data['email']")->subject("Welcome to eCoopu $data['username']");
 
     });
        return User::create([
