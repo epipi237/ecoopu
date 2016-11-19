@@ -22,12 +22,12 @@ Route::get('/', function (){
 
 Route::get('/twitter', function()
 {
-    return Share::load('http://www.ecoopu.com', 'My description Here')->twitter();
+  return Share::load('http://www.ecoopu.com', 'My description Here')->twitter();
 });
 
 Route::get('/facebook', function()
 {
-    return Share::load('http://www.ecoopu.com', 'My description Here')->facebook();
+  return Share::load('http://www.ecoopu.com', 'My description Here')->facebook();
 });
 
 Route::get('/test',function(){
@@ -93,6 +93,9 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
   Route::post('shop/index', 'ShopController@addprice')->name('shop_index');
   Route::post('shop/index', 'ShopController@addshop')->name('addshop');
 
-  Route::get('shop/add/price/{id}', 'ShopController@orderlist')->name('order_price');
+  Route::get('shop/clients/{id}', 'ShopController@clients')->name('clients');
+
+  Route::get('shop/orderitems/user/{id}/order/{order_id}', 'ShopController@clientorderlist');
+
   Route::post('shop/add/price', 'ShopController@addprice')->name('order_price');
 
