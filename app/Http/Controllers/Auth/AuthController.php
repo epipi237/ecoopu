@@ -106,11 +106,11 @@ try {
      */
     protected function create(array $data)
     {
-       Mail::send('emails.welcome', $data, function ($message) {
+       Mail::send('emails.welcome', $data, function ($message){
 
         $message->from('vauvaumi@gmail.com', 'testing this email');
 
-        $message->to("$data['email']")->subject("Welcome to eCoopu $data['username']");
+        $message->to($data['email'])->subject("Welcome to eCoopu");
 
     });
        return User::create([
