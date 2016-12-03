@@ -9,6 +9,7 @@ use App\price;
 use Validator;
 use App\Order;
 use App\Shop;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -35,14 +36,16 @@ class ShopController extends Controller
     public function index(){
 
      $user = Auth::user()->id;
+     $shops = Shop::where('user_id', $user)->get();
      $countries = country::all();
      $orders=order::join('shops', 'orders.shop', '=', 'shops.name')->where('shops.user_id', $user)->where('duration','>',date('Y-m-d H:i:s'))->orderBy('orders.id','desc')->paginate(4);
-     return view('shop.home',compact('countries','orders'));	
+     return view('shop.home',compact('countries','orders','shops'));	
    }
 
-   public function addprice(){
+   public function addshop(){
      $rules = array(
-      'price' => 'required',
+      'name' => 'required',
+      'location' => 'required',
       );
      $messages = array(
       'required' => 'The :attribute is required.',
@@ -53,22 +56,35 @@ class ShopController extends Controller
       return Redirect::back()->withErrors($validator)->withInput();
 
     } else {
-      $prices = Input::get('price');
-      $order_id = Input::get('user_id');
-      foreach($prices as $price) {
-        \DB::insert('insert into prices (price,order_id) values (?,?)', array($price,$order_id));
-      }
-      // $price->order_id=Request::input('order_id');
-      // $price->price = Request::input('price');
-      // $price->save();
-     return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');;
+      $shop = new Shop;
+      $shop->user_id=Auth::user()->id;
+      $shop->name=Request::input('name');
+      $shop->location = Request::input('location');
+      $shop->save();
+      return Redirect::back();
     }
   }
 
-  public function addshop(){
+
+  public function clients($id){
+    $order=order::find($id);
+    $order_id = $order->id;
+    $countries = country::all();
+    $clients = User::distinct()->join('order_items', 'order_items.user_id','=','users.id')->where('order_items.order_id', $order_id)->select('users.*')->orderBy('users.id','asc')->get();
+    return view('shop.client', compact('clients','order_id','countries'));
+  }
+
+  public function clientorderlist($id, $order_id){
+    $orderid = OrderItem::find($order_id)->order_id;
+    $user = User::find($id)->id;
+    $countries = country::all();
+    $orderItems =OrderItem::where('user_id',$user)->where('order_id',$orderid)->get();
+    return view('shop.list', compact('orderItems','countries', 'orderid','user'));
+  }
+
+  public function addprice(){
    $rules = array(
-    'name' => 'required',
-    'location' => 'required',
+    'price' => 'required',
     );
    $messages = array(
     'required' => 'The :attribute is required.',
@@ -79,22 +95,19 @@ class ShopController extends Controller
     return Redirect::back()->withErrors($validator)->withInput();
 
   } else {
-    $shop = new Shop;
-    $shop->user_id=Auth::user()->id;
-    $shop->name=Request::input('name');
-    $shop->location = Request::input('location');
-    $shop->save();
-    return Redirect::back();
-  }
-}
 
-public function orderlist($id){
-  $orders=order::find($id);
-  $countries = country::all();
-    // $orderItems =OrderItem::join('orders', 'order_items.user_id','=','orders.user_id')->where('orders.order_id',$id)->get();
-  $prices = price::all();
-  $orderItems =OrderItem::where('order_id',$id)->get();
-  return view('shop.list', compact('orderItems','orders','countries','prices'));
+    $price = new Price;
+    $price->order_id = Request::input('order_id');
+    $price->user_id = Request::input('user_id');
+    $price->price = Request::input('price');
+    $price->save();
+
+    // foreach($prices as $price){
+    //   \DB::insert('insert into prices (price,order_id) values (?,?)', array($price,$order_id));
+    // }
+
+    return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');;
+  }
 }
 
 public function createOrderList(){
