@@ -32,3 +32,35 @@ composer install
 php composer.phar install
 php artisan migrate
 exit
+git pull ecoopu master
+git add .
+git commit -m "facebook sharing"
+git config --edit
+git commit -m "facebook sharing"
+git add .
+git commit -m "facebook sharing"
+git add -A
+git commit -m "facebook sharing"
+git status
+git commit -a
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit
+git pull ecoopu master
+git remote -v
+git pull ecoopu master
+git pull ecoopu master
+php artisan migrate
