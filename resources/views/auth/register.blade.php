@@ -58,8 +58,8 @@
                             <div class="col-md-6">
                             <select id="role" class="form-control" name="role" value="{{ old('address') }}">
                                     <option></option>
-                                    <option value="user">User</option>
-                                    <option value="shop">Shop</option>
+                                    <option value="user">Buyer</option>
+                                    <option value="shop">Shop Owner</option>
                                     @if ($errors->has('role'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('role') }}</strong>
