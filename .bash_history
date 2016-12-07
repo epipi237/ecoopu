@@ -64,3 +64,11 @@ git remote -v
 git pull ecoopu master
 git pull ecoopu master
 php artisan migrate
+git pull ecoopu master
+git add .
+git commit -m "latest changes from Gods"
+git push origin master
+git pull ecoopu master
+php artisan migrate
+php artisan migrate:refresh
+clear
