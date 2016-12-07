@@ -7,6 +7,8 @@ use App\country;
 use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request as frequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Mail;
@@ -34,7 +36,7 @@ class AuthController extends Controller
 
     /**
      * Create a new authentication controller instance.
-     *
+     *  
      * @return void
      */
     public function __construct()
@@ -42,15 +44,15 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
-    protected function authenticated($request, $user){
+    protected function authenticated($request, $user){ 
         //dd($user);
         if($user->role === 'admin'){
         return \Redirect('/admin/dashboard'); //redirect to admin panel
     }
     elseif ($user->role === 'shop') {
-       return \Redirect('/shop/index');
-   }
-   else{
+     return \Redirect('/shop/index');
+ }
+ else{
     $orders = order::where('duration','>',date('Y-m-d H:i:s'))->whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(4);
     $countries = country::all();
         return view('home',compact('orders','countries')); //redirect to standard user homepage
@@ -78,25 +80,67 @@ try {
     return response($ex->getMessage(), 400);
 }
 }
-
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'address' => 'required|min:5',
-            'phone' => 'required',
-            'role' => 'required',
-            'username' => 'required|min:3|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            ]);
-    }
+
+    public function register(){
+       $rules = array(
+        'name' => 'required',
+        'username' => 'required',
+        'phone' => 'required',
+        'role' => 'required',
+        'address' => 'required',
+        'password' => 'required|min:6|confirmed',
+        'email' => 'required|email|max:255|unique:users',
+        );
+       $messages = array(
+        'required' => 'The :attribute is required.',
+        );
+       $validator = Validator::make(Input::all(), $rules);
+       if ($validator->fails()) {
+        $messages = $validator->messages();
+        return Redirect::back()->withErrors($validator)->withInput();
+
+    } else {
+
+    //    Mail::send('emails.welcome', $data, function ($message) use($data){
+
+    //     $message->from('vauvaumi@gmail.com', 'testing this email');
+
+    //     $message->to($data['email'])->subject("Welcome to eCoopu");
+
+    // });
+
+       $user = new User;
+       $user->name = frequest::input('name');
+       $user->username = frequest::input('username');
+       $user->phone = frequest::input('phone');
+       $user->email = frequest::input('email');
+       $user->address = frequest::input('address');
+       $user->role = frequest::input('role');
+       $user->password = bcrypt(frequest::input('password'));
+       $user->save();
+       return \Redirect()->to('/login')->with('status', 'Registration successful!');
+   }
+}
+
+// protected function validator(array $data)
+// {
+//     return Validator::make($data, [
+//         'name' => 'required|max:255',
+//         'address' => 'required|min:5',
+//         'phone' => 'required',
+//         'role' => 'required',
+//         'username' => 'required|min:3|unique:users',
+//         'email' => 'required|email|max:255|unique:users',
+//         'password' => 'required|min:6|confirmed',
+//         ]);
+// }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -104,25 +148,29 @@ try {
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
-       Mail::send('emails.welcome', $data, function ($message) use($data){
+ //    protected function create(array $data)
 
-        $message->from('vauvaumi@gmail.com', 'testing this email');
+ //    {
 
-        $message->to($data['email'])->subject("Welcome to eCoopu");
+ //     Mail::send('emails.welcome', $data, function ($message) use($data){
 
-    });
-       return User::create([
-        'name' => $data['name'],
-        'username' => $data['username'],
-        'address' => $data['address'],
-        'phone' => $data['phone'],
-        'role' => $data['role'],
-        'email' => $data['email'],
-        'password' => bcrypt($data['password']),
-        ]);
+ //        $message->from('vauvaumi@gmail.com', 'testing this email');
 
-       
-   }
+ //        $message->to($data['email'])->subject("Welcome to eCoopu");
+
+ //    });
+
+ //     return User::create([
+ //        'name' => $data['name'],
+ //        'username' => $data['username'],
+ //        'address' => $data['address'],
+ //        'phone' => $data['phone'],
+ //        'role' => $data['role'],
+ //        'email' => $data['email'],
+ //        'password' => bcrypt($data['password']),
+ //        ]);
+
+
+ // }
+
 }

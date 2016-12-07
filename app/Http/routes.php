@@ -42,6 +42,7 @@ Route::get('/login', function () {
 	$countries = country::all();
 	return view('auth.login',compact('countries'));
 });
+
 Route::get('/register', function () {
 	$countries = country::all();
 	return view('auth.register',compact('countries'));
