@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => '127.0.0.1',
-            'port' => '3306',
-            'database' => 'ecoopu',
-            'username' => 'root',
-            'password' => 'daddy',
+            'host' => env('DB_HOST', 'mysql.webshinobis.com'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'ecoopu'),
+            'username' => env('DB_USERNAME', 'epipi'),
+            'password' => env('DB_PASSWORD', 'joachim99581598'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
