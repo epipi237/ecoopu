@@ -84,3 +84,12 @@ cd ..
 ls
 cd flyintertours/
 exit
+git pull ecoopu master
+git push ecoopu master
+git status
+git add .
+git commit -m "added default admin"
+git push ecoopu master
+php artisan migrate
+php artisan migrate:rollback
+php artisan migrate
