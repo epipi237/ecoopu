@@ -72,3 +72,15 @@ git pull ecoopu master
 php artisan migrate
 php artisan migrate:refresh
 clear
+git status
+git add .
+git commit -m "Fixed redirect link"
+git push origin master
+git push ecoopu master
+git push ecoopu master
+git pull ecoopu master
+git push ecoopu master
+cd ..
+ls
+cd flyintertours/
+exit
