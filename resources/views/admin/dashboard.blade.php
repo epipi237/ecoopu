@@ -104,7 +104,6 @@
 
                     </li>
                 </ul>
-
             </div>
 
             <div class="navbar-buttons">
