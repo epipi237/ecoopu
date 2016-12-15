@@ -81,7 +81,6 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 
   Route::get('removeorder/{id}','OrderController@removeorder');
 
-
   /*
   |
   |

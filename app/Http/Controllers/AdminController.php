@@ -37,8 +37,8 @@ class AdminController extends Controller
     }
 
     public function addAdmin(){
-
-        return view('admin.addAdmin');
+        $countries = Country::all();
+        return view('admin.addAdmin',compact('countries'));
     }
 
     public function register(){
@@ -74,8 +74,8 @@ class AdminController extends Controller
     }
 
     public function getMarket(){
-        $markets = Country::all();
-        return view('admin.market',compact('markets'));
+        $countries = Country::all();
+        return view('admin.market',compact('countries'));
     }
 
     public function addMarket(){
@@ -96,8 +96,8 @@ class AdminController extends Controller
             $country->name = Request::input('name');
             $country->save();
 
-            $markets = Country::all();
-            return view('admin.market',compact('markets'));
+            $countries = Country::all();
+            return view('admin.market',compact('countries'));
         }
     }
 

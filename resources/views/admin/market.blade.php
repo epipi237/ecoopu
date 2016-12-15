@@ -18,7 +18,7 @@
 
                             <tbody>
 
-                                @foreach($markets as $market)
+                                @foreach($countries as $market)
                                 <tr>
                                     <td>{{ $market->name }}</td>
                                     <td><a href="/marketplaceremove/{{$market->id}}">  <button class="btn btn-danger">Remove</button></a></td>
