@@ -68,6 +68,9 @@ class ShopController extends Controller
 
   public function clients($id){
     $order=order::find($id);
+    if(!$order) return \Redirect::back()->with('status','Orderlist is empty');
+    
+    else
     $order_id = $order->id;
     $countries = country::all();
     $clients = User::distinct()->join('order_items', 'order_items.user_id','=','users.id')->where('order_items.order_id', $order_id)->select('users.*')->orderBy('users.id','asc')->get();
@@ -78,7 +81,7 @@ class ShopController extends Controller
     $orderid = OrderItem::find($order_id)->order_id;
     $user = User::find($id)->id;
     $countries = country::all();
-    $orderItems =OrderItem::where('user_id',$user)->where('order_id',$orderid)->get();
+    $orderItems =OrderItem::where('user_id', $user)->where('order_id',$orderid)->get();
     return view('shop.list', compact('orderItems','countries', 'orderid','user'));
   }
 
@@ -106,7 +109,7 @@ class ShopController extends Controller
     //   \DB::insert('insert into prices (price,order_id) values (?,?)', array($price,$order_id));
     // }
 
-    return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');;
+    return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');
   }
 }
 

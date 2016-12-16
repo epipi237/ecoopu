@@ -107,6 +107,4 @@ class AdminController extends Controller
         return \Redirect::back()->with('message','successfully deleted');
     }
 
-
-
 }
