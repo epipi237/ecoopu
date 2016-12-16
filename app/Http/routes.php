@@ -84,7 +84,7 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
   /*
   |
   |
-  |Shop route
+  |Shop  route
   |
   |
   */

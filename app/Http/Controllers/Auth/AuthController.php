@@ -7,6 +7,7 @@ use App\country;
 use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request as frequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
