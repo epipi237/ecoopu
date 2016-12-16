@@ -1,5 +1,12 @@
 @extends('layouts.app')
+
 @section('content')
+
+@if (session('status'))
+<div class="alert alert-success">
+	{{ session('status') }}
+</div>
+@endif
 
 <div class="container">
 
@@ -68,6 +75,11 @@
 							</p>
 						</tbody>
 					</table>
+
+					<div class="pull-right">
+						Total price: <span class="badge">${{$price->price}}</span>
+					</div>
+
 				</div>
 			</div>
 		</div>

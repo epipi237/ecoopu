@@ -11,6 +11,7 @@ use Validator;
 use App\Orderlist_address;
 use Auth;
 use App\country;
+use App\price;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Input;
@@ -36,7 +37,7 @@ class OrderController extends Controller{
     public function order(){
         $orders=Order::whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(8);
         $countries=country::all();
-     //   dd($orders);
+        //   dd($orders);
         return view('pages.order',compact('orders','countries'));
     }
 
@@ -62,17 +63,18 @@ class OrderController extends Controller{
             $days=Request::input('duration');
             $date=date('Y-m-d', strtotime(date('Y-m-d'). "+ $days days")).' '.date('H:i:s');
             $order->duration =$date ;
+            $order->location = Request::input('location');
             $order->country_id=Request::input('market');
             $order->save();
             $address=new Orderlist_address;
-            $address->description=Request::input('location');
+            $address->description = Request::input('location');
             $address->user_id=Auth::user()->id;
             $address->order_id=$order->id;
             $address->save();
 
             $orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
             $orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
-            return Redirect::back()->with('message','successfully created');
+            return Redirect::back()->with('status','successfully created');
         } 
     }
 
@@ -80,7 +82,9 @@ class OrderController extends Controller{
         $orders=order::find($id);
         $countries = country::all();
         $orderItems =OrderItem::where('user_id', Auth::user()->id)->where('order_id',$id)->get();
-        return view('pages.orderlist', compact('orderItems','orders','countries'));
+        $price = Price::where('user_id', Auth::user()->id)->where('order_id', $id)->first();
+
+        return view('pages.orderlist', compact('orderItems','orders','countries', 'price'));
     }
     public function removeitem($id){
         $item=orderItem::find($id);

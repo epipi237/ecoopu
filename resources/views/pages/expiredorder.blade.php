@@ -1,5 +1,12 @@
 @extends('layouts.app')
+
 @section('content')
+
+@if (session('status'))
+<div class="alert alert-success">
+	{{ session('status') }}
+</div>
+@endif
 
 <div class="container">
 	<div class="same-height-row">
@@ -8,7 +15,7 @@
 			@foreach($orders as $order)
 			<div class="col-sm-3">
 				<div class="box same-height clickable">
-					<h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} item(s) (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
+					<h3><a href="/pages/create/orderlist/{{$order->id}}">Order List {{$order->id}}</a></h3>
 					<p>Shop: {{$order->shop}}</p>
 					<p>Country: <b>{{$order->country->name}}</b></p>
 					<p>
@@ -20,10 +27,12 @@
 						?>
 					</p>
 					<p class="social text-center">
-						<a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a> 
-						<a href="/removeorder/{{$order->id}}" class="btn btn-danger btn-sm pull-right">Delete</a>                         
+						<!-- <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+						<a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>  -->
+						<a href="/removeorder/{{$order->id}}" class="btn btn-danger btn-sm pull-right">Delete</a>
+						<span class="clearfix">...</span>                     
 					</p>
+
 				</div>
 			</div>
 			@endforeach

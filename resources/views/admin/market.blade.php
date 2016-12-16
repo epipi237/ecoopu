@@ -1,5 +1,13 @@
 @extends('admin.dashboard')
+
 @section('content')
+
+@if (session('status'))
+<div class="alert alert-success">
+    {{ session('status') }}
+</div>
+@endif
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

@@ -38,7 +38,8 @@ class ShopController extends Controller
      $user = Auth::user()->id;
      $shops = Shop::where('user_id', $user)->get();
      $countries = country::all();
-     $orders=order::join('shops', 'orders.shop', '=', 'shops.name')->where('shops.user_id', $user)->where('duration','>',date('Y-m-d H:i:s'))->orderBy('orders.id','desc')->paginate(4);
+     $orders=order::join('shops', 'orders.shop', '=', 'shops.name')->where('shops.user_id', $user)->where('duration','<',date('Y-m-d H:i:s'))->orderBy('orders.id','desc')->paginate(4);
+
      return view('shop.home',compact('countries','orders','shops'));	
    }
 
