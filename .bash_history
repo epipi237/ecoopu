@@ -93,3 +93,15 @@ git push ecoopu master
 php artisan migrate
 php artisan migrate:rollback
 php artisan migrate
+git pull ecoopu master
+git status
+git add .
+git commit -m "Added default admin"
+git push origin master
+git push ecoopu master
+php artisan migrate
+git pull ecoopu master
+git pull
+git pull ecoopu master
+git pull ecoopu master
+git status
