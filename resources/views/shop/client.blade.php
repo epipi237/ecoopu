@@ -18,7 +18,7 @@
 							<tr>
 								<td>{{ $client->name}}</td>
 								<td>
-									<a href="/shop/orderitems/user/{{$client->id}}/order/{{$order_id}}"><button type="button" class="btn btn-info">View More</button>
+									<a href="/shop/orderitems/user/{{$client->id}}/order/{{$order_id}}"><button type="button" class="btn btn-info">Details</button>
 									</a>
 								</td>
 							</tr>
