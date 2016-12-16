@@ -65,12 +65,10 @@ class ShopController extends Controller
     }
   }
 
-
   public function clients($id){
     $order=order::find($id);
     if(!$order) return \Redirect::back()->with('status','Orderlist is empty');
-    
-    else
+   
     $order_id = $order->id;
     $countries = country::all();
     $clients = User::distinct()->join('order_items', 'order_items.user_id','=','users.id')->where('order_items.order_id', $order_id)->select('users.*')->orderBy('users.id','asc')->get();
@@ -78,11 +76,15 @@ class ShopController extends Controller
   }
 
   public function clientorderlist($id, $order_id){
-    $orderid = OrderItem::find($order_id)->order_id;
-    $user = User::find($id)->id;
+
+    // $orderid = OrderItem::where('order_id', $order_id)->get();
+    // dd($orderid);
+
+    $user = User::find($id);
     $countries = country::all();
-    $orderItems =OrderItem::where('user_id', $user)->where('order_id',$orderid)->get();
-    return view('shop.list', compact('orderItems','countries', 'orderid','user'));
+    $orderItems =OrderItem::where('user_id', $user->id)->where('order_id',$order_id)->get();
+    $price = Price::where('user_id', $user->id)->where('order_id', $order_id)->first();
+    return view('shop.list', compact('orderItems','countries','price', 'order_id','user'));
   }
 
   public function addprice(){
@@ -146,7 +148,7 @@ public function createOrderList(){
      */
 
     public function store(){
-        //
+        //i want to see wat happens when i am writting on God's will see this code this way and i am sure that my worls will be good n the well formed chcicked of th inodoumoia .I am happy to be a Cameroonian and to be a good one for that matter and to see my country in peace and lord .This is unbelieveable and i thing this is the good way of doing things to see the right oppotunity
     }
 
     /**

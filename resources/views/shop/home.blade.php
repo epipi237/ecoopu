@@ -37,7 +37,7 @@
 									<td>{{$order->shop}}</td>
 									<td>{{count($order->orderItems)}}</td>
 									<td>
-										<a href="/shop/clients/{{$order->id}}"><button type="button" class="btn btn-info"> View More</button>
+										<a href="/shop/clients/{{$order->id}}"><button type="button" class="btn btn-info"> More</button>
 										</a>
 									</td>
 								</tr>
