@@ -69,7 +69,7 @@ class ShopController extends Controller
   public function clients($id){
     $order=order::find($id);
     if(!$order) return \Redirect::back()->with('status','Orderlist is empty');
-   
+
     $order_id = $order->id;
     $countries = country::all();
     $clients = User::distinct()->join('order_items', 'order_items.user_id','=','users.id')->where('order_items.order_id', $order_id)->select('users.*')->orderBy('users.id','asc')->get();
@@ -83,9 +83,15 @@ class ShopController extends Controller
 
     $user = User::find($id);
     $countries = country::all();
-    $orderItems =OrderItem::where('user_id', $user->id)->where('order_id',$order_id)->get();
+    $orderItems =OrderItem::where('user_id', $user->id)->where('order_id', $order_id)->get();
     $price = Price::where('user_id', $user->id)->where('order_id', $order_id)->first();
-    return view('shop.list', compact('orderItems','countries','price', 'order_id','user'));
+    if(!$price){
+      $price = new Price;
+      $price->price = 0;
+    }
+    $processingFee = $price->price * 0.01;
+    
+    return view('shop.list', compact('orderItems','countries','price', 'order_id','user', 'processingFee'));
   }
 
   public function addprice(){

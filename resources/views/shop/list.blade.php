@@ -3,7 +3,7 @@
 @section('content')
 
 @if (session('status'))
-<div class="alert alert-success">
+<div class="container alert alert-success text-center">
 	{{ session('status') }}
 </div>
 @endif
@@ -50,6 +50,7 @@
 
 					<div class="pull-right">
 						Total price: <span class="badge">${{$price->price}}</span>
+						Processing Fee: <span class="label label-danger">${{$processingFee}} (1% of Total Cost)</span>
 					</div>
 
 					@endif

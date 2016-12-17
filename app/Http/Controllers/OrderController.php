@@ -79,17 +79,26 @@ class OrderController extends Controller{
     }
 
     public function orderlist($id){
-        $orders=order::find($id);
+        $order=order::find($id);
         $countries = country::all();
-        $orderItems =OrderItem::where('user_id', Auth::user()->id)->where('order_id',$id)->get();
-        $price = Price::where('user_id', Auth::user()->id)->where('order_id', $id)->first();
+        $user_id = Auth::user()->id;
+        $orderItems =OrderItem::where('user_id', $user_id)->where('order_id',$id)->get();
+        $price = Price::where('user_id', $user_id)->where('order_id', $id)->first();
+        if(!$price) {
+            $price = new Price;
+            $price->price = 0;
+        }
+        $processingFee = $price->price * 0.01;
 
-        return view('pages.orderlist', compact('orderItems','orders','countries', 'price'));
+        //session(['status' => 'For your order to be delivered you need to pay a processing fee']);
+        $status = "For your order to be delivered you need to pay a processing fee";
+        return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status'));
     }
+
     public function removeitem($id){
         $item=orderItem::find($id);
         $item->delete();
-        return \Redirect::back()->with('message','successfully deleted');
+        return \Redirect::back()->with('status', 'successfully deleted');
     }
 
     public function createOrderList(){

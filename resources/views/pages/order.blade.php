@@ -3,7 +3,7 @@
 @section('content')
 
 @if (session('status'))
-<div class="alert alert-success">
+<div class="container alert alert-success text-center">
 	{{ session('status') }}
 </div>
 @endif
@@ -100,15 +100,25 @@
 			@foreach($orders as $order)
 			<div class="col-sm-3">
 				<div class="box same-height">
-					<h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
+					<h3>
+						<?php
+						$date1=date_create($order->duration);
+						$date2=date_create(date('Y-m-d H:i:s'));
+						?>
+						<a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items </a>
+						@if($date2 < $date1) (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>) @endif
+					</h3>
 					<p>Shop: {{$order->shop}}
 					</p>
 					<p>
 						<?php 
-						$date1=date_create($order->duration);
-						$date2=date_create(date('Y-m-d H:i:s'));
-						$DateInterval=date_diff($date1,$date2);
-						echo '<b>Time Left</b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
+						
+						if($date2 < $date1) {
+							$DateInterval=date_diff($date1, $date2);
+							echo '<b>Time Left:</b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
+						}else{
+							echo '<b>Time Left:</b> Processing Phase   ';
+						}
 						?>
 					</p>
 <!-- 					<p class="social text-center">
