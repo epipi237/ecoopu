@@ -33,7 +33,7 @@
 							@endforeach
 						</tbody>
 					</table>
-					@if($price > 0)
+					@if($price->price > 0)
 					<form class="form-horizontal" role="form" method="POST" action="{{route('order_price')}}">
 
 						{{ csrf_field() }}
