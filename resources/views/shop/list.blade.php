@@ -33,7 +33,7 @@
 							@endforeach
 						</tbody>
 					</table>
-					@if($price->price > 0)
+					@if(!($price->price > 0))
 					<form class="form-horizontal" role="form" method="POST" action="{{route('order_price')}}">
 
 						{{ csrf_field() }}
@@ -41,13 +41,12 @@
 						<input type="hidden" name="order_id" value="{{$order_id}}" id="order_id">
 						<input type="hidden" name="user_id" value="{{$user->id}}" id="user_id">
 
-						Total Price: <input type="number" placeholder="Price $" class='' name="price" id="price" required="">
+						Total Price: <input type="number" placeholder="Price $" class='' name="price" id="price" value="{{old('price')}}" required="">
 						<button type="submit" class="btn btn-primary pull-right">
 							<i class="fa fa-btn fa-add"></i> Save
 						</button>
 					</form>
 					@else
-
 					<div class="pull-right">
 						Total price: <span class="badge">${{$price->price}}</span>
 						Processing Fee: <span class="label label-danger">${{$processingFee}} (1% of Total Cost)</span>

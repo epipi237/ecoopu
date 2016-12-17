@@ -90,13 +90,13 @@ class ShopController extends Controller
       $price->price = 0;
     }
     $processingFee = $price->price * 0.01;
-    
+
     return view('shop.list', compact('orderItems','countries','price', 'order_id','user', 'processingFee'));
   }
 
   public function addprice(){
    $rules = array(
-    'price' => 'required',
+    'price' => 'required|numeric|min:1',
     );
    $messages = array(
     'required' => 'The :attribute is required.',
@@ -104,7 +104,7 @@ class ShopController extends Controller
    $validator = Validator::make(Input::all(), $rules);
    if ($validator->fails()) {
     $messages = $validator->messages();
-    return Redirect::back()->withErrors($validator)->withInput();
+    return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
 
   } else {
 
