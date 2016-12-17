@@ -105,3 +105,7 @@ git pull
 git pull ecoopu master
 git pull ecoopu master
 git status
+git pull ecoopu master
+git add .
+git commit -m "Fixed issues"
+git push ecoopu master
