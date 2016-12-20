@@ -110,12 +110,5 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 
 Route::get('/payment_paypal', 'PaypalController@prepare_paypal');
 Route::get('/payment_prepare/{id?}', 'PaypalController@payment_prepare');
-Route::get('/payment_authorize', 'PaypalController@prepare_authorize');
-Route::get('/payment_offline', 'PaypalController@prepare_offline');
-
-Route::get('/authorize_payment_done', ['as'=>'authorize_payment_done', 'uses'=>'PaypalController@authorize_done']);
 
 Route::get('/paypal_payment_done', ['as'=>'paypal_payment_done', 'uses'=>'PaypalController@paypal_done']);
-
-Route::get('/offline_payment_done', ['as'=>'offline_payment_done', 'uses'=>'PaypalController@offline_done']);
-

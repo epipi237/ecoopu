@@ -41,7 +41,6 @@ class PaypalController extends PayumController
 
 	public function paypal_done(Request $request){
 		$payum_token=$request->payum_token;
-		dd($payum_token);
 
 		/** @var Request $request */
 		$request = \App::make('request');
@@ -58,7 +57,7 @@ class PaypalController extends PayumController
 			));
 	}
 
-	/*public function authorize_done(Request $request){
+	public function authorize_done(Request $request){
 		$payum_token=$request->payum_token;
 
 		$request = \App::make('request');
@@ -83,6 +82,6 @@ class PaypalController extends PayumController
 			'status' => $status->getValue(),
 			'details' => json_encode($status->getFirstModel())
 			));
-	}*/
+	}
 
 }
