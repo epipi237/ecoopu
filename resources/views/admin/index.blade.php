@@ -102,6 +102,54 @@
                     </div>
                 </div>
 
+
+                <div class="container">
+                    <div class="same-height-row">
+                        <div class="same-height-row">
+
+                            @foreach($orders as $order)
+                            <div class="col-sm-3">
+                                <div class="box same-height clickable">
+                                    <h3><a href="">{{count($order->orderItems)}} items</a></h3>
+                                    <p>Shop: {{$order->shop}}</p>
+                                    <p>Country: <b>{{$order->country->name}}</b></p>
+                                    <p>
+                                        <?php 
+                                        $date1=date_create($order->duration);
+                                        $date2=date_create(date('Y-m-d H:i:s'));
+                                        if($date1 < $date2){
+                                            $DateInterval=date_diff($date1, $date2);
+                                            echo '<b>Expired: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s) ago';
+                                        }else{
+                                            $DateInterval=date_diff($date1, $date2);
+                                            echo '<b>Time Left: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
+                                        }
+                                        ?>
+                                    </p>
+                                    <!--                                 
+                                    <p class="social text-center">
+                                        <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                                        <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
+                                    </p> -->
+
+                                    <p>
+                                        @include('share.share', [
+                                        'url' => request()->fullUrl(),
+                                        'description' => 'Join by orderlist to shop from {{$order->shop}}',
+                                        ])
+                                    </p>
+                                </div>
+                            </div>
+                            @endforeach
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+
+<!-- 
                 <div class="container">
                    <div class="same-height-row">
                        <div class="col-sm-3">
@@ -151,7 +199,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- /.row -->
 
             </div>
@@ -180,7 +228,7 @@
                     <div class="col-md-12">
                         <h3 class="text-uppercase">Cantact Us</h3>
 
-                        <p class="lead">Want to hear from us? wcontact us <a href="blog.html">here</a>
+                        <p class="lead">Want to hear from us? wcontact us <a href="">here</a>
                         </p>
                     </div>
                 </div>
@@ -218,4 +266,4 @@
             <!-- *** BLOG HOMEPAGE END *** -->
         </div>
         <!-- /#content -->
-@endsection
+        @endsection

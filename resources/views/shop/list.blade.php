@@ -22,6 +22,7 @@
 						<thead>
 							<td>Product name</td>
 							<td>Quantity</td>
+							<td>Price</td>
 						</thead>
 						<tbody>
 
@@ -29,6 +30,7 @@
 							<tr>
 								<td>{{ $orderItem->product }}</td>
 								<td>{{ $orderItem->quantity }}</td>
+								<td>{{ $orderItem->price }}</td>
 							</tr>
 							@endforeach
 						</tbody>

@@ -37,6 +37,8 @@
 							<!-- <td>Shop</td> -->
 							<td>Quantity</td>
 
+							<td>Price</td>
+
 							<?php 
 							$mytime1=date_create($order->duration);
 							$mytime2=date_create(date('Y-m-d H:i:s'));
@@ -52,6 +54,12 @@
 								<td>{{ $orderItem->product }}</td>
 								<!-- <td>{{ $orderItem->shop }}</td> -->
 								<td>{{ $orderItem->quantity }}</td>
+
+								@if($orderItem->price == '')
+								<td>{{ 'Set by the seller' }}</td>
+								@else
+								<td>{{ $orderItem->price }}</td>
+								@endif
 
 								<?php 
 								$mytime1=date_create($order->duration);
@@ -71,7 +79,7 @@
 								$date2=date_create(date('Y-m-d H:i:s'));
 								if ($mytime2 < $mytime1) {
 									$DateInterval=date_diff($date2, $date1);
-									echo '<b>OrderList count down: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s) left';
+									echo '<b>OrderList count down: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s) left <br><br>';
 								}
 								?>
 							</p>
@@ -105,8 +113,9 @@
 
 							Pay now with PayPal or Credit Card
 							<br><br>
-							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-								<input type="hidden" name="cmd" value="_xclick">
+							
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick">
 
 								<input type="hidden" name="business" value="info@ecoopu.com">
 
@@ -118,11 +127,13 @@
 
 								<input TYPE="hidden" name="charset" value="utf-8">
 
-								<input type="hidden" name="hosted_button_id" value="CH98N2VXL4GP8">
+								<input type="hidden" name="hosted_button_id" value="ACW6S87267QSG">
 
-								<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-								<img alt="" border="0" src="https://www.sandbox.paypal.com/da_DK/i/scr/pixel.gif" width="1" height="1">
+								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+								
+								<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 							</form>
+
 						</h4>		
 					</div>
 

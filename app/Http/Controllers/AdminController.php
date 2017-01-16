@@ -6,6 +6,7 @@ use Request;
 use App\Http\Requests;
 use App\User;
 use App\country;
+use App\Order;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -33,7 +34,9 @@ class AdminController extends Controller
     public function index()
     {
         $countries = country::all();
-        return view('admin.index',compact('countries'));
+        $orders = Order::all();
+        
+        return view('admin.index',compact('countries', 'orders'));
     }
 
     public function addAdmin(){

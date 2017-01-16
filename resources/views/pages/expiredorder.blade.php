@@ -22,8 +22,8 @@
 						<?php 
 						$date1=date_create($order->duration);
 						$date2=date_create(date('Y-m-d H:i:s'));
-						$DateInterval=date_diff($date1,$date2);
-						echo '<b>Time Left: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
+						$DateInterval=date_diff($date2, $date1);
+						echo '<b>Expired: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s) ago';
 						?>
 					</p>
 					<p class="social text-center">
