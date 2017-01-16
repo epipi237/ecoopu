@@ -60,7 +60,7 @@
 			@elseif(count($orders) == 0)
 			<div class="col-sm-3">
 				<div class="box same-height clickable">
-					<h1>Nothing here ooooohhhhhhh</h1>
+					<h1>No orders made</h1>
 				</div>
 			</div>
 			@endif
