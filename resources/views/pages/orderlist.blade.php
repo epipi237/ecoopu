@@ -125,7 +125,7 @@
 								
 								<input type="hidden" name="item_name" value="Platform Charges (1% of total cost of your order)">
 
-								<input type="hidden" name="quantity" value="10">
+								<input type="hidden" name="quantity" value="1">
 
 								<input type="hidden" name="charset" value="utf-8">
 
