@@ -70,13 +70,21 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
   */
 
   Route::get('pages/create/order', 'OrderController@order')->name('order');
+
   Route::post('pages/create/order', 'OrderController@create')->name('order');
 
   Route::get('pages/orderlist/expired', 'OrderController@expired')->name('expired');
 
   Route::get('pages/create/orderlist/{id}', 'OrderController@orderlist')->name('create_order');
+
+  Route::get('pages/create/orderlist/{id}/status', 'OrderController@paymentStatus')->name('payment_status');
+
+  Route::post('pages/order/update_shipping_address', 'OrderController@updateShippingAddress')->name('update_shipping_address');
+
   Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
+
   Route::get('itemremove/{id}','OrderController@removeitem');
+
   Route::get('pages/market-places/{id}', 'OrderController@marketplace');
 
   Route::get('removeorder/{id}','OrderController@removeorder');
@@ -98,17 +106,3 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
   Route::get('shop/orderitems/user/{id}/order/{order_id}', 'ShopController@clientorderlist');
 
   Route::post('shop/add/price', 'ShopController@addprice')->name('order_price');
-
-
-  /*
-  |
-  |
-  |Paypal Payment  route
-  |
-  |
-  */
-
-Route::get('/payment_paypal', 'PaypalController@prepare_paypal');
-Route::get('/payment_prepare/{id?}', 'PaypalController@payment_prepare');
-
-Route::get('/paypal_payment_done', ['as'=>'paypal_payment_done', 'uses'=>'PaypalController@paypal_done']);

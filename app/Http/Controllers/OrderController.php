@@ -95,6 +95,24 @@ class OrderController extends Controller{
         return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status'));
     }
 
+    public function paymentStatus($id){
+        $request = Request::all();
+
+    }
+
+    public function updateShippingAddress(){
+        $request = Request::all();
+        $id = $request['id'];
+        
+        $orderlist_address = Orderlist_address::find($id);
+        if($orderlist_address == null) return Redirect::back()->with('status', 'Sorry could not update this address');
+
+        $orderlist_address->description = $request['shipping_address'];
+        $orderlist_address->save();
+
+        return Redirect::back()->with('status', 'Successfully updated your shipping address');
+    }
+
     public function removeitem($id){
         $item=orderItem::find($id);
         $item->delete();

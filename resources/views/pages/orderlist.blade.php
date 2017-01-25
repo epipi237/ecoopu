@@ -4,11 +4,15 @@
 
 @if (session('status'))
 <div class="container alert alert-success text-center">
-	{{ session('status') || $status }}
+	{{ session('status')  }}
+</div>
+@elseif($status)
+<div class="container alert alert-success text-center">
+	{{ $status }}
 </div>
 @endif
 
-<div class="container">
+<div class="container" style="height: 300px;margin-bottom: 30px;">
 
 	<div class="panel panel-default col-md-6" style="height: 100%;">
 		<div class="panel-heading"><h3>Name of Shop: <b>{{$order->shop}}</b></h3>  
@@ -30,73 +34,73 @@
 				?>
 
 				<div class="col-md-12" style="margin-top: 0px;"> 
+					<h4>
+						<table class="table table-striped" style="margin-top: -5%;">
+							<thead>
+								<td>Product name</td>
+								<!-- <td>Shop</td> -->
+								<td>Quantity</td>
 
-					<table class="table table-striped" style="margin-top: -5%;">
-						<thead>
-							<td>Product name</td>
-							<!-- <td>Shop</td> -->
-							<td>Quantity</td>
-
-							<td>Price</td>
-
-							<?php 
-							$mytime1=date_create($order->duration);
-							$mytime2=date_create(date('Y-m-d H:i:s'));
-							if ($mytime2 < $mytime1) {
-								echo '<td>Action</td>';
-							} 
-							?>
-							
-						</thead>
-						<tbody>
-							@foreach($orderItems as $orderItem)
-							<tr>
-								<td>{{ $orderItem->product }}</td>
-								<!-- <td>{{ $orderItem->shop }}</td> -->
-								<td>{{ $orderItem->quantity }}</td>
-
-								@if($orderItem->price == '')
-								<td>{{ 'Set by the seller' }}</td>
-								@else
-								<td>{{ $orderItem->price }}</td>
-								@endif
+								<td>Price</td>
 
 								<?php 
 								$mytime1=date_create($order->duration);
 								$mytime2=date_create(date('Y-m-d H:i:s'));
 								if ($mytime2 < $mytime1) {
-									echo "<td><a href=/itemremove/$orderItem->id>  <button class='btn btn-danger'>Remove</button></a></td>";
-								} elseif ($mytime2 > $mytime1) {
-
+									echo '<td>Action</td>';
 								} 
 								?>
 
-							</tr>
-							@endforeach
-							<br>
-							<p><?php 
-								$date1=date_create($order->duration);
-								$date2=date_create(date('Y-m-d H:i:s'));
-								if ($mytime2 < $mytime1) {
-									$DateInterval=date_diff($date2, $date1);
-									echo '<b>OrderList count down: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s) left <br><br>';
-								}
-								?>
-							</p>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								@foreach($orderItems as $orderItem)
+								<tr>
+									<td>{{ $orderItem->product }}</td>
+									<!-- <td>{{ $orderItem->shop }}</td> -->
+									<td>{{ $orderItem->quantity }}</td>
 
-					<div class="pull-right">
-						Total price: <span class="badge">${{$price->price}}</span>
+									@if($orderItem->price == '')
+									<td>{{ 'Set by the seller' }}</td>
+									@else
+									<td>{{ $orderItem->price }}</td>
+									@endif
 
-					</div>
+									<?php 
+									$mytime1=date_create($order->duration);
+									$mytime2=date_create(date('Y-m-d H:i:s'));
+									if ($mytime2 < $mytime1) {
+										echo "<td><a href=/itemremove/$orderItem->id>  <button class='btn btn-danger'>Remove</button></a></td>";
+									} elseif ($mytime2 > $mytime1) {
 
+									} 
+									?>
+
+								</tr>
+								@endforeach
+								<br>
+								<p><?php 
+									$date1=date_create($order->duration);
+									$date2=date_create(date('Y-m-d H:i:s'));
+									if ($mytime2 < $mytime1) {
+										$DateInterval=date_diff($date2, $date1);
+										echo '<b>OrderList count down: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s) left <br><br>';
+									}
+									?>
+								</p>
+							</tbody>
+						</table>
+
+						<div class="pull-right">
+							Total price: <span class="badge">${{$price->price}}</span>
+
+						</div>
+					</h4>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	@if ($price->price > 0) 
+	@if ($price->price > 0 && $price->paidStatus == 0) 
 	<div class="panel panel-default col-md-6" style="height: 100%;">
 		<div class="panel-heading text-center"><h3><b>Processing Fee Payment</b></h3>  
 		</div> 
@@ -127,6 +131,10 @@
 
 								<input type="hidden" name="quantity" value="1">
 
+								<input type="hidden" name="return" value="{{url()->current().'/success'}}">
+
+								<input type="hidden" name="cancel_return" value="{{url()->current().'/failed'}}">
+
 								<input type="hidden" name="charset" value="utf-8">
 
 								<input type="hidden" name="hosted_button_id" value="ACW6S87267QSG">
@@ -139,6 +147,38 @@
 						</h4>		
 					</div>
 
+				</div>
+			</div>
+		</div>
+	</div>
+	@elseif($price->price > 0 && $price->paidStatus == 1)
+	<div class="panel panel-default col-md-6" style="height: 100%;">
+		<div class="panel-heading text-center"><h3><b>Processing Fee Payment</b></h3>  
+		</div> 
+
+		<div class="panel-body">
+			<div class="row">
+
+				<div class="col-md-12"> 
+
+					<div class="">
+						<h4 class="text-center">
+							Processing Fee: <span class="label label-success">${{$processingFee}} (1% of Total Cost) Paid</span>
+
+							<br><br>
+							<form class="form-horizontal" role="form" action="{{route('update_shipping_address')}}" method="POST">
+								{{ csrf_field() }}
+								<input type="hidden" name="id" value="{{$order->orderlist_address->id}}" />
+								Shipping Address: <input type="text" class="form-control" name="shipping_address" value="{{$order->orderlist_address->description}}" style="display: inline-block; width: 70%;" />
+								<br><br>
+								<button class="btn-md btn-success pull-right">Save</button>
+							</form>
+							<br>
+						</h4>		
+						<h5>
+							Thanks for paying the platform charges, your seller will contact you with more information on how to pay for the goods and other arrangements for shipping to the address shown in the field above.
+						</h5>
+					</div>
 				</div>
 			</div>
 		</div>
