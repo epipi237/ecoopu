@@ -78,7 +78,7 @@ class OrderController extends Controller{
         } 
     }
 
-    public function orderlist($id, $status = "For your order to be delivered you need to pay a processing fee"){
+    public function orderlist($id, $status = "For your order to be delivered you need to pay a processing fee", $classAlert='success'){
         $order=order::find($id);
         $countries = country::all();
         $user_id = Auth::user()->id;
@@ -90,14 +90,15 @@ class OrderController extends Controller{
         }
         $processingFee = $price->price * 0.01;
 
+        $paypalUrl = 'pages/create/orderlist/'.$order->id;
         //session(['status' => 'For your order to be delivered you need to pay a processing fee']);
-        return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status'));
+        return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status', 'paypalUrl', 'classAlert'));
     }
 
     public function paymentStatus($id, $status){
         $request = Request::all();
         if($status == 'failed'){
-            return $this->orderlist($id, "Sorry but couldn't process your payment, please try again");
+            return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
         }else{
             dd($request->all());
         }

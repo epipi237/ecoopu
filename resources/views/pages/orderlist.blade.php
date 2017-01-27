@@ -7,7 +7,7 @@
 	{{ session('status')  }}
 </div>
 @elseif($status)
-<div class="container alert alert-success text-center">
+<div class="container alert alert-{{$classAlert}} text-center">
 	{{ $status }}
 </div>
 @endif
@@ -131,9 +131,9 @@
 
 								<input type="hidden" name="quantity" value="1">
 
-								<input type="hidden" name="return" value="{{url()->current().'/success'}}">
+								<input type="hidden" name="return" value="{{$paypalUrl.'/success'}}">
 
-								<input type="hidden" name="cancel_return" value="{{url()->current().'/failed'}}">
+								<input type="hidden" name="cancel_return" value="{{$paypalUrl.'/failed'}}">
 
 								<input type="hidden" name="charset" value="utf-8">
 
