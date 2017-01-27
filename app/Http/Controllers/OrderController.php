@@ -117,7 +117,7 @@ class OrderController extends Controller{
             $transaction->tx = $request['tx'];
             $transaction->amount_paid = $request['amt'];
             $transaction->cc = $request['cc'];
-            $transaction->status = $request['status'];
+            $transaction->status = $request['st'];
             $transaction->save();
 
 
