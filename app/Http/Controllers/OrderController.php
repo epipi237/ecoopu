@@ -95,7 +95,7 @@ class OrderController extends Controller{
         return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status'));
     }
 
-    public function paymentStatus($id){
+    public function paymentStatus($id, $status){
         $request = Request::all();
 
     }

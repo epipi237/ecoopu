@@ -77,7 +77,7 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 
   Route::get('pages/create/orderlist/{id}', 'OrderController@orderlist')->name('create_order');
 
-  Route::get('pages/create/orderlist/{id}/status', 'OrderController@paymentStatus')->name('payment_status');
+  Route::get('pages/create/orderlist/{id}/{status}', 'OrderController@paymentStatus')->name('payment_status');
 
   Route::post('pages/order/update_shipping_address', 'OrderController@updateShippingAddress')->name('update_shipping_address');
 
