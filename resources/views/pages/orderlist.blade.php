@@ -12,7 +12,7 @@
 </div>
 @endif
 
-<div class="container" style="height: 300px;margin-bottom: 30px;">
+<div class="container" style="height: 200%;margin-bottom: 30px;">
 
 	<div class="panel panel-default col-md-6" style="height: 100%;">
 		<div class="panel-heading"><h3>Name of Shop: <b>{{$order->shop}}</b></h3>  
