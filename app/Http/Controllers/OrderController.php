@@ -12,6 +12,7 @@ use App\Orderlist_address;
 use Auth;
 use App\country;
 use App\price;
+use App\transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Input;
@@ -101,7 +102,24 @@ class OrderController extends Controller{
         if($status == 'failed'){
             return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
         }else{
-            dd($request);
+            //updating the price table to say the platform fee has been paid
+            $order=order::find($id);
+            $user_id = Auth::user()->id;
+            $price = Price::where('user_id', $user_id)->where('order_id', $id)->first();
+            $price->paidStatus = true;
+            $price->save();
+
+            //keeping a record of this transaction
+            $transaction = new transaction;
+            $transaction->user_id = $user_id;
+            $transaction->order_id = $order->id;
+            $transaction->description = $request['item_name'];
+            $transaction->tx = $request['tx'];
+            $transaction->amount_paid = $request['amt'];
+            $transaction->cc = $request['cc'];
+            $transaction->status = $request['status'];
+            $transaction->save();
+
 
             return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
         }
@@ -114,7 +132,24 @@ class OrderController extends Controller{
         if($status == 'failed'){
             return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
         }else{
-            dd($request);
+            //updating the price table to say the platform fee has been paid
+            $order=order::find($id);
+            $user_id = Auth::user()->id;
+            $price = Price::where('user_id', $user_id)->where('order_id', $id)->first();
+            $price->paidStatus = true;
+            $price->save();
+
+            //keeping a record of this transaction
+            $transaction = new transaction;
+            $transaction->user_id = $user_id;
+            $transaction->order_id = $order->id;
+            $transaction->description = $request['item_name'];
+            $transaction->tx = $request['tx'];
+            $transaction->amount_paid = $request['amt'];
+            $transaction->cc = $request['cc'];
+            $transaction->status = $request['status'];
+            $transaction->save();
+
 
             return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
         }
@@ -181,7 +216,7 @@ class OrderController extends Controller{
         return view('pages.expiredorder', compact('countries','orders'));
     }
 
-        public function removeorder($id){
+    public function removeorder($id){
         $item=order::find($id);
         $item->delete();
         return \Redirect::back()->with('message','successfully deleted');
