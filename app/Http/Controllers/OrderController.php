@@ -101,7 +101,7 @@ class OrderController extends Controller{
         if($status == 'failed'){
             return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
         }else{
-            dd($request->all());
+            dd($request);
 
             return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
         }
@@ -114,7 +114,7 @@ class OrderController extends Controller{
         if($status == 'failed'){
             return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
         }else{
-            dd($request->all());
+            dd($request);
 
             return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
         }
