@@ -91,6 +91,10 @@ class OrderController extends Controller{
         }
         $processingFee = $price->price * 0.01;
 
+        if($price->paidStatus == true){
+            $status = "Thanks for completing your platform charges, you can now update your delivery address. The seller will be notified of your payment and can contact you for your order.";
+        }
+
         $paypalUrl = 'http://ecoopu.webshinobis.com/pages/create/orderlist/'.$order->id;
         //session(['status' => 'For your order to be delivered you need to pay a processing fee']);
         return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status', 'paypalUrl', 'classAlert'));
@@ -147,7 +151,7 @@ class OrderController extends Controller{
             $transaction->tx = $request['tx'];
             $transaction->amount_paid = $request['amt'];
             $transaction->cc = $request['cc'];
-            $transaction->status = $request['status'];
+            $transaction->status = $request['st'];
             $transaction->save();
 
 

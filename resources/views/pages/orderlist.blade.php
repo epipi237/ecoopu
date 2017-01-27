@@ -125,7 +125,11 @@
 
 								<input type="hidden" name="bn" value="Platform_Charges_Ecoopu_Com">
 
-								<input type="hidden" name="amount" value="{{$price->price/2000}}">
+								<!-- 
+								This is the correct way to calculate the platform fee but it's commented out for testing purposes
+								<input type="hidden" name="amount" value="{{$processingFee}}"> 
+								-->
+								<input type="hidden" name="amount" value="{{0.1}}">
 								
 								<input type="hidden" name="item_name" value="Platform Charges (1% of total cost of your order)">
 

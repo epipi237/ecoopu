@@ -91,7 +91,7 @@ try {
     public function register(){
        $rules = array(
         'name' => 'required',
-        'username' => 'required',
+        //'username' => 'required',
         'phone' => 'required',
         'role' => 'required',
         'address' => 'required',
@@ -118,7 +118,7 @@ try {
 
        $user = new User;
        $user->name = frequest::input('name');
-       $user->username = frequest::input('username');
+       //$user->username = frequest::input('username');
        $user->phone = frequest::input('phone');
        $user->email = frequest::input('email');
        $user->address = frequest::input('address');

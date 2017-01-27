@@ -48,7 +48,7 @@ class AdminController extends Controller
 
         $rules = array(
            'name' => 'required|max:255',
-           'username' => 'required|min:3|unique:users',
+           //'username' => 'required|min:3|unique:users',
            'email' => 'required|email|max:255|unique:users',
            'password' => 'required|min:6|confirmed',
            );
@@ -67,7 +67,7 @@ class AdminController extends Controller
         } else {
             $admin = new User;
             $admin->name = Request::input('name');
-            $admin->username = Request::input('username');
+            //$admin->username = Request::input('username');
             $admin->role = Request::input('role');
             $admin->email = Request::input('email');
             $admin->password = bcrypt(Request::input('name'));
