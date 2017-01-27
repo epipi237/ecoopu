@@ -97,8 +97,7 @@ class OrderController extends Controller{
     public function paymentStatus($id, $status){
         $request = Request::all();
         if($status == 'failed'){
-            dd($request);
-            return orderlist($id, "Sorry but couldn't process your payment, please try again");
+            return $this->orderlist($id, "Sorry but couldn't process your payment, please try again");
         }else{
             dd($request->all());
         }
