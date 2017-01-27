@@ -125,7 +125,7 @@
 
 								<input type="hidden" name="bn" value="Platform_Charges_Ecoopu_Com">
 
-								<input type="hidden" name="amount" value="{{$price->price/100}}">
+								<input type="hidden" name="amount" value="{{$price->price/2000}}">
 								
 								<input type="hidden" name="item_name" value="Platform Charges (1% of total cost of your order)">
 

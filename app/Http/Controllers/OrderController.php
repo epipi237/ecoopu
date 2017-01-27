@@ -38,7 +38,7 @@ class OrderController extends Controller{
         $orders=Order::whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(8);
         $countries=country::all();
         //   dd($orders);
-        return view('pages.order',compact('orders','countries'));
+        return view('pages.order', compact('orders','countries'));
     }
 
     public function create(){
@@ -78,7 +78,7 @@ class OrderController extends Controller{
         } 
     }
 
-    public function orderlist($id){
+    public function orderlist($id, $status = "For your order to be delivered you need to pay a processing fee"){
         $order=order::find($id);
         $countries = country::all();
         $user_id = Auth::user()->id;
@@ -91,12 +91,17 @@ class OrderController extends Controller{
         $processingFee = $price->price * 0.01;
 
         //session(['status' => 'For your order to be delivered you need to pay a processing fee']);
-        $status = "For your order to be delivered you need to pay a processing fee";
         return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status'));
     }
 
     public function paymentStatus($id, $status){
         $request = Request::all();
+        if($status == 'failed'){
+            dd($request);
+            return orderlist($id, "Sorry but couldn't process your payment, please try again");
+        }else{
+            dd($request->all());
+        }
 
     }
 
