@@ -90,17 +90,33 @@ class OrderController extends Controller{
         }
         $processingFee = $price->price * 0.01;
 
-        $paypalUrl = 'pages/create/orderlist/'.$order->id;
+        $paypalUrl = 'http://ecoopu.webshinobis.com/pages/create/orderlist/'.$order->id;
         //session(['status' => 'For your order to be delivered you need to pay a processing fee']);
         return view('pages.orderlist', compact('orderItems', 'order', 'user_id', 'countries', 'price', 'processingFee', 'status', 'paypalUrl', 'classAlert'));
     }
 
     public function paymentStatus($id, $status){
         $request = Request::all();
+        $merchantIdentityToken = 'bz6NBE8VbOISB0AYsYGcXrbfxYf1D-gxvvg2qJ-ORWUUSr65xDXoEextb1u';
         if($status == 'failed'){
             return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
         }else{
             dd($request->all());
+
+            return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.')
+        }
+
+    }
+
+    public function paymentStatusIPN(){
+        $request = Request::all();
+        $merchantIdentityToken = 'bz6NBE8VbOISB0AYsYGcXrbfxYf1D-gxvvg2qJ-ORWUUSr65xDXoEextb1u';
+        if($status == 'failed'){
+            return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
+        }else{
+            dd($request->all());
+
+            return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.')
         }
 
     }
