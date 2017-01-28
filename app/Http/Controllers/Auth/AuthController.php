@@ -33,7 +33,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-   // protected $redirectTo = '/';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -51,9 +51,9 @@ class AuthController extends Controller
         return \Redirect('/admin/dashboard'); //redirect to admin panel
     }
     elseif ($user->role === 'shop') {
-     return \Redirect('/shop/index');
- }
- else{
+       return \Redirect('/shop/index');
+   }
+   else{
     $orders = order::where('duration','>',date('Y-m-d H:i:s'))->whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(4);
     $countries = country::all();
         return view('home',compact('orders','countries')); //redirect to standard user homepage
@@ -89,7 +89,7 @@ try {
      */
 
     public function register(){
-       $rules = array(
+     $rules = array(
         'name' => 'required',
         //'username' => 'required',
         'phone' => 'required',
@@ -98,11 +98,11 @@ try {
         'password' => 'required|min:6|confirmed',
         'email' => 'required|email|max:255|unique:users',
         );
-       $messages = array(
+     $messages = array(
         'required' => 'The :attribute is required.',
         );
-       $validator = Validator::make(Input::all(), $rules);
-       if ($validator->fails()) {
+     $validator = Validator::make(Input::all(), $rules);
+     if ($validator->fails()) {
         $messages = $validator->messages();
         return \Redirect::back()->withErrors($validator)->withInput();
 
@@ -116,17 +116,16 @@ try {
 
     // });
 
-       $user = new User;
-       $user->name = frequest::input('name');
-       //$user->username = frequest::input('username');
-       $user->phone = frequest::input('phone');
-       $user->email = frequest::input('email');
-       $user->address = frequest::input('address');
-       $user->role = frequest::input('role');
-       $user->password = bcrypt(frequest::input('password'));
-       $user->save();
-       return \Redirect()->to('/login')->with('status', 'Registration successful!');
-   }
+     $user = new User;
+     $user->name = frequest::input('name');
+     $user->phone = frequest::input('phone');
+     $user->email = frequest::input('email');
+     $user->address = frequest::input('address');
+     $user->role = frequest::input('role');
+     $user->password = bcrypt(frequest::input('password'));
+     $user->save();
+     return \Redirect()->to('/login')->with('status', 'Registration successful!');
+ }
 }
 
 // protected function validator(array $data)
@@ -136,7 +135,6 @@ try {
 //         'address' => 'required|min:5',
 //         'phone' => 'required',
 //         'role' => 'required',
-//         'username' => 'required|min:3|unique:users',
 //         'email' => 'required|email|max:255|unique:users',
 //         'password' => 'required|min:6|confirmed',
 //         ]);
@@ -163,7 +161,6 @@ try {
 
  //     return User::create([
  //        'name' => $data['name'],
- //        'username' => $data['username'],
  //        'address' => $data['address'],
  //        'phone' => $data['phone'],
  //        'role' => $data['role'],

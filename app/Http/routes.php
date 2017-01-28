@@ -69,50 +69,50 @@ Route::get('marketplaceremove/{id}','AdminController@removemarket');
 
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 
-  /*
-  |
-  |
-  |Pages route
-  |
-  |
-  */
+/*
+|
+|
+|Pages route
+|
+|
+*/
 
-  Route::get('pages/create/order', 'OrderController@order')->name('order');
+Route::get('pages/create/order', 'OrderController@order')->name('order');
 
-  Route::post('pages/create/order', 'OrderController@create')->name('order');
+Route::post('pages/create/order', 'OrderController@create')->name('order');
 
-  Route::get('pages/orderlist/expired', 'OrderController@expired')->name('expired');
+Route::get('pages/orderlist/expired', 'OrderController@expired')->name('expired');
 
-  Route::get('pages/create/orderlist/{id}', 'OrderController@orderlist')->name('create_order');
+Route::get('pages/create/orderlist/{id}', 'OrderController@orderlist')->name('create_order');
 
-  Route::get('pages/create/orderlist/{id}/{status}', 'OrderController@paymentStatus')->name('payment_status');
+Route::get('pages/create/orderlist/{id}/{status}', 'OrderController@paymentStatus')->name('payment_status');
 
-  Route::get('pages/create/orderlist/paymentStatusIPN', 'OrderController@paymentStatusIPN')->name('payment_status');
+Route::get('pages/create/orderlist/paymentStatusIPN', 'OrderController@paymentStatusIPN')->name('payment_status');
 
-  Route::post('pages/order/update_shipping_address', 'OrderController@updateShippingAddress')->name('update_shipping_address');
+Route::post('pages/order/update_shipping_address', 'OrderController@updateShippingAddress')->name('update_shipping_address');
 
-  Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
+Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
 
-  Route::get('itemremove/{id}','OrderController@removeitem');
+Route::get('itemremove/{id}','OrderController@removeitem');
 
-  Route::get('pages/market-places/{id}', 'OrderController@marketplace');
+Route::get('pages/market-places/{id}', 'OrderController@marketplace');
 
-  Route::get('removeorder/{id}','OrderController@removeorder');
+Route::get('removeorder/{id}','OrderController@removeorder');
 
-  /*
-  |
-  |
-  |Shop  route
-  |
-  |
-  */
+/*
+|
+|
+|Shop  route
+|
+|
+*/
 
-  Route::get('shop/index', 'ShopController@index')->name('shop_index');
-  Route::post('shop/index', 'ShopController@addprice')->name('shop_index');
-  Route::post('shop/index', 'ShopController@addshop')->name('addshop');
+Route::get('shop/index', 'ShopController@index')->name('shop_index');
+Route::post('shop/index', 'ShopController@addprice')->name('shop_index');
+Route::post('shop/index', 'ShopController@addshop')->name('addshop');
 
-  Route::get('shop/clients/{id}', 'ShopController@clients')->name('clients');
+Route::get('shop/clients/{id}', 'ShopController@clients')->name('clients');
 
-  Route::get('shop/orderitems/user/{id}/order/{order_id}', 'ShopController@clientorderlist');
+Route::get('shop/orderitems/user/{id}/order/{order_id}', 'ShopController@clientorderlist');
 
-  Route::post('shop/add/price', 'ShopController@addprice')->name('order_price');
+Route::post('shop/add/price', 'ShopController@addprice')->name('order_price');
