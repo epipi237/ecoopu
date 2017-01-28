@@ -89,10 +89,9 @@
                     </li>
                     <li><a href="{{ URL::route('account') }}"><i class=""></i>Edit Profile</a></li>
                     @endif
-                    <li><a href="{{route('contact-us')}}">Contact Us</a>
-                    </li>
-                    <li><a href="{{route('about-us')}}">About Us</a>
-                    </li>
+
+                    <li><a href="{{route('contact-us')}}">Contact Us</a></li>
+                    <li><a href="{{route('about-us')}}">About Us</a></li>
 
                 </ul>
             </div>
@@ -162,111 +161,62 @@
                                                 @endforeach
                                             </ul>
                                         </div>
-
-<!--                                         <div class="col-sm-3">
-                                            <ul>
-                                                <li><a href="#">Hungary</a>
-                                                </li>
-                                                <li><a href="#">Italy</a>
-                                                </li>
-                                                <li><a href="#">India</a>
-                                                </li>
-                                                <li><a href="#">China</a>
-                                                </li>
-                                                <li><a href="#">United Kingdom</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <ul>
-                                                <li><a href="#">Dubai</a>
-                                                </li>
-                                                <li><a href="#">Japan</a>
-                                                </li>
-                                                <li><a href="#">Netherland</a>
-                                                </li>
-                                                <li><a href="#">Ukraine</a>
-                                                </li>
-                                                <li><a href="#">South Africa</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <ul>
-                                                <li><a href="#">Belgium</a>
-                                                </li>
-                                                <li><a href="#">South Korea</a>
-                                                </li>
-                                                <li><a href="#">Ireland</a>
-                                                </li>
-                                                <li><a href="#">Turkey</a>
-                                                </li>
-                                                <li><a href="#">Poland</a>
-                                                </li>
-                                            </ul>
-                                        </div> -->
-
                                     </div>
                                 </div>
-                                <!-- /.yamm-content -->
                             </li>
                         </ul>
                     </li>
 
-                    <li class=""><a href="#">About Us</a>
-                    </li>
-                    <li class=""><a href="#">Contact Us</a>
-                    </li>
-                    <li class=""><a href="#">FAQ</a>
-                    </li>
-                </ul>
+                    <li class=""><a href="{{route('about-us')}}">About Us</a></li>
+                    <li class=""><a href="{{route('contact-us')}}">Contact Us</a></li>
+                    <!-- <li class=""><a href="#">FAQ</a>
+                </li> -->
+            </ul>
 
-            </div>
-            <!--/.nav-collapse -->
-
-            <div class="navbar-buttons">
-
-                @if(!Auth::guest())
-                <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="{{ route('order') }}" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
-                </div>
-                <div class="navbar-collapse collapse right" id="">
-                    <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Expired orderlist</span></a>
-                </div>
-
-                @endif
-                <!--/.nav-collapse -->
-                <div class="navbar-collapse collapse right" id="search-not-mobile">
-                    <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
-                        <span class="sr-only">Toggle search</span>
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="collapse clearfix" id="search">
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </form>
-
-            </div>
-            <!--/.nav-collapse -->
         </div>
-        <!-- /.container -->
+        <!--/.nav-collapse -->
+
+        <div class="navbar-buttons">
+
+            @if(!Auth::guest())
+            <div class="navbar-collapse collapse right" id="basket-overview">
+                <a href="{{ route('order') }}" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
+            </div>
+            <div class="navbar-collapse collapse right" id="">
+                <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Expired orderlist</span></a>
+            </div>
+
+            @endif
+            <!--/.nav-collapse -->
+            <div class="navbar-collapse collapse right" id="search-not-mobile">
+                <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
+                    <span class="sr-only">Toggle search</span>
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="collapse clearfix" id="search">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+
+        </div>
+        <!--/.nav-collapse -->
     </div>
-    <!-- /#navbar -->
+    <!-- /.container -->
+</div>
+<!-- /#navbar -->
 
-    <!-- *** NAVBAR END *** -->
+<!-- *** NAVBAR END *** -->
 
 
-    @yield('content')
+@yield('content')
 
 
  <!-- *** FOOTER ***
@@ -387,44 +337,42 @@
 
 <!-- *** FOOTER END *** -->
 
-        <!-- *** COPYRIGHT ***
-        _________________________________________________________ -->
-        <div id="copyright">
-            <div class="container">
-                <div class="col-md-6">
-                    <p class="pull-left"> Copyright © 2016. eCoopu. All rights reserved.</p>
-                </div>
-                <div class="col-md-6">
-                </p>
-            </div>
+<!-- *** COPYRIGHT ***_________________________________________________________ -->
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p class="pull-left"> Copyright © 2016. eCoopu. All rights reserved.</p>
         </div>
+        <div class="col-md-6">
+        </p>
     </div>
-    <!-- *** COPYRIGHT END *** -->
+</div>
+</div>
+<!-- *** COPYRIGHT END *** -->
 </div>
 <!-- /#all -->
 
-    <!-- *** SCRIPTS TO INCLUDE ***
-    _________________________________________________________ -->
+<!-- *** SCRIPTS TO INCLUDE ***_________________________________________________________ -->
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/jquery.cookie.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/waypoints.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/modernizr.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap-hover-dropdown.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/front.js"></script>
+<!-- JavaScripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/waypoints.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/modernizr.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap-hover-dropdown.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/front.js"></script>
 
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
-        $(function () {
-            $('#datetimepicker3').datetimepicker({
-                format: 'LT'
-            });
+    $(function () {
+        $('#datetimepicker3').datetimepicker({
+            format: 'LT'
+        });
 
             // Sharing on social media
 

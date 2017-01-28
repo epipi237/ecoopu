@@ -94,7 +94,7 @@
             _________________________________________________________ -->
             <div id="hot">
 
-                <div class="box">
+                <div  class="box text-center" style="margin-left: 9%! important; margin-right: 9%! important;">
                     <div class="container">
                         <div class="col-md-12">
                             <h2>Start from here and join any market place</h2>
@@ -154,61 +154,49 @@
         <!-- /.container -->
 
     </div>
-    <!-- /#hot -->
 
-    <!-- *** HOT END *** -->
+    <div class="boxbox text-center" data-animate="fadeInUp" style="margin-left: 9%! important; margin-right: 9%! important;">
+        <div class="container">
+            <div class="col-md-12">
+                <h3 class="text-uppercase">Cantact Us</h3>
 
-            <!-- *** GET INSPIRED ***
-            _________________________________________________________ -->
-            
-            <!-- *** GET INSPIRED END *** -->
+                <p class="lead">Want to hear from us? wcontact us <a href="blog.html">here</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
 
-            <!-- *** BLOG HOMEPAGE ***
-            _________________________________________________________ -->
+        <div class="col-md-12" data-animate="fadeInUp">
 
-            <div class="box text-center" data-animate="fadeInUp">
-                <div class="container">
-                    <div class="col-md-12">
-                        <h3 class="text-uppercase">Cantact Us</h3>
+            <div id="blog-homepage" class="row">
+                <div class="col-sm-6">
+                    <div class="post">
+                        <h4><a href="post.html">Our Mission</a></h4>
+                        <hr>
+                        <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                        </p>
+                    </div>
+                </div>
 
-                        <p class="lead">Want to hear from us? wcontact us <a href="blog.html">here</a>
+                <div class="col-sm-6">
+                    <div class="post">
+                        <h4><a href="post.html">Our Vision</a></h4>
+                        <hr>
+                        <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
                         </p>
                     </div>
                 </div>
             </div>
-
-            <div class="container">
-
-                <div class="col-md-12" data-animate="fadeInUp">
-
-                    <div id="blog-homepage" class="row">
-                        <div class="col-sm-6">
-                            <div class="post">
-                                <h4><a href="post.html">Our Mission</a></h4>
-                                <hr>
-                                <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="post">
-                                <h4><a href="post.html">Our Vision</a></h4>
-                                <hr>
-                                <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /#blog-homepage -->
-                </div>
-            </div>
-            <!-- /.container -->
-            <!-- *** BLOG HOMEPAGE END *** -->
+            <!-- /#blog-homepage -->
         </div>
-        <!-- /#content -->
+    </div>
+    <!-- /.container -->
+    <!-- *** BLOG HOMEPAGE END *** -->
+</div>
+<!-- /#content -->
 
-        @endsection
+@endsection

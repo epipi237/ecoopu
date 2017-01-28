@@ -95,45 +95,44 @@
                         </ul>
                     </li>
 
-                    <li class=""><a href="#">About Us</a>
-                    </li>
-                    <li class=""><a href="#">Contact Us</a>
-                    </li>
-                    <li class=""><a href="#">FAQ</a>
+                    <li><a href="{{route('contact-us')}}">Contact</a></li>
+                    <li><a href="{{route('about-us')}}">About</a></li>
 
-                    </li>
-                </ul>
-            </div>
-
-            <div class="navbar-buttons">
-             <div class="nav navbar-nav pull-right">
-                 <!-- Authentication Links -->
-                 @if(Auth::guest())
-                 <li><a href="{{ url('/login') }}">Login</a></li>
-                 @else
-                 <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
-                 <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
-                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href=""><i class="fa fa-btn fa-user"></i>Profile</a></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                    </ul>
                 </li>
-                @endif
-            </div>
+            </ul>
         </div>
 
+        <div class="navbar-buttons">
+           <div class="nav navbar-nav pull-right">
+               <!-- Authentication Links -->
+               @if(Auth::guest())
+               <li><a href="{{ url('/login') }}">Login</a></li>
+               @else
+               <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
+               <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
+               <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href=""><i class="fa fa-btn fa-user"></i>Profile</a></li>
+                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                </ul>
+            </li>
+            @endif
+        </div>
     </div>
-    <!-- /.container -->
+
+</div>
+<!-- /.container -->
 </div>
 <!-- /#navbar -->
 
 <!-- *** NAVBAR END *** -->
 
+
 @yield('content')
+
 
  <!-- *** FOOTER ***
  _____________________________________________________________ -->
@@ -144,16 +143,11 @@
                 <h4>Pages</h4>
 
                 <ul>
-                    <li><a href="text.html">Home</a>
-                    </li>
-                    <li><a href="text.html">Market Places</a>
-                    </li>
-                    <li><a href="text.html">About us</a>
-                    </li>
-                    <li><a href="text.html">Contact Us</a>
-                    </li>
-                    <li><a href="faq.html">FAQ</a>
-                    </li>
+                    <li><a href="/">Home</a></li>
+                    <li><!-- <a href="#"> -->Market Places<!-- </a> --></li>
+                    <li><a href="{{route('about-us')}}">About us</a></li>
+                    <li><a href="{{route('contact-us')}}">Contact Us</a></li>
+                    <!-- <li><a href="#">FAQ</a></li> -->
                 </ul>
 
                 <hr>
@@ -184,28 +178,21 @@
 
             <div class="col-md-3 col-sm-6">
 
-                <h4>Top categories</h4>
-
-                <h5>Men</h5>
-
+                <h4>Market Places</h4>
                 <ul>
-                    <li><a href="category.html">T-shirts</a>
-                    </li>
-                    <li><a href="category.html">Shirts</a>
-                    </li>
-                    <li><a href="category.html">Accessories</a>
-                    </li>
-                </ul>
-
-                <h5>Ladies</h5>
-                <ul>
-                    <li><a href="category.html">T-shirts</a>
-                    </li>
-                    <li><a href="category.html">Skirts</a>
-                    </li>
-                    <li><a href="category.html">Pants</a>
-                    </li>
-                    <li><a href="category.html">Accessories</a>
+                    <li>
+                        <div class="yamm-content">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <ul>
+                                        @foreach($countries as $country)
+                                        <li><a href="/pages/market-places/{{$country->id}}">{{$country->name}}</a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
 
@@ -227,7 +214,7 @@
                     <strong></strong>
                 </p>
 
-                <a href="contact.html">Go to contact page</a>
+                <a href="{{route('contact-us')}}">Go to contact page</a>
 
                 <hr class="hidden-md hidden-lg">
 
@@ -238,17 +225,17 @@
 
             <div class="col-md-3 col-sm-6">
 
-                <h4>Get the news</h4>
+                <!-- <h4>Get the news</h4>
 
                 <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <hr>
+                <hr> -->
                 <h4>Stay in touch</h4>
                 <p class="social">
                     <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
                     <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
                     <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
                     <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                    <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                    <a href="mailto:info@ecoopu.com" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
                 </p>
 
 
@@ -265,37 +252,84 @@
 
 <!-- *** FOOTER END *** -->
 
-        <!-- *** COPYRIGHT ***
-        _________________________________________________________ -->
-        <div id="copyright">
-            <div class="container">
-                <div class="col-md-6">
-                    <p class="pull-left">© 2016 eCoopu.</p>
-                </div>
-                <div class="col-md-6">
-                </p>
-            </div>
+<!-- *** COPYRIGHT ***_________________________________________________________ -->
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p class="pull-left"> Copyright © 2016. eCoopu. All rights reserved.</p>
         </div>
+        <div class="col-md-6">
+        </p>
     </div>
-    <!-- *** COPYRIGHT END *** -->
+</div>
+</div>
+<!-- *** COPYRIGHT END *** -->
 </div>
 <!-- /#all -->
 
-    <!-- *** SCRIPTS TO INCLUDE ***
-    _________________________________________________________ -->
+<!-- *** SCRIPTS TO INCLUDE ***_________________________________________________________ -->
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/jquery.cookie.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/waypoints.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/modernizr.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap-hover-dropdown.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="{{URL::to('assets')}}/js/front.js"></script>
+<!-- JavaScripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/waypoints.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/modernizr.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/bootstrap-hover-dropdown.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="{{URL::to('assets')}}/js/front.js"></script>
 
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
+<script type="text/javascript">
+
+    $(function () {
+        $('#datetimepicker3').datetimepicker({
+            format: 'LT'
+        });
+
+            // Sharing on social media
+
+            var popupSize = {
+                width: 780,
+                height: 550
+            };
+
+            $(document).on('click', '.social-buttons > a', function(e){
+
+                var
+                verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+                horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+
+                var popup = window.open($(this).prop('href'), 'social',
+                    'width='+popupSize.width+',height='+popupSize.height+
+                    ',left='+verticalPos+',top='+horisontalPos+
+                    ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+                if (popup){
+                    popup.focus();
+                    e.preventDefault();
+                }
+
+            });
+
+        });
+    </script>
+    
+    <script type="text/javascript">
+        function share(name,link,picture,caption,description){
+            FB.ui(
+            {
+                method: 'feed',
+                name: name,
+                link: link,
+                picture: picture,
+                caption: caption,
+                description: description,
+                message: ''
+            });  
+        }
+    </script>
 </body>
 </html>
