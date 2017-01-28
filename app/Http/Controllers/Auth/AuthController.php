@@ -104,7 +104,7 @@ try {
        $validator = Validator::make(Input::all(), $rules);
        if ($validator->fails()) {
         $messages = $validator->messages();
-        return Redirect::back()->withErrors($validator)->withInput();
+        return Redirect::back();
 
     } else {
 
