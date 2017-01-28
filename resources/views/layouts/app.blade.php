@@ -278,16 +278,11 @@
                 <h4>Pages</h4>
 
                 <ul>
-                    <li><a href="#">Home</a>
-                    </li>
-                    <li><a href="#">Market Places</a>
-                    </li>
-                    <li><a href="#">About us</a>
-                    </li>
-                    <li><a href="#">Contact Us</a>
-                    </li>
-                    <li><a href="#">FAQ</a>
-                    </li>
+                    <li><a href="/">Home</a></li>
+                    <li><!-- <a href="#"> -->Market Places<!-- </a> --></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <!-- <li><a href="#">FAQ</a></li> -->
                 </ul>
 
                 <hr>
@@ -323,23 +318,23 @@
                 <h5>Men</h5>
 
                 <ul>
-                    <li><a href="#">T-shirts</a>
+                    <li><!-- <a href="#"> -->T-shirts<!-- </a> -->
                     </li>
-                    <li><a href="#">Shirts</a>
+                    <li><!-- <a href="#"> -->Shirts<!-- </a> -->
                     </li>
-                    <li><a href="#">Accessories</a>
+                    <li><!-- <a href="#"> -->Accessories<!-- </a> -->
                     </li>
                 </ul>
 
                 <h5>Ladies</h5>
                 <ul>
-                    <li><a href="#">T-shirts</a>
+                    <li><!-- <a href="#"> -->T-shirts<!-- </a> -->
                     </li>
-                    <li><a href="#">Skirts</a>
+                    <li><!-- <a href="#"> -->Skirts<!-- </a> -->
                     </li>
-                    <li><a href="#">Pants</a>
+                    <li><!-- <a href="#"> -->Pants<!-- </a> -->
                     </li>
-                    <li><a href="#">Accessories</a>
+                    <li><!-- <a href="#"> -->Accessories<!-- </a> -->
                     </li>
                 </ul>
 
@@ -372,17 +367,17 @@
 
             <div class="col-md-3 col-sm-6">
 
-                <h4>Get the news</h4>
+                <!-- <h4>Get the news</h4>
 
                 <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <hr>
+                <hr> -->
                 <h4>Stay in touch</h4>
                 <p class="social">
                     <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
                     <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
                     <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
                     <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                    <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                    <a href="mailto:info@ecoopu.com" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
                 </p>
 
 

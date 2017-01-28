@@ -64,11 +64,11 @@ class OrderController extends Controller{
             $days=Request::input('duration');
             $date=date('Y-m-d', strtotime(date('Y-m-d'). "+ $days days")).' '.date('H:i:s');
             $order->duration =$date ;
-            $order->location = Request::input('location');
+            /*$order->location = Request::input('location');*/
             $order->country_id=Request::input('market');
             $order->save();
             $address=new Orderlist_address;
-            $address->description = Request::input('location');
+            $address->description = 'will be asked later';//Request::input('location');
             $address->user_id=Auth::user()->id;
             $address->order_id=$order->id;
             $address->save();
