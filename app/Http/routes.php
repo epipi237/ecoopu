@@ -14,23 +14,23 @@ use App\country;
 |
 */
 
-Route::get('/', function (){
-	$countries = country::all();
-	$orders=order::where('duration','>',date('Y-m-d H:i:s'))->orderBy('id','desc')->paginate(4);
-	return view('welcome',compact('countries','orders'));
+Route::get('/', function () {
+  $countries = country::all();
+  $orders=order::where('duration','>',date('Y-m-d H:i:s'))->orderBy('id','desc')->paginate(4);
+  return view('welcome',compact('countries','orders'));
 });
 
-Route::get('/twitter', function()
-{
+Route::get('/logout', 'AuthController@logout')->name('logout');
+
+Route::get('/twitter', function() {
   return Share::load('http://www.ecoopu.com', 'My description Here')->twitter();
 });
 
-Route::get('/facebook', function()
-{
+Route::get('/facebook', function() {
   return Share::load('http://www.ecoopu.com', 'My description Here')->facebook();
 });
 
-Route::get('/test',function(){
+Route::get('/test',function() {
   return view('emails.welcome');
 });
 
@@ -38,12 +38,12 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/login', function () {
+Route::get('/login', function() {
 	$countries = country::all();
 	return view('auth.login',compact('countries'));
 });
 
-Route::get('/register', function () {
+Route::get('/register', function() {
 	$countries = country::all();
 	return view('auth.register',compact('countries'));
 });
