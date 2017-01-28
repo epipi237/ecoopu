@@ -48,6 +48,14 @@ Route::get('/register', function () {
 	return view('auth.register',compact('countries'));
 });
 
+Route::get('contact-us', function(){
+  return view('pages.contact-us');
+})->name('contact-us');
+
+Route::get('about-us', function(){
+  return view('pages.about-us');
+})->name('about-us');
+
 Route::get('user/edit/account','SettingsAccount@index')->name('account');
 Route::post('user/edit/account','SettingsAccount@update')->name('account');
 

@@ -72,9 +72,9 @@
                     </li>
                     <li><a href="{{ URL::route('account') }}"><i class=""></i>Edit Profile</a></li>
                     @endif
-                    <li><a href="#">Contact</a>
+                    <li><a href="{{route('contact-us')}}">Contact</a>
                     </li>
-                    <li><a href="#">Privacy</a>
+                    <li><a href="{{route('about-us')}}">About</a>
                     </li>
 
                 </ul>
@@ -150,12 +150,12 @@
                         </ul>
                     </li> -->
 
-                    <li class=""><a href="#">About Us</a>
+                    <li class=""><a href="{{route('about-us')}}">About Us</a>
                     </li>
-                    <li class=""><a href="#">Contact Us</a>
+                    <li class=""><a href="{{route('contact-us')}}">Contact Us</a>
                     </li>
-                    <li class=""><a href="#">FAQ</a>
-                    </li>
+                    <!-- <li class=""><a href="#">FAQ</a>
+                    </li> -->
                 </ul>
 
             </div>

@@ -44,98 +44,97 @@
             </div>
         </div>
 
-            <!-- *** ADVANTAGES HOMEPAGE ***
-            _________________________________________________________ -->
-            <div id="advantages">
+        <!-- *** ADVANTAGES HOMEPAGE ***
+        _________________________________________________________ -->
+        <div id="advantages">
 
-                <div class="container">
-                    <div class="same-height-row">
-                        <div class="col-sm-4">
-                            <div class="box same-height clickable">
-                                <div class="icon"><i class="fa fa-heart"></i>
-                                </div>
-
-                                <h3><a href="#">We love our customers</a></h3>
-                                <p>We are known to provide best possible service ever</p>
+            <div class="container">
+                <div class="same-height-row">
+                    <div class="col-sm-4">
+                        <div class="box same-height clickable">
+                            <div class="icon"><i class="fa fa-heart"></i>
                             </div>
-                        </div>
 
-                        <div class="col-sm-4">
-                            <div class="box same-height clickable">
-                                <div class="icon"><i class="fa fa-tags"></i>
-                                </div>
-
-                                <h3><a href="#">Best prices</a></h3>
-                                <p>You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="box same-height clickable">
-                                <div class="icon"><i class="fa fa-thumbs-up"></i>
-                                </div>
-
-                                <h3><a href="#">100% satisfaction guaranteed</a></h3>
-                                <p>Free returns on everything for 3 months.</p>
-                            </div>
+                            <h3><a href="#">We love our customers</a></h3>
+                            <p>We are known to provide best possible service ever</p>
                         </div>
                     </div>
-                    <!-- /.row -->
 
+                    <div class="col-sm-4">
+                        <div class="box same-height clickable">
+                            <div class="icon"><i class="fa fa-tags"></i>
+                            </div>
+
+                            <h3><a href="#">Best prices</a></h3>
+                            <p>You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="box same-height clickable">
+                            <div class="icon"><i class="fa fa-thumbs-up"></i>
+                            </div>
+
+                            <h3><a href="#">100% satisfaction guaranteed</a></h3>
+                            <p>Free returns on everything for 3 months.</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.container -->
+                <!-- /.row -->
 
             </div>
-            <!-- /#advantages -->
+            <!-- /.container -->
 
-            <!-- *** ADVANTAGES END *** -->
+        </div>
+        <!-- /#advantages -->
 
-            <!-- *** HOT PRODUCT SLIDESHOW ***
-            _________________________________________________________ -->
-            <div id="hot">
+        <!-- *** ADVANTAGES END *** -->
 
-                <div class="box">
-                    <div class="container">
-                        <div class="col-md-12">
-                            <h2>Start from here and join any market place</h2>
-                        </div>
+        <!-- *** HOT PRODUCT SLIDESHOW ***
+        _________________________________________________________ -->
+        <div id="hot" style="margin-left: 9%! important; margin-right: 9%! important;">
+
+            <div class="box">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2>Start from here and join any market place</h2>
                     </div>
                 </div>
+            </div>
+
+            <div class="container">
+
+                <div class="same-height-row">
+
+                    @foreach($orders as $order)
+                    <div class="col-sm-3">
+                        <div class="box same-height clickable">
+                            <h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a 
+                                @if(Auth::check())
+                                @if($order->user->id==Auth::user()->id)
+                                href="/pages/create/orderlist/{{$order->id}}">
+                                Add items
+                                @else
+                                href="/pages/create/orderlist/{{$order->id}}">
+                                Join List 
+                                @endif         
+                                @else
+                                href="/login">
+                                Join List 
+                                @endif
 
 
-                <div class="container">
-
-                    <div class="same-height-row">
-
-                        @foreach($orders as $order)
-                        <div class="col-sm-3">
-                            <div class="box same-height clickable">
-                                <h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a 
-                                    @if(Auth::check())
-                                    @if($order->user->id==Auth::user()->id)
-                                    href="/pages/create/orderlist/{{$order->id}}">
-                                    Add items
-                                    @else
-                                    href="/pages/create/orderlist/{{$order->id}}">
-                                    Join List 
-                                    @endif         
-                                    @else
-                                    href="/login">
-                                    Join List 
-                                    @endif
-
-
-                                </a>)</a></h3>
-                                <p>Shop: {{$order->shop}}</p>
-                                <p>Country: <b>{{$order->country->name}}</b></p>
-                                <p>
-                                    <?php 
-                                    $date1=date_create($order->duration);
-                                    $date2=date_create(date('Y-m-d H:i:s'));
-                                    $DateInterval=date_diff($date1,$date2);
-                                    echo '<b>Time Left: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
-                                    ?>
-                                </p>
+                            </a>)</a></h3>
+                            <p>Shop: {{$order->shop}}</p>
+                            <p>Country: <b>{{$order->country->name}}</b></p>
+                            <p>
+                                <?php 
+                                $date1=date_create($order->duration);
+                                $date2=date_create(date('Y-m-d H:i:s'));
+                                $DateInterval=date_diff($date1,$date2);
+                                echo '<b>Time Left: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
+                                ?>
+                            </p>
                                 <!-- <p class="social text-center">
                                     <a href="{{url('/facebook')}}" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
                                     <a href="{{url('/twitter')}}" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
@@ -172,57 +171,57 @@
 
     <!-- *** HOT END *** -->
 
-            <!-- *** GET INSPIRED ***
-            _________________________________________________________ -->
-            
-            <!-- *** GET INSPIRED END *** -->
+    <!-- *** GET INSPIRED ***
+    _________________________________________________________ -->
+
+    <!-- *** GET INSPIRED END *** -->
 
 
-            <!-- *** BLOG HOMEPAGE ***
-            _________________________________________________________ -->
+    <!-- *** BLOG HOMEPAGE ***
+    _________________________________________________________ -->
 
-            <div class="box text-center" data-animate="fadeInUp">
-                <div class="container">
-                    <div class="col-md-12">
-                        <h3 class="text-uppercase">Cantact Us</h3>
+    <div class="box text-center" data-animate="fadeInUp" style="margin-left: 9%! important; margin-right: 9%! important;">
+        <div class="container">
+            <div class="col-md-12">
+                <h3 class="text-uppercase">Cantact Us</h3>
 
-                        <p class="lead">Want to hear from us? wcontact us <a href="blog.html">here</a>
+                <p class="lead">Want to hear from us? contact us <a href="{{route('contact-us')}}">here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="col-md-12" data-animate="fadeInUp">
+
+            <div id="blog-homepage" class="row">
+                <div class="col-sm-6">
+                    <div class="post">
+                        <h4><a href="">Our Mission</a></h4>
+                        <hr>
+                        <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="post">
+                        <h4><a href="">Our Vision</a></h4>
+                        <hr>
+                        <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
                         </p>
                     </div>
                 </div>
             </div>
-
-            <div class="container">
-
-                <div class="col-md-12" data-animate="fadeInUp">
-
-                    <div id="blog-homepage" class="row">
-                        <div class="col-sm-6">
-                            <div class="post">
-                                <h4><a href="post.html">Our Mission</a></h4>
-                                <hr>
-                                <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="post">
-                                <h4><a href="post.html">Our Vision</a></h4>
-                                <hr>
-                                <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /#blog-homepage -->
-                </div>
-            </div>
-            <!-- /.container -->
-            <!-- *** BLOG HOMEPAGE END *** -->
+            <!-- /#blog-homepage -->
         </div>
-        <!-- /#content -->
+    </div>
+    <!-- /.container -->
+    <!-- *** BLOG HOMEPAGE END *** -->
+</div>
+<!-- /#content -->
 
-        @endsection
+@endsection

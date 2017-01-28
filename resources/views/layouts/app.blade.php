@@ -89,9 +89,9 @@
                     </li>
                     <li><a href="{{ URL::route('account') }}"><i class=""></i>Edit Profile</a></li>
                     @endif
-                    <li><a href="#">Contact</a>
+                    <li><a href="{{route('contact-us')}}">Contact Us</a>
                     </li>
-                    <li><a href="#">Privacy</a>
+                    <li><a href="{{route('about-us')}}">About Us</a>
                     </li>
 
                 </ul>
@@ -280,8 +280,8 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><!-- <a href="#"> -->Market Places<!-- </a> --></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{{route('about-us')}}">About us</a></li>
+                    <li><a href="{{route('contact-us')}}">Contact Us</a></li>
                     <!-- <li><a href="#">FAQ</a></li> -->
                 </ul>
 
@@ -313,28 +313,21 @@
 
             <div class="col-md-3 col-sm-6">
 
-                <h4>Top categories</h4>
-
-                <h5>Men</h5>
-
+                <h4>Market Places</h4>
                 <ul>
-                    <li><!-- <a href="#"> -->T-shirts<!-- </a> -->
-                    </li>
-                    <li><!-- <a href="#"> -->Shirts<!-- </a> -->
-                    </li>
-                    <li><!-- <a href="#"> -->Accessories<!-- </a> -->
-                    </li>
-                </ul>
-
-                <h5>Ladies</h5>
-                <ul>
-                    <li><!-- <a href="#"> -->T-shirts<!-- </a> -->
-                    </li>
-                    <li><!-- <a href="#"> -->Skirts<!-- </a> -->
-                    </li>
-                    <li><!-- <a href="#"> -->Pants<!-- </a> -->
-                    </li>
-                    <li><!-- <a href="#"> -->Accessories<!-- </a> -->
+                    <li>
+                        <div class="yamm-content">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <ul>
+                                        @foreach($countries as $country)
+                                        <li><a href="/pages/market-places/{{$country->id}}">{{$country->name}}</a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
 
@@ -356,7 +349,7 @@
                     <strong></strong>
                 </p>
 
-                <a href="#">Go to contact page</a>
+                <a href="{{route('contact-us')}}">Go to contact page</a>
 
                 <hr class="hidden-md hidden-lg">
 
@@ -399,7 +392,7 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2016 eCoopu.</p>
+                    <p class="pull-left"> Copyright © 2016. eCoopu. All rights reserved.</p>
                 </div>
                 <div class="col-md-6">
                 </p>
@@ -427,7 +420,7 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     <script type="text/javascript">
-        
+
         $(function () {
             $('#datetimepicker3').datetimepicker({
                 format: 'LT'
