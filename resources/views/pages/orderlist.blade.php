@@ -60,7 +60,7 @@
 									<td>{{ $orderItem->quantity }}</td>
 
 									@if($orderItem->price == '')
-									<td>{{ 'Set by the seller' }}</td>
+									<td>{{ 'Not yet set by the seller' }}</td>
 									@else
 									<td>{{ $orderItem->price }}</td>
 									@endif
@@ -91,7 +91,12 @@
 						</table>
 
 						<div class="pull-right">
-							Total price: <span class="badge">${{$price->price}}</span>
+							Total price: 
+							@if($price->price > 0)
+							<span class="badge">${{$price->price}}</span>
+							@else
+							<span class="badge">Not yet set by the seller</span>
+							@endif
 
 						</div>
 					</h4>
