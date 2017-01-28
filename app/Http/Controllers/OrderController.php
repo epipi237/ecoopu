@@ -39,7 +39,7 @@ class OrderController extends Controller{
         $orders=Order::whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(8);
         $countries=country::all();
         //   dd($orders);
-        return view('pages.order', compact('orders','countries'));
+        return view('pages.order', compact('orders', 'countries'));
     }
 
     public function create(){

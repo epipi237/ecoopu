@@ -63,7 +63,7 @@
 							</button>
 						</div>
 					</form>
-					
+
 					@else
 
 					<table class="table table-striped">
@@ -92,6 +92,25 @@
 				</div>
 			</div>
 		</div>
+
+		@if($price->paidStatus)
+		<div class="col-md-4"> 
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="text-center">{{$user->name}}'s Address</h4>
+				</div>
+				<div class="panel-body">
+					<div class="">
+						Client's Phone: <input type="text" class="form-control" disabled="disabled" value="{{$user->phone}}" style="display: inline-block; width: 70%;" />
+						Client's Email: <input type="text" class="form-control" disabled="disabled" value="{{$user->email}}" style="display: inline-block; width: 70%;" />
+						Shipping Address: <input type="text" class="form-control" disabled="disabled" value="{{$order->orderlist_address->description}}" style="width: 60%;" />
+								<br><br>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		@endif
 	</div>
 </div>
 

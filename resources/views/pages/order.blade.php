@@ -59,7 +59,7 @@
 							</div>
 						</div>
 
-						<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+						<!-- <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
 							<label for="location" class="col-md-4 control-label">Delivery location</label>
 							<div class="col-md-6">
 								<textarea id="location" class="form-control" name="location" value="{{ old('location') }}"></textarea>
@@ -69,7 +69,7 @@
 								</span>
 								@endif
 							</div>
-						</div>
+						</div> -->
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">

@@ -85,13 +85,14 @@ class ShopController extends Controller
     $countries = country::all();
     $orderItems =OrderItem::where('user_id', $user->id)->where('order_id', $order_id)->get();
     $price = Price::where('user_id', $user->id)->where('order_id', $order_id)->first();
+    $order = Order::find($order_id);
     if(!$price){
       $price = new Price;
       $price->price = 0;
     }
     $processingFee = $price->price * 0.01;
 
-    return view('shop.list', compact('orderItems','countries','price', 'order_id','user', 'processingFee'));
+    return view('shop.list', compact('orderItems', 'order', 'countries','price', 'order_id','user', 'processingFee'));
   }
 
   public function addprice(){
