@@ -95,57 +95,70 @@ class ShopController extends Controller
   }
 
   public function addprice(){
+
+    $rules = array(
+      'total_price' => 'required|numeric|min:1',
+      );
+
+    $messages = array(
+      'required' => 'The :attribute is required.',
+      );
+
+    $validator = Validator::make(Input::all(), $rules);
+    if ($validator->fails()) {
+      $messages = $validator->messages();
+      return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
+
+    } else {
+
+      $sum = 0;
+
+      $orderItems = OrderItem::whereOrderId(Request::input('order_id'))->get();
+
+      foreach ($orderItems as $orderItem) {
+        $orderItem->price = Request::input($orderItem->id);
+        echo(Request::input($orderItem->id));
+        $sum += $orderItem->price;
+        $orderItem->save();
+      }
+
+      if($sum == Request::input('total_price')) {
+        $price = new Price;
+        $price->order_id = Request::input('order_id');
+        $price->user_id = Request::input('user_id');
+        $price->price = Request::input('total_price');
+        $price->save();
+      }
+
+
+      return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');
+    }
+  }
+
+  public function createOrderList(){
    $rules = array(
-    'price' => 'required|numeric|min:1',
+    'product' => 'required',
+    'quantity' => 'required',
     );
    $messages = array(
     'required' => 'The :attribute is required.',
+    'same'  => 'The :others must match.'
     );
    $validator = Validator::make(Input::all(), $rules);
    if ($validator->fails()) {
     $messages = $validator->messages();
-    return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
+    return Redirect::back()->withErrors($validator)->withInput();
 
   } else {
-
-    $price = new Price;
-    $price->order_id = Request::input('order_id');
-    $price->user_id = Request::input('user_id');
-    $price->price = Request::input('price');
-    $price->save();
-
-    // foreach($prices as $price){
-    //   \DB::insert('insert into prices (price,order_id) values (?,?)', array($price,$order_id));
-    // }
-
-    return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');
+    $orderItem = new OrderItem;
+    $orderItem->user_id=Auth::user()->id;
+    $orderItem->product = Request::input('product');
+    $orderItem->quantity = Request::input('quantity');
+    $orderItem->order_id=Request::input('orderid');
+    $orderid=Request::input('orderid');
+    $orderItem->save();
+    return \Redirect("pages/create/orderlist/$orderid");
   }
-}
-
-public function createOrderList(){
- $rules = array(
-  'product' => 'required',
-  'quantity' => 'required',
-  );
- $messages = array(
-  'required' => 'The :attribute is required.',
-  'same'  => 'The :others must match.'
-  );
- $validator = Validator::make(Input::all(), $rules);
- if ($validator->fails()) {
-  $messages = $validator->messages();
-  return Redirect::back()->withErrors($validator)->withInput();
-
-} else {
-  $orderItem = new OrderItem;
-  $orderItem->user_id=Auth::user()->id;
-  $orderItem->product = Request::input('product');
-  $orderItem->quantity = Request::input('quantity');
-  $orderItem->order_id=Request::input('orderid');
-  $orderid=Request::input('orderid');
-  $orderItem->save();
-  return \Redirect("pages/create/orderlist/$orderid");
-}
 }
 
     /**

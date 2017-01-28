@@ -147,15 +147,13 @@ class OrderController extends Controller{
             $transaction = new transaction;
             $transaction->user_id = $user_id;
             $transaction->order_id = $order->id;
-            $transaction->description = $request['item_name'];
+            $transaction->description = 'IPN ' . $request['item_name'];
             $transaction->tx = $request['tx'];
             $transaction->amount_paid = $request['amt'];
             $transaction->cc = $request['cc'];
             $transaction->status = $request['st'];
             $transaction->save();
 
-
-            return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
         }
 
     }

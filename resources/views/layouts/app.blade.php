@@ -432,6 +432,7 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     <script type="text/javascript">
+        
         $(function () {
             $('#datetimepicker3').datetimepicker({
                 format: 'LT'

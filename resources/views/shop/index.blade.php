@@ -105,25 +105,25 @@
                         <i class="fa fa-search"></i>
                     </button>
                     @if(!Auth::guest())
-                        <button class="btn btn-default navbar-toggle" data-toggle="modal" data-target="#myModal"><i class=""></i><span class="hidden-xs">Add Shop</span></button>
-                    </a>
-                    @endif
-                </div>
+                    <button class="btn btn-default navbar-toggle" data-toggle="modal" data-target="#myModal"><i class=""></i><span class="hidden-xs">Add Shop</span></button>
+                </a>
+                @endif
             </div>
+        </div>
 
-            <!--/.navbar-header -->
+        <!--/.navbar-header -->
 
-            <div class="navbar-collapse collapse" id="navigation">
+        <div class="navbar-collapse collapse" id="navigation">
 
-                <ul class="nav navbar-nav navbar-left">
-                    @if(Auth::guest())
-                    <li class="active">
-                        <a class="" href="{{ url('/') }}">Home</a>
-                    </li>
-                    @else 
-                    <li class=""><a href="{{ route('shop_index') }}">Home</a>
-                    </li> 
-                    @endif
+            <ul class="nav navbar-nav navbar-left">
+                @if(Auth::guest())
+                <li class="active">
+                    <a class="" href="{{ url('/') }}">Home</a>
+                </li>
+                @else 
+                <li class=""><a href="{{ route('shop_index') }}">Home</a>
+                </li> 
+                @endif
 
 
                  <!--   <li class="dropdown">
@@ -165,45 +165,45 @@
 
                 @if(!Auth::guest())
                 <div class="navbar-collapse collapse right" id="">
-                   <!--  <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Add Shop</span></a> -->
-                   <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Add Shop</button>
-                </div>
+                 <!--  <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Add Shop</span></a> -->
+                 <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Add Shop</button>
+             </div>
 
-                @endif
-                <!--/.nav-collapse -->
-                <div class="navbar-collapse collapse right" id="search-not-mobile">
-                    <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
-                        <span class="sr-only">Toggle search</span>
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
+             @endif
+             <!--/.nav-collapse -->
+             <div class="navbar-collapse collapse right" id="search-not-mobile">
+                <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
+                    <span class="sr-only">Toggle search</span>
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
-
-            <div class="collapse clearfix" id="search">
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </form>
-
-            </div>
-            <!--/.nav-collapse -->
         </div>
-        <!-- /.container -->
+
+        <div class="collapse clearfix" id="search">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+
+        </div>
+        <!--/.nav-collapse -->
     </div>
-    <!-- /#navbar -->
+    <!-- /.container -->
+</div>
+<!-- /#navbar -->
 
-    <!-- *** NAVBAR END *** -->
-
-
-    @yield('content')
-
+<!-- *** NAVBAR END *** -->
 
 
-    <!-- Modal for shop owners to add shops-->
+@yield('content')
+
+
+
+<!-- Modal for shop owners to add shops-->
 
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -408,6 +408,7 @@
     </div>
     <!-- *** COPYRIGHT END *** -->
 </div>
+</body>
 <!-- /#all -->
 
     <!-- *** SCRIPTS TO INCLUDE ***
@@ -427,12 +428,31 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     <script type="text/javascript">
+
         $(function () {
+
+            var total_price = document.getElementById('total_price');
+            $("body").on("keyup", "input.sub_price", function () {
+                calculateTotal(this);
+            });
+
             $('#datetimepicker3').datetimepicker({
                 format: 'LT'
-            });
+            });     
+
+            function calculateTotal(src) {
+                var sum = 0,
+                tbl = $(src).closest('form');
+                tbl.find('input.sub_price').each(function(index, elem) {
+                    var val = parseFloat($(elem).val());
+                    if( !isNaN( val ) ) {
+                        sum += val;
+                    }
+                });
+                total_price.value = sum;
+            }
+
         });
     </script>
     
-</body>
-</html>
+    </html>

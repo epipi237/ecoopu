@@ -17,7 +17,7 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('account') }}">
                         {{ csrf_field() }}
 
-                        @foreach ($users as $user)
+                        
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
                             <div class="col-md-6">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                     <!--    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <label for="username" class="col-md-4 control-label">Username</label>
                             <div class="col-md-6">
                                 <input id="username" type="text" required="" class="form-control" name="username" value="{{ $user->username }}">
@@ -42,7 +42,7 @@
                                 </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="phone" class="col-md-4 control-label">Telephone</label>
@@ -90,8 +90,6 @@
                                 </button>
                             </div>
                         </div>
-
-                        @endforeach
                     </form>
                 </div>
             </div>

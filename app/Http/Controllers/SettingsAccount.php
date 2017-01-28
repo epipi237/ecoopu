@@ -16,8 +16,8 @@ class SettingsAccount extends Controller
 	public function index()
 	{
 		$countries = country::all();
-		$users = User::where('id', Auth::user()->id)->get();
-		return view('SettingsAccount.index', compact('users','countries'));
+		$user = Auth::user();
+		return view('SettingsAccount.index', compact('user','countries'));
 	}
 	public function update()
 	{
