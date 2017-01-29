@@ -19,13 +19,13 @@ class SettingsAccount extends Controller
 		$user = Auth::user();
 		return view('SettingsAccount.index', compact('user','countries'));
 	}
+
 	public function update()
 	{
 		$rules = array(
 			'name' => 'required|min:5',
 			'address' => 'required',
 			'phone' => 'required',
-			'username' => 'required|min:3',
 			'email' => 'required|email|max:255',
 			);
 
@@ -44,7 +44,6 @@ class SettingsAccount extends Controller
 			$user->name = Request::input('name');
 			$user->email = Request::input('email');
 			$user->phone = Request::input('phone');
-			$user->username = Request::input('username');
 			$user->address = Request::input('address');
 			$user->save() ;
 			return redirect('/home');

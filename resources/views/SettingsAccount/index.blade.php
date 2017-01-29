@@ -16,7 +16,6 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('account') }}">
                         {{ csrf_field() }}
-
                         
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
@@ -30,20 +29,7 @@
                                 @endif
                             </div>
                         </div>
-
-                     <!--    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Username</label>
-                            <div class="col-md-6">
-                                <input id="username" type="text" required="" class="form-control" name="username" value="{{ $user->username }}">
-
-                                @if ($errors->has('username'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('username') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div> -->
-
+s
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="phone" class="col-md-4 control-label">Telephone</label>
                             <div class="col-md-6">
