@@ -35,134 +35,141 @@ class ShopController extends Controller
 
     public function index(){
 
-     $user = Auth::user()->id;
-     $shops = Shop::where('user_id', $user)->get();
-     $countries = country::all();
-     $orders=order::join('shops', 'orders.shop', '=', 'shops.name')->where('shops.user_id', $user)->where('duration','<',date('Y-m-d H:i:s'))->orderBy('orders.id','desc')->paginate(4);
+      $user_id = Auth::user()->id;
+      $shops = Shop::where('user_id', $user_id)->get();
+      //dd($shops);
+      $countries = country::all();
 
-     return view('shop.home',compact('countries','orders','shops'));	
-   }
+      $orders = order::join('shops', function($join) use($user_id){
+        $join->on('orders.shop', 'like', 'shops.name')->where('shops.user_id', '=', $user_id);
+      })->orderBy('orders.id','desc')->selectRaw('orders.*')->paginate(4);
 
-   public function addshop(){
-     $rules = array(
-      'name' => 'required|unique:shops',
-      'address' => 'required',
-      'market' => 'required',
-      );
-     $messages = array(
-      'required' => 'The :attribute is required.',
-      );
-     $validator = Validator::make(Input::all(), $rules);
-     if ($validator->fails()) {
-      $messages = $validator->messages();
-      return Redirect::back()->withErrors($validator)->withInput();
-
-    } else {
-      $shop = new Shop;
-      $shop->user_id=Auth::user()->id;
-      $shop->name=Request::input('name');
-      $shop->address = Request::input('address');
-      $shop->market_place = Request::input('market');
-      $shop->save();
-      return Redirect::back();
+      return view('shop.home',compact('countries','orders','shops'));	
     }
-  }
 
-  public function clients($id){
-    $order=order::find($id);
-    if(!$order) return \Redirect::back()->with('status','Orderlist is empty');
+    public function addshop(){
+      $rules = array(
+        'name' => 'required|unique:shops',
+        'address' => 'required',
+        'market' => 'required',
+        );
+      $messages = array(
+        'required' => 'The :attribute is required.',
+        );
+      $validator = Validator::make(Input::all(), $rules);
+      if ($validator->fails()) {
+        $messages = $validator->messages();
+        return Redirect::back()->withErrors($validator)->withInput();
 
-    $order_id = $order->id;
-    $countries = country::all();
-    $clients = User::distinct()->join('order_items', 'order_items.user_id','=','users.id')->where('order_items.order_id', $order_id)->select('users.*')->orderBy('users.id','asc')->get();
-    return view('shop.client', compact('clients','order_id','countries'));
-  }
-
-  public function clientorderlist($id, $order_id){
-
-    // $orderid = OrderItem::where('order_id', $order_id)->get();
-    // dd($orderid);
-
-    $user = User::find($id);
-    $countries = country::all();
-    $orderItems =OrderItem::where('user_id', $user->id)->where('order_id', $order_id)->get();
-    $price = Price::where('user_id', $user->id)->where('order_id', $order_id)->first();
-    $order = Order::find($order_id);
-    if(!$price){
-      $price = new Price;
-      $price->price = 0;
-    }
-    $processingFee = $price->price * 0.01;
-
-    return view('shop.list', compact('orderItems', 'order', 'countries','price', 'order_id','user', 'processingFee'));
-  }
-
-  public function addprice(){
-
-    $rules = array(
-      'total_price' => 'required|numeric|min:1',
-      );
-
-    $messages = array(
-      'required' => 'The :attribute is required.',
-      );
-
-    $validator = Validator::make(Input::all(), $rules);
-    if ($validator->fails()) {
-      $messages = $validator->messages();
-      return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
-
-    } else {
-
-      $sum = 0;
-
-      $orderItems = OrderItem::whereOrderId(Request::input('order_id'))->get();
-
-      foreach ($orderItems as $orderItem) {
-        $orderItem->price = Request::input($orderItem->id);
-        echo(Request::input($orderItem->id));
-        $sum += $orderItem->price;
-        $orderItem->save();
+      } else {
+        $shop = new Shop;
+        $shop->user_id=Auth::user()->id;
+        $shop->name=Request::input('name');
+        $shop->address = Request::input('address');
+        $shop->market_place = Request::input('market');
+        $shop->save();
+        return Redirect::back();
       }
+    }
 
-      if($sum == Request::input('total_price')) {
+    public function clients($id){
+      $order=order::find($id);
+      if(!$order) return \Redirect::back()->with('status', 'Orderlist is empty');
+
+      $order_id = $order->id;
+      $countries = country::all();
+      $clients = User::distinct()->join('order_items', 'order_items.user_id','=','users.id')->where('order_items.order_id', $order_id)->select('users.*')->orderBy('users.id','asc')->get();
+      return view('shop.client', compact('clients','order_id','countries'));
+    }
+
+    public function clientorderlist($id, $order_id){
+
+      // $orderid = OrderItem::where('order_id', $order_id)->get();
+      // dd($orderid);
+
+      $user = User::find($id);
+      $countries = country::all();
+      $orderItems =OrderItem::where('user_id', $user->id)->where('order_id', $order_id)->get();
+      $price = Price::where('user_id', $user->id)->where('order_id', $order_id)->first();
+      $order = Order::find($order_id);
+      if(!$price){
         $price = new Price;
-        $price->order_id = Request::input('order_id');
-        $price->user_id = Request::input('user_id');
-        $price->price = Request::input('total_price');
-        $price->save();
+        $price->price = 0;
       }
+      $processingFee = $price->price * 0.01;
 
-
-      return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');
+      return view('shop.list', compact('orderItems', 'order', 'countries','price', 'order_id','user', 'processingFee'));
     }
-  }
 
-  public function createOrderList(){
-   $rules = array(
-    'product' => 'required',
-    'quantity' => 'required',
-    );
-   $messages = array(
-    'required' => 'The :attribute is required.',
-    'same'  => 'The :others must match.'
-    );
-   $validator = Validator::make(Input::all(), $rules);
-   if ($validator->fails()) {
-    $messages = $validator->messages();
-    return Redirect::back()->withErrors($validator)->withInput();
+    public function addprice(){
 
-  } else {
-    $orderItem = new OrderItem;
-    $orderItem->user_id=Auth::user()->id;
-    $orderItem->product = Request::input('product');
-    $orderItem->quantity = Request::input('quantity');
-    $orderItem->order_id=Request::input('orderid');
-    $orderid=Request::input('orderid');
-    $orderItem->save();
-    return \Redirect("pages/create/orderlist/$orderid");
-  }
-}
+      $rules = array(
+        'total_price' => 'required|numeric|min:1',
+        );
+
+      $messages = array(
+        'required' => 'The :attribute is required.',
+        );
+
+      $validator = Validator::make(Input::all(), $rules);
+      if ($validator->fails()) {
+        $messages = $validator->messages();
+        return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
+
+      } else {
+
+        $sum = 0;
+
+        $orderItems = OrderItem::whereOrderId(Request::input('order_id'))->get();
+
+        foreach ($orderItems as $orderItem) {
+          $orderItem->price = Request::input($orderItem->id);
+          echo(Request::input($orderItem->id));
+          $sum += $orderItem->price;
+          $orderItem->save();
+        }
+
+        if($sum == Request::input('total_price')) {
+          $price = Price::where('user_id', Request::input('user_id'))->where('order_id', Request::input('order_id'))->get();
+          if(!$price) $price = new Price;
+          $price->order_id = Request::input('order_id');
+          $price->user_id = Request::input('user_id');
+          $price->price = Request::input('total_price');
+          $price->save();
+        }else{
+          return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
+        }
+
+
+        return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');
+      }
+    }
+
+    public function createOrderList(){
+      $rules = array(
+        'product' => 'required',
+        'quantity' => 'required',
+        );
+      $messages = array(
+        'required' => 'The :attribute is required.',
+        'same'  => 'The :others must match.'
+        );
+      $validator = Validator::make(Input::all(), $rules);
+      if ($validator->fails()) {
+        $messages = $validator->messages();
+        return Redirect::back()->withErrors($validator)->withInput();
+
+      } else {
+        $orderItem = new OrderItem;
+        $orderItem->user_id=Auth::user()->id;
+        $orderItem->product = Request::input('product');
+        $orderItem->quantity = Request::input('quantity');
+        $orderItem->order_id=Request::input('orderid');
+        $orderid=Request::input('orderid');
+        $orderItem->save();
+        return \Redirect("pages/create/orderlist/$orderid");
+      }
+    }
 
     /**
      * Store a newly created resource in storage.

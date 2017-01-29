@@ -170,7 +170,7 @@
 
         <div class="col-md-12" data-animate="fadeInUp">
 
-            <div id="blog-homepage" class="row">
+            <div id="blog-homepage" class="row" style="padding-left: 1%">
                 <div class="col-sm-6">
                     <div class="post">
                         <h4><a href="">Our Mission</a></h4>

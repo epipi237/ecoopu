@@ -26,7 +26,8 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Orderlists</th>
+									<th>Orderlists No</th>
+									<th>Shop</th>
 									<th>No. of Items</th>
 									<th>Action</th>
 								</tr>
@@ -34,6 +35,7 @@
 							<tbody>
 								@foreach($orders as $order)
 								<tr>
+									<td>{{$order->id}}</td>
 									<td>{{$order->shop}}</td>
 									<td>{{count($order->orderItems)}}</td>
 									<td>

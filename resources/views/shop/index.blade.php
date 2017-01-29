@@ -137,13 +137,13 @@
 
             @if(!Auth::guest())
             <div class="navbar-collapse collapse right" id="">
-             <!--  <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Add Shop</span></a> -->
-             <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Add Shop</button>
-         </div>
+               <!--  <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Add Shop</span></a> -->
+               <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Add Shop</button>
+           </div>
 
-         @endif
-         <!--/.nav-collapse -->
-         <div class="navbar-collapse collapse right" id="search-not-mobile">
+           @endif
+           <!--/.nav-collapse -->
+           <div class="navbar-collapse collapse right" id="search-not-mobile">
             <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
                 <span class="sr-only">Toggle search</span>
                 <i class="fa fa-search"></i>
@@ -209,23 +209,23 @@
                         </div>
                     </div>
 
-                        <div class="form-group">
-                            <label for="duration" class="col-md-4 control-label">Market Place</label>
-                            <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="duration" class="col-md-4 control-label">Market Place</label>
+                        <div class="col-md-6">
 
-                                <select class="form-control" name='market' required='required'>
-                                    @foreach($countries as $c)
-                                    <option value="{{$c->id}}">{{$c->name}}</option>
-                                    @endforeach
-                                </select>
+                            <select class="form-control" name='market' required='required'>
+                                @foreach($countries as $c)
+                                <option value="{{$c->id}}">{{$c->name}}</option>
+                                @endforeach
+                            </select>
 
-                                @if ($errors->has('duration'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('duration') }}</strong>
-                                </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('duration'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('duration') }}</strong>
+                            </span>
+                            @endif
                         </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
@@ -395,7 +395,12 @@
 
     $(function () {
 
+        //calculating the total price when this page loads
         var total_price = document.getElementById('total_price');
+        var sub_prices = document.getElementsByClassName('sub_price');
+        var first_sub_price = sub_prices[0];
+        calculateTotal(first_sub_price);
+
         $("body").on("keyup", "input.sub_price", function () {
             calculateTotal(this);
         });

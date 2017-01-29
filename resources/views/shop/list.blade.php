@@ -30,7 +30,7 @@
 					<h4 class="text-center">{{$user->name}}'s Items for Order List</h4>
 				</div>
 				<div class="panel-body">
-					@if(!($price->price > 0))
+					@if(!$price->paidStatus)
 
 					<form class="form-horizontal" role="form" method="POST" action="{{route('order_price')}}">
 						<table class="table table-striped">
@@ -45,7 +45,7 @@
 								<tr>
 									<td>{{ $orderItem->product }}</td>
 									<td>{{ $orderItem->quantity }}</td>
-									<td><input type="number" placeholder="$" class='form-control sub_price' name="{{$orderItem->id}}" id="{{$orderItem->id}}" required="required">	</td>
+									<td><input type="number" placeholder="$" class='form-control sub_price' name="{{$orderItem->id}}" id="{{$orderItem->id}}" value="{{$orderItem->price}}" required="required">	</td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -57,7 +57,7 @@
 						<input type="hidden" name="user_id" value="{{$user->id}}" id="user_id">
 
 						<div class="col-sm-6 pull-right"> 
-							Total Price: <input type="number" placeholder="$" class='form-control' name="total_price" id="total_price" value="{{old('total_price')}}" required="required">
+							Total Price: <input type="number" placeholder="$" class='form-control' name="total_price" id="total_price" value="{{$price->price}}" required="required">
 							<button type="submit" class="btn btn-primary pull-right">
 								<i class="fa fa-btn fa-add"></i> Save
 							</button>

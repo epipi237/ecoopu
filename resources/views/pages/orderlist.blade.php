@@ -27,7 +27,7 @@
 				<?php 
 				$mytime1=date_create($order->duration);
 				$mytime2=date_create(date('Y-m-d H:i:s'));
-				if ($mytime2 < $mytime1) {
+				if ($mytime2 < $mytime1 && $price->price < 0) {
 					echo '<button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add item(s)</button>';
 				} else {
 
@@ -71,7 +71,7 @@
 									<?php 
 									$mytime1=date_create($order->duration);
 									$mytime2=date_create(date('Y-m-d H:i:s'));
-									if ($mytime2 < $mytime1) {
+									if ($mytime2 < $mytime1 && $price->price < 0) {
 										echo "<td><a href=/itemremove/$orderItem->id>  <button class='btn btn-danger'>Remove</button></a></td>";
 									} elseif ($mytime2 > $mytime1) {
 
