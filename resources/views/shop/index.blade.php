@@ -197,17 +197,35 @@
                         </div>
                     </div>
 
-                    <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                        <label for="location" class="col-md-4 control-label">Location:</label>
+                    <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                        <label for="address" class="col-md-4 control-label">Address:</label>
                         <div class="col-md-6">
-                            <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}">
-                            @if ($errors->has('location'))
+                            <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}">
+                            @if ($errors->has('address'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('location') }}</strong>
+                                <strong>{{ $errors->first('address') }}</strong>
                             </span>
                             @endif
                         </div>
                     </div>
+
+                        <div class="form-group">
+                            <label for="duration" class="col-md-4 control-label">Market Place</label>
+                            <div class="col-md-6">
+
+                                <select class="form-control" name='market' required='required'>
+                                    @foreach($countries as $c)
+                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('duration'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('duration') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">

@@ -89,7 +89,7 @@ class AuthController extends Controller
      */
     public function register(){
         $rules = array(
-            'name' => 'required',
+            'name' => 'required|min:5',
             'phone' => 'required',
             'role' => 'required',
             'address' => 'required',

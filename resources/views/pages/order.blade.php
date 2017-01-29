@@ -20,7 +20,7 @@
 						<div class="form-group{{ $errors->has('shop') ? ' has-error' : '' }}">
 							<label for="shop" class="col-md-4 control-label">Shop Name</label>
 							<div class="col-md-6">
-								<input id="shop" type="text" class="form-control" name="shop" value="{{ old('shop') }}">
+								<input id="shop" type="text" class="form-control" name="shop" value="{{ old('shop') }}" required='required'>
 								@if ($errors->has('shop'))
 								<span class="help-block">
 									<strong>{{ $errors->first('shop') }}</strong>
@@ -33,7 +33,7 @@
 							<label for="duration" class="col-md-4 control-label">Market Place</label>
 							<div class="col-md-6">
 
-								<select class="form-control" name='market'>
+								<select class="form-control" name='market' required='required'>
 									@foreach($countries as $c)
 									<option value="{{$c->id}}">{{$c->name}}</option>
 									@endforeach
@@ -50,7 +50,7 @@
 						<div class="form-group{{ $errors->has('duration') ? ' has-error' : '' }}">
 							<label for="duration" class="col-md-4 control-label">Orderlist Duration(in days)</label>
 							<div class="col-md-6">
-								<input id="duration" type="number" class="form-control" name="duration" value="{{ old('duration') }}">
+								<input id="duration" type="number" class="form-control" name="duration" value="{{ old('duration') }}" required='required'>
 								@if ($errors->has('duration'))
 								<span class="help-block">
 									<strong>{{ $errors->first('duration') }}</strong>
@@ -58,18 +58,6 @@
 								@endif
 							</div>
 						</div>
-
-						<!-- <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-							<label for="location" class="col-md-4 control-label">Delivery location</label>
-							<div class="col-md-6">
-								<textarea id="location" class="form-control" name="location" value="{{ old('location') }}"></textarea>
-								@if ($errors->has('location'))
-								<span class="help-block">
-									<strong>{{ $errors->first('location') }}</strong>
-								</span>
-								@endif
-							</div>
-						</div> -->
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">

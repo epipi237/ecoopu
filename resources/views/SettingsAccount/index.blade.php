@@ -29,7 +29,7 @@
                                 @endif
                             </div>
                         </div>
-s
+                        
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="phone" class="col-md-4 control-label">Telephone</label>
                             <div class="col-md-6">

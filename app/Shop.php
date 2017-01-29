@@ -9,4 +9,8 @@ class Shop extends Model
 	public function user(){
 		return $this->belongsTo('App\User');
 	}
+
+	public function country(){
+		return $this->belongsTo('App\country');
+	}
 }

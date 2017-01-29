@@ -45,8 +45,9 @@ class ShopController extends Controller
 
    public function addshop(){
      $rules = array(
-      'name' => 'required',
-      'location' => 'required',
+      'name' => 'required|unique:shops',
+      'address' => 'required',
+      'market' => 'required',
       );
      $messages = array(
       'required' => 'The :attribute is required.',
@@ -60,7 +61,8 @@ class ShopController extends Controller
       $shop = new Shop;
       $shop->user_id=Auth::user()->id;
       $shop->name=Request::input('name');
-      $shop->location = Request::input('location');
+      $shop->address = Request::input('address');
+      $shop->market_place = Request::input('market');
       $shop->save();
       return Redirect::back();
     }
