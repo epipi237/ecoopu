@@ -937,8 +937,11 @@ h1 {
 #copyright {
   background: #333;
   color: #ccc;
-  padding: 20px 0;
-  font-size: 12px;
+  position: static;
+  bottom: 0;
+  margin-bottom: -10%;
+  padding: 10px 0;
+  font-size: 14px;
 }
 #copyright p {
   margin: 0;
@@ -973,10 +976,10 @@ h1 {
  * 
  * http://geedmo.github.com/yamm3
  */
-.yamm .nav,
-.yamm .collapse,
-.yamm .dropup,
-.yamm .dropdown {
+ .yamm .nav,
+ .yamm .collapse,
+ .yamm .dropup,
+ .yamm .dropdown {
   position: static;
 }
 .yamm .container {
