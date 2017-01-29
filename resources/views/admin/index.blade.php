@@ -86,15 +86,10 @@
                 <!-- /.container -->
 
             </div>
-            <!-- /#advantages -->
 
-            <!-- *** ADVANTAGES END *** -->
-
-            <!-- *** HOT PRODUCT SLIDESHOW ***
-            _________________________________________________________ -->
             <div id="hot">
 
-                <div class="box">
+            <div class="box text-center" style="margin-left: 9.5%! important; margin-right: 9.5%! important;">
                     <div class="container">
                         <div class="col-md-12">
                             <h2>Start from here and join any market place</h2>
@@ -126,11 +121,6 @@
                                         }
                                         ?>
                                     </p>
-                                    <!--                                 
-                                    <p class="social text-center">
-                                        <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
-                                    </p> -->
 
                                     <p>
                                         @include('share.share', [
@@ -149,59 +139,6 @@
 
                 </div>
 
-<!-- 
-                <div class="container">
-                   <div class="same-height-row">
-                       <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>10 days : 5Hrs : 2s remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>20 days : 5Hrs : 2mins remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>2 days : 5Hrs : 2mins remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                          
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="box same-height clickable">
-                            <h3><a href="#">10 items</a></h3>
-                            <p>Mokolo Shop</p>
-                            <p>1 days : 5Hrs : 2mins remaining</p>
-                            <p class="social text-center">
-                                <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- /.row -->
-
             </div>
 
         </div>
@@ -210,60 +147,48 @@
     <!-- /.container -->
 
 </div>
-<!-- /#hot -->
 
-<!-- *** HOT END *** -->
+<div class="box text-center" data-animate="fadeInUp" style="margin-left: 9.5%! important; margin-right: 9.5%! important;">
+    <div class="container">
+        <div class="col-md-12">
+            <h3 class="text-uppercase">Contact Us</h3>
 
-            <!-- *** GET INSPIRED ***
-            _________________________________________________________ -->
-            
-            <!-- *** GET INSPIRED END *** -->
-
-
-            <!-- *** BLOG HOMEPAGE ***
-            _________________________________________________________ -->
-
-            <div class="box text-center" data-animate="fadeInUp">
-                <div class="container">
-                    <div class="col-md-12">
-                        <h3 class="text-uppercase">Cantact Us</h3>
-
-                        <p class="lead">Want to hear from us? wcontact us <a href="">here</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-
-                <div class="col-md-12" data-animate="fadeInUp">
-
-                    <div id="blog-homepage" class="row">
-                        <div class="col-sm-6">
-                            <div class="post">
-                                <h4><a href="post.html">Our Mission</a></h4>
-                                <hr>
-                                <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="post">
-                                <h4><a href="post.html">Our Vision</a></h4>
-                                <hr>
-                                <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /#blog-homepage -->
-                </div>
-            </div>
-            <!-- /.container -->
-            <!-- *** BLOG HOMEPAGE END *** -->
+            <p class="lead">Want to hear from us? contact us <a href="{{route('contact-us')}}">here</a>
+            </p>
         </div>
-        <!-- /#content -->
-        @endsection
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="col-md-12" data-animate="fadeInUp">
+
+        <div id="blog-homepage" class="row" style="padding-left: 1%;">
+            <div class="col-sm-6">
+                <div class="post">
+                    <h4><a href="post.html">Our Mission</a></h4>
+                    <hr>
+                    <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                        ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="post">
+                    <h4><a href="post.html">Our Vision</a></h4>
+                    <hr>
+                    <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                        ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /#blog-homepage -->
+    </div>
+</div>
+<!-- /.container -->
+<!-- *** BLOG HOMEPAGE END *** -->
+</div>
+<!-- /#content -->
+@endsection

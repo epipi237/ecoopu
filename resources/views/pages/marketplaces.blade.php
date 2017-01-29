@@ -10,7 +10,7 @@
 
 <div id="hot">
 
-	<div class="box">
+	<div class="box text-center" style="margin-left: 9%! important; margin-right: 9%! important;">
 		<div class="container">
 			<div class="col-md-12">
 				<h2>Current Orderlists in <b>{{$country->name}}</b></h2>

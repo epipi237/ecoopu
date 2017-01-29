@@ -130,10 +130,8 @@ class AuthController extends Controller
     }
 
     public function logout(){
-        Auth::logout();$countries = country::all();
-        $orders=order::where('duration','>',date('Y-m-d H:i:s'))->orderBy('id','desc')->paginate(4);
-        $status = 'Logged out successfully. Hoping to see you next time';
-        return view('welcome',compact('countries','orders', 'status'));
+        Auth::logout();
+        return \Redirect()->to('/')->with('status', 'Logged out successfully. Hoping to see you next time');
     }
 
 }

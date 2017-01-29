@@ -10,7 +10,7 @@
 
 <div id="hot">
 
-	<div class="box text-center" style="margin-left: 9%! important; margin-right: 9%! important;">
+	<div class="box text-center" style="margin-left: 7.8%! important; margin-right: 7.8%! important;">
 		<div class="container">
 			<div class="col-md-12">
 				<h2>Current Orderlists for your shop</h2>

@@ -89,7 +89,7 @@
         
         <div id="hot">
 
-            <div class="box text-center" style="margin-left: 9%! important; margin-right: 9%! important;">
+            <div class="box text-center" style="margin-left: 9.5%! important; margin-right: 9.5%! important;">
                 <div class="container">
                     <div class="col-md-12">
                         <h2>Start from here and join any market place</h2>
@@ -163,7 +163,7 @@
 
     </div>
 
-    <div class="box text-center" data-animate="fadeInUp" style="margin-left: 9%! important; margin-right: 9%! important;">
+    <div class="box text-center" data-animate="fadeInUp" style="margin-left: 9.5%! important; margin-right: 9.5%! important;">
         <div class="container">
             <div class="col-md-12">
                 <h3 class="text-uppercase">Cantact Us</h3>
@@ -178,7 +178,7 @@
 
         <div class="col-md-12" data-animate="fadeInUp">
 
-            <div id="blog-homepage" class="row">
+            <div id="blog-homepage" class="row" style="padding-left: 1%;">
                 <div class="col-sm-6">
                     <div class="post">
                         <h4><a href="">Our Mission</a></h4>
