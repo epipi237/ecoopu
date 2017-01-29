@@ -110,7 +110,8 @@
 	
 	@if ($price->price > 0 && $price->paidStatus == 0) 
 	<div class="panel panel-default col-md-6" style="height: 100%;">
-		<div class="panel-heading text-center"><h3><b>Processing Fee Payment</b></h3>  
+		<div class="panel-heading text-center">
+			<span style="font-size: 18px;"><b>Processing Fee Payment</b></span>  
 		</div> 
 
 		<div class="panel-body">
@@ -119,7 +120,7 @@
 				<div class="col-md-12"> 
 
 					<div class="">
-						<h4 class="text-center">
+						<h4 class="text-center" style="font-size: 16px;">
 							Processing Fee: <span class="label label-danger">${{$processingFee}} (1% of Total Cost)</span>
 							<br><br><br>
 
@@ -165,7 +166,8 @@
 </div>
 @elseif($price->price > 0 && $price->paidStatus == 1)
 <div class="panel panel-default col-md-6" style="height: 100%;">
-	<div class="panel-heading text-center"><h3><b>Processing Fee Payment</b></h3>  
+	<div class="panel-heading text-center">
+		<span style="font-size: 18px;"><b>Processing Fee Payment</b></span>  
 	</div> 
 
 	<div class="panel-body">
@@ -174,8 +176,8 @@
 			<div class="col-md-12"> 
 
 				<div class="">
-					<h4 class="text-center">
-						Processing Fee: <span class="label label-success">${{$processingFee}} (1% of Total Cost) Paid</span>
+					<h4 class="text-center" style="font-size: 16px;">
+						Processing Fee: <span class="label label-success">Paid ${{$processingFee}} (1% of Total Cost)</span>
 
 						<br><br>
 						<form class="form-horizontal" role="form" action="{{route('update_shipping_address')}}" method="POST">
