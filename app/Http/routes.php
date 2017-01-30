@@ -56,6 +56,10 @@ Route::get('about-us', function(){
   return view('pages.about-us');
 })->name('about-us');
 
+Route::get('test_email', function(){
+  return view('emails.welcome');
+})->name('test_email');
+
 Route::get('user/edit/account','SettingsAccount@index')->name('account');
 Route::post('user/edit/account','SettingsAccount@update')->name('account');
 
