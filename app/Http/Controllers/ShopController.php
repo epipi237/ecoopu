@@ -126,19 +126,16 @@ class ShopController extends Controller
           $orderItem->price = Request::input($orderItem->id); 
           $sum += $orderItem->price;
           $orderItem->save();
-          echo $orderItem;
         }
 
         if($sum == Request::input('total_price')) {
           $price = Price::where('user_id', Request::input('user_id'))->where('order_id', Request::input('order_id'))->first();
           if($price == null) $price = new Price;
-          //var_dump($price);
-          //dd(Request::all());
+
           $price->order_id = Request::input('order_id');
           $price->user_id = Request::input('user_id');
           $price->price = Request::input('total_price');
           $price->save();
-          //dd($price);
         }else{
           return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
         }

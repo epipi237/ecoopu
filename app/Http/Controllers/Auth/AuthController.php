@@ -131,7 +131,7 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::logout();
-        return \Redirect()->to('/')->with('status', 'Logged out successfully. Hoping to see you next time');
+        return \Redirect()->to('/')->with('status', 'Logged out successfully. Hope to see you next time');
     }
 
 }
