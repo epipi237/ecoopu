@@ -25,9 +25,9 @@ class OrderController extends Controller{
      *
      * @return void
      */
-    private $eurodkk = 7.44;
-    private $eurogbp = 0.85;
-    private $gbpdkk = 8.71;
+    private $eurodkk = 7.43781;
+    private $eurogbp = 0.849823;
+    private $gbpdkk = 8.75445;
 
     public function __construct()
     {

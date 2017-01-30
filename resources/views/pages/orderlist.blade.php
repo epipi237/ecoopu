@@ -182,13 +182,13 @@
 							<br><br>
 							<form class="form-horizontal" role="form" action="{{route('update_shipping_address')}}" method="POST">
 								{{ csrf_field() }}
-								<input type="hidden" name="id" value="{{$orderlist_address->id}}" />
+								<input type="hidden" name="id" value="{{$orderlist_address->id}}"/>
 								<input type="hidden" name="order_id" value="{{$order->id}}" />
 								Shipping Address: 
 								@if($orderlist_address->description == 'Not yet specified by the client')
 								<input type="text" class="form-control" name="shipping_address" value="" style="display: inline-block; width: 70%;" />
 								@else
-								<input type="text" class="form-control" name="shipping_address" value="{{$orderlist_address->description}}" style="display: inline-block; width: 70%;" />
+								<input type="text" class="form-control" name="shipping_address" value="{{$orderlist_address->description}}" style="display: inline-block; width: 70%;" required="required" />
 								@endif
 								<br><br>
 								<button class="btn-md btn-success pull-right">Save</button>
