@@ -31,6 +31,6 @@ li a:hover {
   <li><a href="http://ecoopu.com/contact">Contact</a></li>
   <li style="float:right"><a class="active" href="http://ecoopu.com/about">About</a></li>
 </ul>
-<h3>Hi {{$username}}</h3>
+<h3>Hi {{$email}}</h3>
 
 <p style="color:red;">Welcome to Ecoopu.com. eCoopu betters your buying deals and helps you buy at the cheapest rate</p>
