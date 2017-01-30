@@ -130,7 +130,7 @@
 							@foreach($items as $item)
 							<a href="#">
 								<span class="label label-info">
-									{{$item->product}} <span class="badge">{{$item->product_count}}</span>
+									{{$item->product}} <span class="badge">{{$item->product_count}} </span>  
 								</span>
 							</a>
 							@endforeach
