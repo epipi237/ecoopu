@@ -67,6 +67,9 @@ class ShopController extends Controller
         $shop->address = Request::input('address');
         $shop->market_place = Request::input('market');
         $shop->save();
+          \Session::flash('status', 'Shop successfully added');
+          \Session::flash('classAlert', 'success text-center');
+
         return Redirect::back();
       }
     }
@@ -82,9 +85,6 @@ class ShopController extends Controller
     }
 
     public function clientorderlist($id, $order_id){
-
-      // $orderid = OrderItem::where('order_id', $order_id)->get();
-      // dd($orderid);
 
       $user = User::find($id);
       $countries = country::all();
@@ -115,7 +115,9 @@ class ShopController extends Controller
       $validator = Validator::make(Input::all(), $rules);
       if ($validator->fails()) {
         $messages = $validator->messages();
-        return Redirect::back()->with(['status' => 'Sorry wrong price value entered', 'classAlert' => 'danger text-center'])->withInput();
+          \Session::flash('status', 'Sorry wrong price value entered');
+          \Session::flash('classAlert', 'danger text-center');
+        return Redirect::back()->with($messages)->withInput();
 
       } else {
 
@@ -138,10 +140,14 @@ class ShopController extends Controller
           $price->price = Request::input('total_price');
           $price->save();
         }else{
-          return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
+          \Session::flash('status', 'Sorry wrong price value entered');
+          \Session::flash('classAlert', 'danger text-center');
+          return Redirect::back()->withInput();
         }
 
-        return redirect()->to('/shop/clients/'.$price->order_id)->with(['status' => 'Price(s) saved successfully!!!', 'classAlert' => 'success text-center']);
+        \Session::flash('status', 'Price(s) saved successfully!!!');
+        \Session::flash('classAlert', 'success text-center');
+        return \Redirect('/shop/clients/'.$price->order_id);
       }
     }
 
@@ -158,7 +164,6 @@ class ShopController extends Controller
       if ($validator->fails()) {
         $messages = $validator->messages();
         return Redirect::back()->withErrors($validator)->withInput();
-
       } else {
         $orderItem = new OrderItem;
         $orderItem->user_id=Auth::user()->id;
@@ -167,9 +172,10 @@ class ShopController extends Controller
         $orderItem->order_id=Request::input('orderid');
         $orderid=Request::input('orderid');
         $orderItem->save();
-        \Session::put('status', '');
+        \Session::flash('status', 'Order list successfully created');
+        \Session::flash('classAlert', 'success text-center');
 
-        return \Redirect("pages/create/orderlist/$orderid")->with(['status' => '', 'classAlert' => '']);
+        return \Redirect("pages/create/orderlist/$orderid");
       }
     }
 

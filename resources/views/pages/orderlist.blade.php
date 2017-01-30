@@ -126,7 +126,18 @@
 
 					<div class="">
 						<h4 class="text-center" style="font-size: 16px;">
-							
+							@if(count($items) > 0)
+							@foreach($items as $item)
+							<a href="#">
+								<span class="label label-info">
+									{{$item->product}} <span class="badge">{{$item->product_count}}</span>
+								</span>
+							</a>
+							@endforeach
+							@else
+							<span class="label label-warning"> No items found in this list</span>
+							@endif
+							<br>
 						</h4>		
 						<h5>
 							You might want to add similar products to your order, this will encourage the seller to reduce the cost for this product because of the high demand for these items.
@@ -137,7 +148,7 @@
 		</div>
 	</div>
 	@endif
-	
+
 	@if ($price->price > 0 && $price->paidStatus == 0) 
 	<div class="panel panel-default col-md-6" style="height: 100%;">
 		<div class="panel-heading text-center">

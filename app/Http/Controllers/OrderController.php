@@ -87,9 +87,11 @@ class OrderController extends Controller{
 
     public function orderlist($id){
         $order=order::find($id);
+        if(!$order) return \Redirect::back();
+
         $countries = country::all();
         $user_id = Auth::user()->id;
-        $orderItems =OrderItem::where('user_id', $user_id)->where('order_id',$id)->get();
+        $orderItems = OrderItem::where('user_id', $user_id)->where('order_id',$id)->get();
         $price = Price::where('user_id', $user_id)->where('order_id', $id)->first();
         if(!$price) {
             $price = new Price;
@@ -120,6 +122,8 @@ class OrderController extends Controller{
             $orderItem->new_price = 0;
         }
 
+        $items = OrderItem::whereOrderId($id)->selectRaw('DISTINCT product, count(product) as product_count')->groupBy('product')->get();
+        
         $user_currency_code = $this->getCurrenyCode();
         $user_currency_symbol = country::select('currency_symbol')->whereCurrencyCode($user_currency_code)->first();
         $user_currency_symbol = $user_currency_symbol->currency_symbol;
@@ -133,7 +137,7 @@ class OrderController extends Controller{
             $price->new_price = $this->convertCurrency($order->country->currency_code, $user_currency_code, $price->price);
         }
 
-        return view('pages.orderlist', compact('orderItems', 'order', 'user_currency_symbol', 'user_id', 'countries', 'price', 'processingFee', 'paypalUrl', 'orderlist_address'));
+        return view('pages.orderlist', compact('orderItems', 'order', 'user_currency_symbol', 'user_id', 'countries', 'price', 'processingFee', 'paypalUrl', 'orderlist_address', 'items'));
     }
 
     public function paymentStatus($id, $status){
