@@ -110,12 +110,12 @@ class AuthController extends Controller
         } else {
 
             //sending a welcome mail
-            /*Mail::send('emails.welcome', $data, function ($message) use($data){
+            Mail::send('emails.welcome', $data, function ($message) use($data){
 
-                $message->from('vauvaumi@gmail.com', 'testing this email');
+                $message->from('info@ecoopu.com', 'testing this email');
 
                 $message->to($data['email'])->subject("Welcome to eCoopu");
-            });*/
+            });
 
             $user = new User;
             $user->name = frequest::input('name');

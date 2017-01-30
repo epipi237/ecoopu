@@ -21,7 +21,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required="required">
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -49,7 +49,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required="required">
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -63,7 +63,7 @@
                             <label for="role" class="col-md-4 control-label">Register as</label>
 
                             <div class="col-md-6">
-                            <select id="role" class="form-control" name="role" value="{{ old('address') }}">
+                            <select id="role" class="form-control" name="role" value="{{ old('address') }}" required="required">
                                     <option></option>
                                     <option value="user">Buyer</option>
                                     <option value="shop">Shop Owner</option>
@@ -79,7 +79,7 @@
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">Address</label>
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}">
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required="required">
                                 @if ($errors->has('address'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('address') }}</strong>
@@ -91,7 +91,7 @@
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="phone" class="col-md-4 control-label">Telephone</label>
                             <div class="col-md-6">
-                                <input id="phone" type="number" class="form-control" name="phone" value="{{ old('phone') }}">
+                                <input id="phone" type="number" class="form-control" name="phone" value="{{ old('phone') }}" required="required">
                                 @if ($errors->has('phone'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -105,7 +105,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" type="password" class="form-control" name="password" required="required">
                                 @if ($errors->has('password'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('password') }}</strong>
@@ -118,7 +118,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required="required">
 
                                 @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
