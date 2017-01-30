@@ -49,25 +49,29 @@ class AuthController extends Controller
     }
 
     protected function authenticated($request, $user){ 
-        
+
+        \Session::flash('status', 'Logged in successfully!');
+        \Session::flash('classAlert', 'success text-center');
         if($user->role === 'admin'){ 
             //redirect to admin panel
-            return \Redirect('/admin/dashboard')->with(['status' => 'Logged in successfully!', 'classAlert' => 'success text-center']);
+            return \Redirect('/admin/dashboard');
         }elseif ($user->role === 'shop') { 
             //redirect to shop panel
-            return \Redirect('/shop/index')->with(['status' => 'Logged in successfully!', 'classAlert' => 'success text-center']);
+            return \Redirect('/shop/index');
         }else{
             $orders = order::where('duration','>',date('Y-m-d H:i:s'))->whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(4);
             $countries = country::all();
             //redirect to standard user homepage
-            return \Redirect()->to('/home')->with(['status' => 'Logged in successfully!', 'classAlert' => 'success text-center']); 
+            return \Redirect('/home'); 
         }
     }
 
     public function update(Request $request, $id) {
         $user = User::with('users')->find($id);
         if(!$User) {
-            return \Redirect()->back()->with(['status' => 'User not found!', 'classAlert' => 'danger text-center']);
+            \Session::flash('status', 'User not found!');
+            \Session::flash('classAlert', 'danger text-center');
+            return \Redirect()->back();
         }
 
         $UserInfo = $User->user_info;
@@ -126,14 +130,17 @@ class AuthController extends Controller
             $user->password = bcrypt(frequest::input('password'));
             $user->save();
 
-            session(['classAlert' => 'sucess']);
-            return \Redirect()->to('/login')->with(['status' => 'Registration successful!', 'classAlert' => 'success text-center']);
+            \Session::flash('status', 'Registration successful!');
+            \Session::flash('classAlert', 'success text-center');
+            return \Redirect('/login');
         }
     }
 
     public function logout(){
         Auth::logout();
-        return \Redirect()->to('/')->with(['status' => 'Logged out successfully. Hope to see you next time', 'classAlert' => 'success text-center']);
+        \Session::flash('status', 'Logged out successfully. Hope to see you next time');
+        \Session::flash('classAlert', 'success text-center');
+        return \Redirect()->to('/');
     }
 
     public function sendWelcomeMail($data){

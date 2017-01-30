@@ -4,8 +4,8 @@
 
 @if (session('status'))
 <div class="container alert alert-{{ session('classAlert') }} alert-dismissable" data-dismiss="alert">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    {{ session('status')  }}
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	{{ session('status')  }}
 </div>
 @endif
 
@@ -62,7 +62,11 @@
 									@if($orderItem->price == '')
 									<td>{{ 'Not yet set by the seller' }}</td>
 									@else
+									@if($orderItem->new_price > 0)
 									<td>{{$user_currency_symbol}} {{$orderItem->new_price}} ({{$order->country->currency_symbol}} {{ $orderItem->price }})</td>
+									@else
+									<td>{{$order->country->currency_symbol}} {{ $orderItem->price }}</td>
+									@endif
 									@endif
 
 									<?php 
@@ -93,7 +97,11 @@
 						<div class="pull-right">
 							Total price: 
 							@if($price->price > 0)
+							@if($price->new_price > 0)
 							<span class="badge">{{$user_currency_symbol}} {{$price->new_price}} ({{$order->country->currency_symbol}} {{$price->price}})</span>
+							@else
+							<span class="badge">{{$order->country->currency_symbol}} {{$price->price}}</span>
+							@endif
 							@else
 							<span class="badge">Not yet set by the seller</span>
 							@endif
@@ -105,6 +113,7 @@
 		</div>
 	</div>
 
+	@if(!$price->price > 0)
 	<div class="panel panel-default col-md-6" style="height: 100%;">
 		<div class="panel-heading text-center">
 			<span style="font-size: 18px;"><b>Items owned by others in this order list</b></span>  
@@ -127,6 +136,7 @@
 			</div>
 		</div>
 	</div>
+	@endif
 	
 	@if ($price->price > 0 && $price->paidStatus == 0) 
 	<div class="panel panel-default col-md-6" style="height: 100%;">
@@ -141,7 +151,11 @@
 
 					<div class="">
 						<h4 class="text-center" style="font-size: 16px;">
+							@if($price->new_price > 0)
 							Processing Fee: <span class="label label-danger">{{$user_currency_symbol}} {{$price->new_price/10}} ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
+							else
+							Processing Fee: <span class="label label-danger">{{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
+							@endif
 							<br><br><br>
 
 							Pay now with PayPal or Credit Card
@@ -197,7 +211,11 @@
 
 					<div class="">
 						<h4 class="text-center" style="font-size: 16px;">
-							Processing Fee: <span class="label label-success">Paid {{$user_currency_symbol}} {{$price->new_price/10}}  ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
+							@if($price->new_price > 0)
+							Processing Fee: <span class="label label-danger">{{$user_currency_symbol}} {{$price->new_price/10}} ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
+							else
+							Processing Fee: <span class="label label-danger">{{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
+							@endif
 
 							<br><br>
 							<form class="form-horizontal" role="form" action="{{route('update_shipping_address')}}" method="POST">

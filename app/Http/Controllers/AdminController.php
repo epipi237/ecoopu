@@ -41,17 +41,16 @@ class AdminController extends Controller
 
     public function addAdmin(){
         $countries = Country::all();
-        return view('admin.addAdmin',compact('countries'));
+        return view('admin.addAdmin', compact('countries'));
     }
 
     public function register(){
 
         $rules = array(
-           'name' => 'required|max:255',
-           //'username' => 'required|min:3|unique:users',
-           'email' => 'required|email|max:255|unique:users',
-           'password' => 'required|min:6|confirmed',
-           );
+         'name' => 'required|max:255',
+         'email' => 'required|email|max:255|unique:users',
+         'password' => 'required|min:6|confirmed',
+         );
 
         $messages = array(
             'required' => 'The :attribute is required.',
@@ -67,11 +66,19 @@ class AdminController extends Controller
         } else {
             $admin = new User;
             $admin->name = Request::input('name');
-            //$admin->username = Request::input('username');
             $admin->role = Request::input('role');
             $admin->email = Request::input('email');
             $admin->password = bcrypt(Request::input('name'));
             $admin->save();
+
+            $data = Request::all();
+
+            //sending mail to newly registerd admin with details
+            $this->sendWelcomeMail($data);
+
+            \Session::flash('status', 'Successfully registered admin, check email for invitation with the details.');
+            \Session::flash('classAlert', 'success text-center');
+
             return view('admin.index');
         }
     }
@@ -83,8 +90,10 @@ class AdminController extends Controller
 
     public function addMarket(){
         $rules = array(
-           'name' => 'required|max:255',
-           );
+         'name' => 'required|max:255',
+         'currency_code' => 'required',
+         'currency_symbol' => 'required'
+         );
         $messages = array(
             'required' => 'The :attribute is required.',
             'same'  => 'The :others must match.'
@@ -97,9 +106,14 @@ class AdminController extends Controller
         } else {
             $country = new Country;
             $country->name = Request::input('name');
+            $country->currency_symbol = Request::input('currency_symbol');
+            $country->currency_code = Request::input('currency_code');
             $country->save();
-
             $countries = Country::all();
+
+            \Session::flash('status', 'Successfully registered market place.');
+            \Session::flash('classAlert', 'success text-center');
+
             return view('admin.market',compact('countries'));
         }
     }
@@ -107,7 +121,21 @@ class AdminController extends Controller
     public function removemarket($id){
         $item=country::find($id);
         $item->delete();
-        return \Redirect::back()->with('message','successfully deleted');
+        \Session::flash('status', 'Successfully deleted market place.');
+        \Session::flash('classAlert', 'success text-center');
+
+        return \Redirect::back()->with('message','Successfully deleted');
+    }
+
+    public function sendWelcomeMail($data){
+        //sending a welcome mail
+        \Mail::send('emails.welcome', $data, function ($message) use($data){
+
+            $message->from('info@ecoopu.com', 'Get the best deals for all your purchases');
+
+            $message->to($data['email'])->subject("Welcome to eCoopu");
+        });
+
     }
 
 }

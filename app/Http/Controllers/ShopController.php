@@ -23,8 +23,7 @@ class ShopController extends Controller
      *
      * @return void
      */
-     public function __construct()
-     {
+     public function __construct() {
      	$this->middleware('auth');
      }
 
@@ -38,7 +37,6 @@ class ShopController extends Controller
 
       $user_id = Auth::user()->id;
       $shops = Shop::where('user_id', $user_id)->get();
-      //dd($shops);
       $countries = country::all();
 
       $orders = order::join('shops', function($join) use($user_id){
@@ -143,7 +141,7 @@ class ShopController extends Controller
           return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
         }
 
-        return redirect()->to('/shop/clients/'.$price->order_id)->with('status', 'Price(s) saved successfully!!!');
+        return redirect()->to('/shop/clients/'.$price->order_id)->with(['status' => 'Price(s) saved successfully!!!', 'classAlert' => 'success text-center']);
       }
     }
 
@@ -169,7 +167,9 @@ class ShopController extends Controller
         $orderItem->order_id=Request::input('orderid');
         $orderid=Request::input('orderid');
         $orderItem->save();
-        return \Redirect("pages/create/orderlist/$orderid");
+        \Session::put('status', '');
+
+        return \Redirect("pages/create/orderlist/$orderid")->with(['status' => '', 'classAlert' => '']);
       }
     }
 

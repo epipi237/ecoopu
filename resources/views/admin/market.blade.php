@@ -22,6 +22,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <td>Name</td>
+                                <td>No. of Shops</td>
                                 <td>Action</td>
                             </thead>
 
@@ -30,6 +31,7 @@
                                 @foreach($countries as $market)
                                 <tr>
                                     <td>{{ $market->name }}</td>
+                                    <td>{{ count($market->shops) }}</td>
                                     <td><a href="/marketplaceremove/{{$market->id}}">  <button class="btn btn-danger">Remove</button></a></td>
                                 </tr>
                                 @endforeach
@@ -61,11 +63,11 @@
             <div class="modal-body">
              <form class="form-horizontal" role="form" method="POST" action="{{ route('market') }}">
                 {{ csrf_field() }}
-                <input type="hidden" name="_token" value="{{csrf_token()}}">
+
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <label for="name" class="col-md-4 control-label">Name</label>
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required="required" placeholder="Germany">
                         @if($errors->has('name'))
                         <span class="help-block">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -73,6 +75,31 @@
                         @endif
                     </div>
                 </div>
+
+                <div class="form-group{{ $errors->has('currency_code') ? ' has-error' : '' }}">
+                    <label for="currency_code" class="col-md-4 control-label">Currency Code</label>
+                    <div class="col-md-6">
+                        <input id="currency_code" type="text" class="form-control" name="currency_code" value="{{ old('currency_code') }}" required="required" placeholder="EUR">
+                        @if($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('currency_code') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('currency_symbol') ? ' has-error' : '' }}">
+                    <label for="currency_symbol" class="col-md-4 control-label">Currency Symbol</label>
+                    <div class="col-md-6">
+                        <input id="currency_symbol" type="text" class="form-control" name="currency_symbol" value="{{ old('currency_symbol') }}" required="required" placeholder="€">
+                        @if($errors->has('currency_symbol'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('currency_symbol') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
                         <button type="submit" class="btn btn-primary">

@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
         $countries = country::all();
         $orders = order::where('duration','>',date('Y-m-d H:i:s'))->orderBy('id','desc')->paginate(4);
-        return view('home', compact('countries','orders'));
+
+        return view('home', compact('countries', 'orders'));
     }
 }

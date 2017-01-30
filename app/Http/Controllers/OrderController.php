@@ -42,6 +42,7 @@ class OrderController extends Controller{
     public function order(){
         $orders=Order::whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(8);
         $countries=country::all();
+        \Session::set('status', '');
 
         return view('pages.order', compact('orders', 'countries'));
     }
@@ -80,7 +81,7 @@ class OrderController extends Controller{
             $orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
             $orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
 
-            return Redirect::to('pages/create/orderlist/'.$order->id)->with('status', 'successfully created');
+            return Redirect::to('pages/create/orderlist/'.$order->id)->with(['status' => 'Order list successfully created', 'classAlert' => 'success text-center']);
         } 
     }
 
@@ -106,9 +107,11 @@ class OrderController extends Controller{
         }
 
         if($price->paidStatus == true){
-            \Request::session()->put(['status'=>'Thanks for completing your platform charges, you can now update your delivery address. The seller will be notified of your payment and can contact you for your order.', 'classAlert' => 'success']);
-        }elseif (session('status') == '') {
-            \Request::session()->put(['status'=>'For your order to be delivered you need to pay a processing fee', 'classAlert' => 'danger text-center']);
+            \Session::flash('status', 'Thanks for completing your platform charges, you can now update your delivery address. The seller will be notified of your payment and can contact you for your order.');
+            \Session::flash('classAlert', 'success');
+        }elseif($price->paidStatus == false) {
+            \Session::flash('status', 'For your order to be delivered you need to pay a processing fee.'); 
+            \Session::flash('classAlert', 'danger text-center');
         }
 
         $paypalUrl = 'http://ecoopu.webshinobis.com/pages/create/orderlist/'.$order->id;
@@ -137,7 +140,8 @@ class OrderController extends Controller{
         $request = Request::all();
         $merchantIdentityToken = 'bz6NBE8VbOISB0AYsYGcXrbfxYf1D-gxvvg2qJ-ORWUUSr65xDXoEextb1u';
         if($status == 'failed'){
-            session(['status'=>'Sorry but couldn\'t process your payment, please try again.', 'classAlert' => 'danger text-center']);
+            \Session::flash('status', 'Sorry but couldn\'t process your payment, please try again.');
+            \Session::flash('classAlert', 'danger text-center');
             return $this->orderlist($id);
         }else{
             //updating the price table to say the platform fee has been paid
@@ -158,7 +162,8 @@ class OrderController extends Controller{
             $transaction->status = $request['st'];
             $transaction->save();
 
-            session(['status'=>'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.', 'classAlert' => 'success text-center']);
+            \Session::flash('status', 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
+            \Session::flash('classAlert', 'success text-center');
 
             return $this->orderlist($id);
         }
@@ -169,7 +174,7 @@ class OrderController extends Controller{
         $request = Request::all();
         $merchantIdentityToken = 'bz6NBE8VbOISB0AYsYGcXrbfxYf1D-gxvvg2qJ-ORWUUSr65xDXoEextb1u';
         if($status == 'failed'){
-            session(['status'=>'Sorry but couldn\'t process your payment, please try again.', 'classAlert' => 'danger text-center']);
+            //session(['status'=>'Sorry but couldn\'t process your payment, please try again.', 'classAlert' => 'danger text-center']);
         }else{
             //updating the price table to say the platform fee has been paid
             $order = order::find($id);
@@ -246,20 +251,23 @@ class OrderController extends Controller{
         $orders=Order::whereUserId(Auth::user()->id)->where('country_id',$id)->orderBy('id','desc')->paginate(8);
         $countries=country::all();
         $country = country::find($id);
-        // dd($country);
-     //  dd($orders);
+        \Session::set('status', '');
+
         return view('pages.marketplaces',compact('orders','countries','country'));
     }
 
     public function expired(){
         $countries=country::all();
         $orders=order::where('duration','<',date('Y-m-d H:i:s'))->paginate(4);
+        \Session::set('status', '');
+
         return view('pages.expiredorder', compact('countries','orders'));
     }
 
     public function removeorder($id){
         $item=order::find($id);
         $item->delete();
+
         return \Redirect::back()->with('message', 'Order successfully deleted');
     }
 
