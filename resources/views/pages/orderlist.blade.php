@@ -65,7 +65,7 @@
 									@if($orderItem->price == '')
 									<td>{{ 'Not yet set by the seller' }}</td>
 									@else
-									<td>{{ $orderItem->price }}</td>
+									<td>{{$order->country->currency_symbol}} {{ $orderItem->price }}</td>
 									@endif
 
 									<?php 
@@ -96,7 +96,7 @@
 						<div class="pull-right">
 							Total price: 
 							@if($price->price > 0)
-							<span class="badge">${{$price->price}}</span>
+							<span class="badge">{{$order->country->currency_symbol}} {{$price->price}}</span>
 							@else
 							<span class="badge">Not yet set by the seller</span>
 							@endif
@@ -121,7 +121,7 @@
 
 					<div class="">
 						<h4 class="text-center" style="font-size: 16px;">
-							Processing Fee: <span class="label label-danger">${{$processingFee}} (1% of Total Cost)</span>
+							Processing Fee: <span class="label label-danger">{{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
 							<br><br><br>
 
 							Pay now with PayPal or Credit Card
@@ -134,70 +134,71 @@
 
 								<input type="hidden" name="bn" value="Platform_Charges_Ecoopu_Com">
 
+								<input type="hidden" name="currency_code" value="{{$order->country->currency_code}}">
 								<!-- 
 								This is the correct way to calculate the platform fee but it's commented out for testing purposes
-								<input type="hidden" name="amount" value="{{$processingFee}}"> 
-							-->
-							<input type="hidden" name="amount" value="{{0.1}}">
+								<input type="hidden" name="amount" value="{{$processingFee}}"> -->
+								<input type="hidden" name="amount" value="{{0.1}}">
 
-							<input type="hidden" name="item_name" value="Platform Charges (1% of total cost of your order)">
+								<input type="hidden" name="item_name" value="Platform Charges (1% of total cost of your order)">
 
-							<input type="hidden" name="quantity" value="1">
+								<input type="hidden" name="quantity" value="1">
 
-							<input type="hidden" name="return" value="{{$paypalUrl.'/success'}}">
+								<input type="hidden" name="return" value="{{$paypalUrl.'/success'}}">
 
-							<input type="hidden" name="cancel_return" value="{{$paypalUrl.'/failed'}}">
+								<input type="hidden" name="cancel_return" value="{{$paypalUrl.'/failed'}}">
 
-							<input type="hidden" name="charset" value="utf-8">
+								<input type="hidden" name="charset" value="utf-8">
 
-							<input type="hidden" name="hosted_button_id" value="ACW6S87267QSG">
+								<input type="hidden" name="hosted_button_id" value="ACW6S87267QSG">
 
-							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 
-							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
+								<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+							</form>
 
-					</h4>		
+						</h4>		
+					</div>
+
 				</div>
-
 			</div>
 		</div>
 	</div>
-</div>
-@elseif($price->price > 0 && $price->paidStatus == 1)
-<div class="panel panel-default col-md-6" style="height: 100%;">
-	<div class="panel-heading text-center">
-		<span style="font-size: 18px;"><b>Processing Fee Payment</b></span>  
-	</div> 
+	@elseif($price->price > 0 && $price->paidStatus == 1)
+	<div class="panel panel-default col-md-6" style="height: 100%;">
+		<div class="panel-heading text-center">
+			<span style="font-size: 18px;"><b>Processing Fee Payment</b></span>  
+		</div> 
 
-	<div class="panel-body">
-		<div class="row">
+		<div class="panel-body">
+			<div class="row">
 
-			<div class="col-md-12"> 
+				<div class="col-md-12"> 
 
-				<div class="">
-					<h4 class="text-center" style="font-size: 16px;">
-						Processing Fee: <span class="label label-success">Paid ${{$processingFee}} (1% of Total Cost)</span>
+					<div class="">
+						<h4 class="text-center" style="font-size: 16px;">
+							Processing Fee: <span class="label label-success">Paid {{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
 
-						<br><br>
-						<form class="form-horizontal" role="form" action="{{route('update_shipping_address')}}" method="POST">
-							{{ csrf_field() }}
-							<input type="hidden" name="id" value="{{$order->orderlist_address->id}}" />
-							Shipping Address: <input type="text" class="form-control" name="shipping_address" value="{{$order->orderlist_address->description}}" style="display: inline-block; width: 70%;" />
 							<br><br>
-							<button class="btn-md btn-success pull-right">Save</button>
-						</form>
-						<br>
-					</h4>		
-					<h5>
-						Thanks for paying the platform charges, your seller will contact you with more information on how to pay for the goods and other arrangements for shipping to the address shown in the field above.
-					</h5>
+							<form class="form-horizontal" role="form" action="{{route('update_shipping_address')}}" method="POST">
+								{{ csrf_field() }}
+								<input type="hidden" name="id" value="{{$order->orderlist_address->id}}" />
+								Shipping Address: 
+								<input type="text" class="form-control" name="shipping_address" value="@if( $order->orderlist_address->description != 'Not yet specified by the client'){{$order->orderlist_address->description}}@endif" style="display: inline-block; width: 70%;" />
+								<br><br>
+								<button class="btn-md btn-success pull-right">Save</button>
+							</form>
+							<br>
+						</h4>		
+						<h5>
+							Thanks for paying the platform charges, your seller will contact you with more information on how to pay for the goods and other arrangements for shipping to the address shown in the field above.
+						</h5>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-@endif
+	@endif
 </div>
 
 <!-- Modal -->

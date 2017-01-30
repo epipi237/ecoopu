@@ -68,7 +68,7 @@ class OrderController extends Controller{
             $order->country_id=Request::input('market');
             $order->save();
             $address=new Orderlist_address;
-            $address->description = 'will be asked later';//Request::input('location');
+            $address->description = 'Not yet specified by the client';//Request::input('location');
             $address->user_id=Auth::user()->id;
             $address->order_id=$order->id;
             $address->save();

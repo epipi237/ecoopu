@@ -45,7 +45,7 @@
 								<tr>
 									<td>{{ $orderItem->product }}</td>
 									<td>{{ $orderItem->quantity }}</td>
-									<td><input type="number" placeholder="$" class='form-control sub_price' name="{{$orderItem->id}}" id="{{$orderItem->id}}" value="{{$orderItem->price}}" required="required">	</td>
+									<td><input type="number" placeholder="{{$order->country->currency_symbol}}" class='form-control sub_price' name="{{$orderItem->id}}" id="{{$orderItem->id}}" value="{{$orderItem->price}}" required="required">	</td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -57,7 +57,7 @@
 						<input type="hidden" name="user_id" value="{{$user->id}}" id="user_id">
 
 						<div class="col-sm-6 pull-right"> 
-							Total Price: <input type="number" placeholder="$" class='form-control' name="total_price" id="total_price" value="{{$price->price}}" required="required">
+							Total Price: <input type="number" placeholder="{{$order->country->currency_symbol}}" class='form-control' name="total_price" id="total_price" value="{{$price->price}}" required="required">
 							<button type="submit" class="btn btn-primary pull-right">
 								<i class="fa fa-btn fa-add"></i> Save
 							</button>
@@ -78,14 +78,14 @@
 							<tr>
 								<td>{{ $orderItem->product }}</td>
 								<td>{{ $orderItem->quantity }}</td>
-								<td>{{ $orderItem->price }}</td>
+								<td>{{$order->country->currency_symbol}} {{ $orderItem->price }}</td>
 							</tr>
 							@endforeach
 						</tbody>
 					</table>
 					<div class="pull-right">
-						Total price: <span class="badge">${{$price->price}}</span>
-						Processing Fee: <span class="label label-danger">${{$processingFee}} (1% of Total Cost)</span>
+						Total price: <span class="badge">{{$order->country->currency_symbol}} {{$price->price}}</span>
+						Processing Fee: <span class="label label-danger">{{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
 					</div>
 
 					@endif
@@ -101,10 +101,10 @@
 				</div>
 				<div class="panel-body">
 					<div class="">
-						Client's Phone: <input type="text" class="form-control" disabled="disabled" value="{{$user->phone}}" style="display: inline-block; width: 70%;" />
-						Client's Email: <input type="text" class="form-control" disabled="disabled" value="{{$user->email}}" style="display: inline-block; width: 70%;" />
+						Client's Phone: <input type="text" class="form-control" disabled="disabled" value="{{$user->phone}}" style="display: inline-block; width: 70%;" /> <br><br>
+						Client's Email: <input type="text" class="form-control" disabled="disabled" value="{{$user->email}}" style="display: inline-block; width: 70%;" /> <br><br>
 						Shipping Address: <input type="text" class="form-control" disabled="disabled" value="{{$order->orderlist_address->description}}" style="width: 60%;" />
-								<br><br>
+								<br>
 					</div>
 
 				</div>
