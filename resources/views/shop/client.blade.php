@@ -23,7 +23,7 @@
 						<tbody>
 							@foreach($clients as $client)
 							<tr>
-								<td>{{ $client->name}}</td>
+								<td>{{ucfirst($client->name)}}</td>
 								<td>
 									<a href="/shop/orderitems/user/{{$client->id}}/order/{{$order_id}}"><button type="button" class="btn btn-info">Details</button>
 									</a>

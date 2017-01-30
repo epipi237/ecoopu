@@ -36,7 +36,7 @@
 								@foreach($orders as $order)
 								<tr>
 									<td>{{$order->id}}</td>
-									<td>{{$order->shop}}</td>
+									<td>{{ucfirst($order->shop)}}</td>
 									<td>{{count($order->orderItems)}}</td>
 									<td>
 										<a href="/shop/clients/{{$order->id}}"><button type="button" class="btn btn-info"> More</button>
@@ -64,7 +64,7 @@
 
 								@foreach($shops as $shop)
 								<tr>
-									<td>{{$shop->name}}</td>
+									<td>{{ucfirst($shop->name)}}</td>
 								</tr>
 								@endforeach
 							</tbody>

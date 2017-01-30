@@ -27,7 +27,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4 class="text-center">{{$user->name}}'s Items for Order List</h4>
+					<h4 class="text-center">{{ucfirst($user->name)}}'s Items for Order List</h4>
 				</div>
 				<div class="panel-body">
 					@if(!$price->paidStatus)
@@ -43,7 +43,7 @@
 
 								@foreach($orderItems as $orderItem)
 								<tr>
-									<td>{{ $orderItem->product }}</td>
+									<td>{{ ucfirst($orderItem->product) }}</td>
 									<td>{{ $orderItem->quantity }}</td>
 									<td><input type="number" placeholder="{{$order->country->currency_symbol}}" class='form-control sub_price' name="{{$orderItem->id}}" id="{{$orderItem->id}}" value="{{$orderItem->price}}" required="required">	</td>
 								</tr>
@@ -76,7 +76,7 @@
 
 							@foreach($orderItems as $orderItem)
 							<tr>
-								<td>{{ $orderItem->product }}</td>
+								<td>{{ ucfirst($orderItem->product) }}</td>
 								<td>{{ $orderItem->quantity }}</td>
 								<td>{{$order->country->currency_symbol}} {{ $orderItem->price }}</td>
 							</tr>
@@ -97,7 +97,7 @@
 		<div class="col-md-4"> 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4 class="text-center">{{$user->name}}'s Address</h4>
+					<h4 class="text-center">{{ucfirst($user->name)}}'s Contact Information</h4>
 				</div>
 				<div class="panel-body">
 					<div class="">
