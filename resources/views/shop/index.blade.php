@@ -119,7 +119,7 @@
 
             <!--/.navbar-header -->
 
-            <div class="navbar-collapse collapse" id="navigation" style="margin-left: -8%;">
+            <div class="navbar-collapse collapse" id="navigation" style="margin-left: -5%;">
 
             <ul class="nav navbar-nav navbar-left">
                 @if(Auth::guest())

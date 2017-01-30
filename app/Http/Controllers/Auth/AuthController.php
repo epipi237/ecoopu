@@ -49,23 +49,25 @@ class AuthController extends Controller
     }
 
     protected function authenticated($request, $user){ 
-        //dd($user);
-        if($user->role === 'admin'){
-            return \Redirect('/admin/dashboard'); //redirect to admin panel
-        }elseif ($user->role === 'shop') {
-            return \Redirect('/shop/index');
+        
+        if($user->role === 'admin'){ 
+            //redirect to admin panel
+            return \Redirect('/admin/dashboard')->with(['status' => 'Logged in successfully!', 'classAlert' => 'success text-center']);
+        }elseif ($user->role === 'shop') { 
+            //redirect to shop panel
+            return \Redirect('/shop/index')->with(['status' => 'Logged in successfully!', 'classAlert' => 'success text-center']);
         }else{
             $orders = order::where('duration','>',date('Y-m-d H:i:s'))->whereUserId(Auth::user()->id)->orderBy('id','desc')->paginate(4);
             $countries = country::all();
             //redirect to standard user homepage
-            return \Redirect('home'); 
+            return \Redirect()->to('/home')->with(['status' => 'Logged in successfully!', 'classAlert' => 'success text-center']); 
         }
     }
 
     public function update(Request $request, $id) {
         $user = User::with('users')->find($id);
         if(!$User) {
-            return response('User not found', 404);
+            return \Redirect()->back()->with(['status' => 'User not found!', 'classAlert' => 'danger text-center']);
         }
 
         $UserInfo = $User->user_info;
@@ -123,13 +125,15 @@ class AuthController extends Controller
             $user->role = frequest::input('role');
             $user->password = bcrypt(frequest::input('password'));
             $user->save();
-            return \Redirect()->to('/login')->with('status', 'Registration successful!');
+
+            session(['classAlert' => 'sucess']);
+            return \Redirect()->to('/login')->with(['status' => 'Registration successful!', 'classAlert' => 'success text-center']);
         }
     }
 
     public function logout(){
         Auth::logout();
-        return \Redirect()->to('/')->with('status', 'Logged out successfully. Hope to see you next time');
+        return \Redirect()->to('/')->with(['status' => 'Logged out successfully. Hope to see you next time', 'classAlert' => 'success text-center']);
     }
 
     public function sendWelcomeMail($data){

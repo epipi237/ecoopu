@@ -2,13 +2,13 @@
 
 @section('content')
 
+<?php 
+dd($request->session()->all());
+?>
 @if (session('status'))
-<div class="container alert alert-success text-center">
-	{{ session('status')  }}
-</div>
-@elseif($status)
-<div class="container alert alert-{{$classAlert}} text-center">
-	{{ $status }}
+<div class="container alert alert-{{ Session::get('classAlert') }} alert-dismissable" data-dismiss="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    {{ Session::get('status')  }}
 </div>
 @endif
 
@@ -41,7 +41,7 @@
 						<table class="table table-striped" style="margin-top: -5%; font-size: 16px;">
 							<thead>
 								<td>Product name</td>
-								<!-- <td>Shop</td> -->
+
 								<td>Quantity</td>
 
 								<td>Price</td>
@@ -59,7 +59,7 @@
 								@foreach($orderItems as $orderItem)
 								<tr>
 									<td>{{ $orderItem->product }}</td>
-									<!-- <td>{{ $orderItem->shop }}</td> -->
+
 									<td>{{ $orderItem->quantity }}</td>
 
 									@if($orderItem->price == '')
@@ -103,6 +103,29 @@
 
 						</div>
 					</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default col-md-6" style="height: 100%;">
+		<div class="panel-heading text-center">
+			<span style="font-size: 18px;"><b>Items owned by others in this order list</b></span>  
+		</div> 
+
+		<div class="panel-body">
+			<div class="row">
+
+				<div class="col-md-12"> 
+
+					<div class="">
+						<h4 class="text-center" style="font-size: 16px;">
+							
+						</h4>		
+						<h5>
+							You might want to add similar products to your order, this will encourage the seller to reduce the cost for this product because of the high demand for these items.
+						</h5>
+					</div>
 				</div>
 			</div>
 		</div>

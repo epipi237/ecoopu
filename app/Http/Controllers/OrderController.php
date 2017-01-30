@@ -84,7 +84,7 @@ class OrderController extends Controller{
         } 
     }
 
-    public function orderlist($id, $status = "For your order to be delivered you need to pay a processing fee", $classAlert='success'){
+    public function orderlist($id){
         $order=order::find($id);
         $countries = country::all();
         $user_id = Auth::user()->id;
@@ -106,7 +106,9 @@ class OrderController extends Controller{
         }
 
         if($price->paidStatus == true){
-            $status = "Thanks for completing your platform charges, you can now update your delivery address. The seller will be notified of your payment and can contact you for your order.";
+            \Request::session()->put(['status'=>'Thanks for completing your platform charges, you can now update your delivery address. The seller will be notified of your payment and can contact you for your order.', 'classAlert' => 'success']);
+        }elseif (session('status') == '') {
+            \Request::session()->put(['status'=>'For your order to be delivered you need to pay a processing fee', 'classAlert' => 'danger text-center']);
         }
 
         $paypalUrl = 'http://ecoopu.webshinobis.com/pages/create/orderlist/'.$order->id;
@@ -128,14 +130,15 @@ class OrderController extends Controller{
             $price->new_price = $this->convertCurrency($order->country->currency_code, $user_currency_code, $price->price);
         }
 
-        return view('pages.orderlist', compact('orderItems', 'order', 'user_currency_symbol', 'user_id', 'countries', 'price', 'processingFee', 'status', 'paypalUrl', 'classAlert', 'orderlist_address'));
+        return view('pages.orderlist', compact('orderItems', 'order', 'user_currency_symbol', 'user_id', 'countries', 'price', 'processingFee', 'paypalUrl', 'orderlist_address'));
     }
 
     public function paymentStatus($id, $status){
         $request = Request::all();
         $merchantIdentityToken = 'bz6NBE8VbOISB0AYsYGcXrbfxYf1D-gxvvg2qJ-ORWUUSr65xDXoEextb1u';
         if($status == 'failed'){
-            return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
+            session(['status'=>'Sorry but couldn\'t process your payment, please try again.', 'classAlert' => 'danger text-center']);
+            return $this->orderlist($id);
         }else{
             //updating the price table to say the platform fee has been paid
             $order=order::find($id);
@@ -155,7 +158,9 @@ class OrderController extends Controller{
             $transaction->status = $request['st'];
             $transaction->save();
 
-            return $this->orderlist($id, 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
+            session(['status'=>'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.', 'classAlert' => 'success text-center']);
+
+            return $this->orderlist($id);
         }
 
     }
@@ -164,7 +169,7 @@ class OrderController extends Controller{
         $request = Request::all();
         $merchantIdentityToken = 'bz6NBE8VbOISB0AYsYGcXrbfxYf1D-gxvvg2qJ-ORWUUSr65xDXoEextb1u';
         if($status == 'failed'){
-            return $this->orderlist($id, "Sorry but couldn't process your payment, please try again", 'danger');
+            session(['status'=>'Sorry but couldn\'t process your payment, please try again.', 'classAlert' => 'danger text-center']);
         }else{
             //updating the price table to say the platform fee has been paid
             $order = order::find($id);
@@ -201,13 +206,13 @@ class OrderController extends Controller{
         $orderlist_address->description = $request['shipping_address'];
         $orderlist_address->save();
 
-        return Redirect::back()->with('status', 'Successfully updated your shipping address');
+        return Redirect::back()->with(['status' => 'Successfully updated your shipping address', 'classAlert' => 'success text-center']);
     }
 
     public function removeitem($id){
         $item=orderItem::find($id);
         $item->delete();
-        return \Redirect::back()->with('status', 'successfully deleted');
+        return \Redirect::back()->with(['status' => 'Item successfully deleted', 'classAlert' => 'success text-center']);
     }
 
     public function createOrderList(){
@@ -232,7 +237,8 @@ class OrderController extends Controller{
             $orderItem->order_id=Request::input('orderid');
             $orderid=Request::input('orderid');
             $orderItem->save();
-            return \Redirect("pages/create/orderlist/$orderid");
+
+            return \Redirect("pages/create/orderlist/$orderid")->with(['status' => 'Order list successfully created', 'classAlert' => 'success text-center']);
         }
     }
 
@@ -254,7 +260,7 @@ class OrderController extends Controller{
     public function removeorder($id){
         $item=order::find($id);
         $item->delete();
-        return \Redirect::back()->with('message','successfully deleted');
+        return \Redirect::back()->with('message', 'Order successfully deleted');
     }
 
     /*

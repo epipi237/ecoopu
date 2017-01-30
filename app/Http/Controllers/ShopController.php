@@ -75,7 +75,7 @@ class ShopController extends Controller
 
     public function clients($id){
       $order=order::find($id);
-      if(!$order) return \Redirect::back()->with('status', 'Orderlist is empty');
+      if(!$order) return \Redirect::back()->with('status', 'Orderlist not found');
 
       $order_id = $order->id;
       $countries = country::all();
@@ -117,7 +117,7 @@ class ShopController extends Controller
       $validator = Validator::make(Input::all(), $rules);
       if ($validator->fails()) {
         $messages = $validator->messages();
-        return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
+        return Redirect::back()->with(['status' => 'Sorry wrong price value entered', 'classAlert' => 'danger text-center'])->withInput();
 
       } else {
 
@@ -143,7 +143,7 @@ class ShopController extends Controller
           return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
         }
 
-        return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');
+        return redirect()->to('/shop/clients/'.$price->order_id)->with('status', 'Price(s) saved successfully!!!');
       }
     }
 

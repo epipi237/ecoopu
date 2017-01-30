@@ -3,7 +3,8 @@
 @section('content')
 
 @if (session('status'))
-<div class="container alert alert-success text-center">
+<div class="container alert alert-{{ session('classAlert') }} alert-dismissable" data-dismiss="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
     {{ session('status') }}
 </div>
 @endif
