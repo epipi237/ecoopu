@@ -109,3 +109,152 @@ git pull ecoopu master
 git add .
 git commit -m "Fixed issues"
 git push ecoopu master
+git status
+git checkout .
+git status
+git pull ecoopu master
+composer updpate
+composer update
+php composer.phar update
+exit 
+git pull origin master
+git remote -v
+git pull ecoopu master
+git pull ecoopu master
+git pull ecoopu master
+git status
+exit;
+git pull ecoopu master
+php artisan migrate
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu origin
+git pull ecoopu origin
+git pul
+git pull
+git remote -v
+git pull ecoopu origin
+git pull ecoopu origin
+git pull ecoopu origin
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+git pull ecoopu master
+exit;
+git pull ecoopu master
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+php artisan migrate
+git pull ecoopu master
+php artisan migrate
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+php artisan migrate
+exit;
+php artisan migrate
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+git pull ecoopu master
+exit;
+git pull ecoopu master
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+php artisan migrate
+php composer.phar update
+php artisan migrate
+reset
+git pull ecoopu master
+service mysql restart
+service .
+sudo service .
+su root service mysql restart
+su 
+reset
+git pull ecoopu master
+reset
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+git pull ecoopu master
+exti;
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exti;
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
+git pull ecoopu master
+git pull ecoopu master
+exit;
+git pull ecoopu master
+exit;
