@@ -13,7 +13,7 @@ class Order extends Model
     }
 
     public function orderlist_address(){
-        return $this->hasOne('App\Orderlist_address');
+        return $this->hasMany('App\Orderlist_address');
     }
  
     public function orderItems(){

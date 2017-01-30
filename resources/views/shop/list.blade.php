@@ -9,7 +9,7 @@
 @endif
 
 <style type="text/css">
-	#total_price {
+	.blur {
 		border-style: inset;    
 		cursor: not-allowed;
 		background-color: #eee;
@@ -57,7 +57,7 @@
 						<input type="hidden" name="user_id" value="{{$user->id}}" id="user_id">
 
 						<div class="col-sm-6 pull-right"> 
-							Total Price: <input type="number" placeholder="{{$order->country->currency_symbol}}" class='form-control' name="total_price" id="total_price" value="{{$price->price}}" required="required">
+							Total Price: <input type="number" placeholder="{{$order->country->currency_symbol}}" class='form-control blur' name="total_price" id="total_price" value="{{$price->price}}" required="required">
 							<button type="submit" class="btn btn-primary pull-right">
 								<i class="fa fa-btn fa-add"></i> Save
 							</button>
@@ -101,9 +101,9 @@
 				</div>
 				<div class="panel-body">
 					<div class="">
-						Client's Phone: <input type="text" class="form-control" disabled="disabled" value="{{$user->phone}}" style="display: inline-block; width: 70%;" /> <br><br>
-						Client's Email: <input type="text" class="form-control" disabled="disabled" value="{{$user->email}}" style="display: inline-block; width: 70%;" /> <br><br>
-						Shipping Address: <input type="text" class="form-control" disabled="disabled" value="{{$order->orderlist_address->description}}" style="width: 60%;" />
+						Client's Phone: <input type="text" class="form-control blur" value="{{$user->phone}}" style="display: inline-block; width: 70%;" /> <br><br>
+						Client's Email: <input type="text" class="form-control blur" value="{{$user->email}}" style="display: inline-block; width: 70%;" /> <br><br>
+						Shipping Address: <input type="text" class="form-control blur" value="{{$order->orderlist_address->description}}" style="width: 60%;" />
 								<br>
 					</div>
 

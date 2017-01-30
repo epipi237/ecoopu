@@ -65,7 +65,7 @@
 									@if($orderItem->price == '')
 									<td>{{ 'Not yet set by the seller' }}</td>
 									@else
-									<td>{{$order->country->currency_symbol}} {{ $orderItem->price }}</td>
+									<td>{{$user_currency_symbol}} {{$orderItem->new_price}} ({{$order->country->currency_symbol}} {{ $orderItem->price }})</td>
 									@endif
 
 									<?php 
@@ -96,7 +96,7 @@
 						<div class="pull-right">
 							Total price: 
 							@if($price->price > 0)
-							<span class="badge">{{$order->country->currency_symbol}} {{$price->price}}</span>
+							<span class="badge">{{$user_currency_symbol}} {{$price->new_price}} ({{$order->country->currency_symbol}} {{$price->price}})</span>
 							@else
 							<span class="badge">Not yet set by the seller</span>
 							@endif
@@ -121,7 +121,7 @@
 
 					<div class="">
 						<h4 class="text-center" style="font-size: 16px;">
-							Processing Fee: <span class="label label-danger">{{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
+							Processing Fee: <span class="label label-danger">{{$user_currency_symbol}} {{$price->new_price/10}} ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
 							<br><br><br>
 
 							Pay now with PayPal or Credit Card
@@ -177,14 +177,19 @@
 
 					<div class="">
 						<h4 class="text-center" style="font-size: 16px;">
-							Processing Fee: <span class="label label-success">Paid {{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
+							Processing Fee: <span class="label label-success">Paid {{$user_currency_symbol}} {{$price->new_price/10}}  ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
 
 							<br><br>
 							<form class="form-horizontal" role="form" action="{{route('update_shipping_address')}}" method="POST">
 								{{ csrf_field() }}
-								<input type="hidden" name="id" value="{{$order->orderlist_address->id}}" />
+								<input type="hidden" name="id" value="{{$orderlist_address->id}}" />
+								<input type="hidden" name="order_id" value="{{$order->id}}" />
 								Shipping Address: 
-								<input type="text" class="form-control" name="shipping_address" value="@if( $order->orderlist_address->description != 'Not yet specified by the client'){{$order->orderlist_address->description}}@endif" style="display: inline-block; width: 70%;" />
+								@if($orderlist_address->description == 'Not yet specified by the client')
+								<input type="text" class="form-control" name="shipping_address" value="" style="display: inline-block; width: 70%;" />
+								@else
+								<input type="text" class="form-control" name="shipping_address" value="{{$orderlist_address->description}}" style="display: inline-block; width: 70%;" />
+								@endif
 								<br><br>
 								<button class="btn-md btn-success pull-right">Save</button>
 							</form>
@@ -201,9 +206,8 @@
 	@endif
 </div>
 
-<!-- Modal -->
-
 @if(!($price->price > 0))
+<!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 
