@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
+use Request;
+use App\Http\Requests;
 use App\User;
 use App\Order;
 use App\country;
