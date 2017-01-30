@@ -108,7 +108,7 @@ class AuthController extends Controller
             return \Redirect::back()->withErrors($validator)->withInput();
 
         } else {
-
+            $data = Request::all();
             //sending a welcome mail
             Mail::send('emails.welcome', $data, function ($message) use($data){
 
