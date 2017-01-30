@@ -2,13 +2,10 @@
 
 @section('content')
 
-<?php 
-dd($request->session()->all());
-?>
 @if (session('status'))
-<div class="container alert alert-{{ Session::get('classAlert') }} alert-dismissable" data-dismiss="alert">
+<div class="container alert alert-{{ session('classAlert') }} alert-dismissable" data-dismiss="alert">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    {{ Session::get('status')  }}
+    {{ session('status')  }}
 </div>
 @endif
 
