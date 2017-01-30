@@ -80,7 +80,7 @@ class OrderController extends Controller{
             $orders = Order::where('user_id', Auth::user()->id)->firstOrFail();
             $orderItems =OrderItem::where('user_id', Auth::user()->id)->get();
 
-            return Redirect::back()->with('status','successfully created');
+            return Redirect::to('pages/create/orderlist/'.$order->id)->with('status', 'successfully created');
         } 
     }
 

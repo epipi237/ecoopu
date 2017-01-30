@@ -35,6 +35,7 @@
     .logo{
       display: inline-block;
       float: left;
+      padding: 10px;
     }
 
     ul{
@@ -78,8 +79,8 @@
   <div class="head">
     <span class="logo">
       <a href="http://ecoopu.com">
-        <img src="{{URL::to('images')}}/logo.gif">
-        eCoopu
+        <img src="{{URL::to('images')}}/logo.gif" style="width: 30%; height: 30%;" /><br>
+        <span style="padding-left: 10%;">eCoopu</span>
       </a>
     </span>
 
@@ -93,9 +94,9 @@
   <p style="color:black;padding: 2%;">
 
     @if(isset($email))
-    <h3 style="color:black;padding: 2%;">Hi {{$email}}, </h3>
+    <h3 style="color:black!important;padding: 2%!important;">Hi {{$email}}, </h3>
     @else
-    <h3 style="color:black;padding: 2%;"> Hi John,  </h3>
+    <h3 style="color:black!important;padding: 2%!important;"> Hi wleo37@gmail.com,  </h3>
     @endif
 
   </p>

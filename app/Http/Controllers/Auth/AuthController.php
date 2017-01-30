@@ -111,13 +111,9 @@ class AuthController extends Controller
 
         } else {
             $data = Request::all();
-            //sending a welcome mail
-            Mail::send('emails.welcome', $data, function ($message) use($data){
 
-                $message->from('info@ecoopu.com', 'Get the best deals for all your purchases');
-
-                $message->to($data['email'])->subject("Welcome to eCoopu");
-            });
+            //calling welcome mail sending function
+            $this->sendWelcomeMail($data);
 
             $user = new User;
             $user->name = frequest::input('name');
@@ -136,54 +132,15 @@ class AuthController extends Controller
         return \Redirect()->to('/')->with('status', 'Logged out successfully. Hope to see you next time');
     }
 
+    public function sendWelcomeMail($data){
+        //sending a welcome mail
+        Mail::send('emails.welcome', $data, function ($message) use($data){
+
+            $message->from('info@ecoopu.com', 'Get the best deals for all your purchases');
+
+            $message->to($data['email'])->subject("Welcome to eCoopu");
+        });
+
+    }
+
 }
-
-
-
-
-
-
-
-
-// protected function validator(array $data)
-// {
-//     return Validator::make($data, [
-//         'name' => 'required|max:255',
-//         'address' => 'required|min:5',
-//         'phone' => 'required',
-//         'role' => 'required',
-//         'email' => 'required|email|max:255|unique:users',
-//         'password' => 'required|min:6|confirmed',
-//         ]);
-// }
-
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
- //    protected function create(array $data)
-
- //    {
-
- //     Mail::send('emails.welcome', $data, function ($message) use($data){
-
- //        $message->from('vauvaumi@gmail.com', 'testing this email');
-
- //        $message->to($data['email'])->subject("Welcome to eCoopu");
-
- //    });
-
- //     return User::create([
- //        'name' => $data['name'],
- //        'address' => $data['address'],
- //        'phone' => $data['phone'],
- //        'role' => $data['role'],
- //        'email' => $data['email'],
- //        'password' => bcrypt($data['password']),
- //        ]);
-
-
- // }

@@ -108,9 +108,11 @@
     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand home" href="{{ url('/') }}" data-animate-hover="bounce">
-                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="hidden-xs">
-                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs"><span class="sr-only">eCoopu - go to homepage</span>
+                <a class="navbar-brand home" href="" data-animate-hover="bounce" style="">
+                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="hidden-xs" 
+                    style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs" style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    <span class="sr-only">eCoopu - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -134,7 +136,7 @@
 
             <!--/.navbar-header -->
 
-            <div class="navbar-collapse collapse" id="navigation">
+            <div class="navbar-collapse collapse" id="navigation" style="margin-left: -8%;">
 
                 <ul class="nav navbar-nav navbar-left">
                     @if(Auth::guest())
