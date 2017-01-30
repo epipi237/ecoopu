@@ -41,16 +41,17 @@ class AdminController extends Controller
 
     public function addAdmin(){
         $countries = Country::all();
+
         return view('admin.addAdmin', compact('countries'));
     }
 
     public function register(){
 
         $rules = array(
-         'name' => 'required|max:255',
-         'email' => 'required|email|max:255|unique:users',
-         'password' => 'required|min:6|confirmed',
-         );
+           'name' => 'required|max:255',
+           'email' => 'required|email|max:255|unique:users',
+           'password' => 'required|min:6|confirmed',
+           );
 
         $messages = array(
             'required' => 'The :attribute is required.',
@@ -79,7 +80,10 @@ class AdminController extends Controller
             \Session::flash('status', 'Successfully registered admin, check email for invitation with the details.');
             \Session::flash('classAlert', 'success text-center');
 
-            return view('admin.index');
+            $countries = country::all();
+            $orders = Order::all();
+
+            return view('admin.index',compact('countries', 'orders'));
         }
     }
 
@@ -90,10 +94,10 @@ class AdminController extends Controller
 
     public function addMarket(){
         $rules = array(
-         'name' => 'required|max:255',
-         'currency_code' => 'required',
-         'currency_symbol' => 'required'
-         );
+           'name' => 'required|max:255',
+           'currency_code' => 'required',
+           'currency_symbol' => 'required'
+           );
         $messages = array(
             'required' => 'The :attribute is required.',
             'same'  => 'The :others must match.'
@@ -129,7 +133,7 @@ class AdminController extends Controller
 
     public function sendWelcomeMail($data){
         //sending a welcome mail
-        \Mail::send('emails.welcome', $data, function ($message) use($data){
+        \Mail::send('emails.invitation', $data, function ($message) use($data){
 
             $message->from('info@ecoopu.com', 'Get the best deals for all your purchases');
 
