@@ -103,7 +103,7 @@
 					<div class="">
 						Client's Phone: <input type="text" class="form-control blur" value="{{$user->phone}}" style="display: inline-block; width: 70%;" /> <br><br>
 						Client's Email: <input type="text" class="form-control blur" value="{{$user->email}}" style="display: inline-block; width: 70%;" /> <br><br>
-						Shipping Address: <input type="text" class="form-control blur" value="{{$order->orderlist_address->description}}" style="width: 60%;" />
+						Shipping Address: <input type="text" class="form-control blur" value="{{$orderlist_address->description}}" style="width: 60%;" />
 								<br>
 					</div>
 

@@ -96,9 +96,11 @@ class ShopController extends Controller
         $price = new Price;
         $price->price = 0;
       }
-      $processingFee = $price->price * 0.01;
 
-      return view('shop.list', compact('orderItems', 'order', 'countries','price', 'order_id','user', 'processingFee'));
+      $processingFee = $price->price * 0.01;
+      $orderlist_address = Orderlist_address::whereOrderId($order->id)->whereUserId($user->id)->first();
+
+      return view('shop.list', compact('orderItems', 'order', 'countries','price', 'order_id','user', 'processingFee', 'orderlist_address'));
     }
 
     public function addprice(){
@@ -139,7 +141,6 @@ class ShopController extends Controller
         }else{
           return Redirect::back()->with('status', 'Sorry wrong price value entered')->withInput();
         }
-
 
         return redirect()->route('shop_index')->with('status', 'Price(s) saved successfully!!!');
       }

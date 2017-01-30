@@ -95,7 +95,9 @@ class OrderController extends Controller{
             $price->price = 0;
         }
         $processingFee = $price->price * 0.01;
+
         $orderlist_address = Orderlist_address::whereOrderId($order->id)->whereUserId($user_id)->first();
+        
         if(!$orderlist_address) {
             $orderlist_address = new Orderlist_address;
             $orderlist_address->id = 0;
