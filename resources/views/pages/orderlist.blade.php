@@ -130,9 +130,10 @@
 							@foreach($items as $item)
 							<a href="#">
 								<span class="label label-info">
-									{{$item->product}} <span class="badge">{{$item->product_count}} </span>&nbsp;&nbsp;&nbsp;
+									{{$item->product}} <span class="badge">{{$item->product_count}} </span>
 								</span>
 							</a>
+							&nbsp;&nbsp;&nbsp;
 							@endforeach
 							@else
 							<span class="label label-warning"> No items found in this list</span>
