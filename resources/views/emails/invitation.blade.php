@@ -82,6 +82,8 @@
     }
 
     span.user-name{
+      padding: 0px!important;
+      margin: 0px!important;
       color: #000000!important;
     }
 
@@ -134,9 +136,9 @@
   <p class="p_text">
 
     Welcome to <a href="http://ecoopu.com">Ecoopu.com</a>. <a href="http://ecoopu.com">eCoopu</a> betters your buying deals and helps you buy at the cheapest rate. We encourage you to <a href="mailto:info@ecoopu.com">reply</a> to this email if you have some questions, thanks.
-    <br>
+    <br><br>
     You have been added as an administrator to this awesome platform, here are you details:
-    <br>
+    <br><br>
     Email: {{$email}}
     <br>
     Password: {{$password}}

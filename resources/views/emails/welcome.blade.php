@@ -81,6 +81,8 @@
     }
 
     h3, span.user-name{
+      padding: 0px!important;
+      margin: 0px!important;
       color: #000000!important;
     }
 
