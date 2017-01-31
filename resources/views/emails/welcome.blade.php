@@ -77,7 +77,7 @@
 
     h3{
       color: black!important;
-      padding: 2%!important;
+      margin: 2%!important;
     }
 
     h3, span.user-name{
