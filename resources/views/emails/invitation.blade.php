@@ -51,7 +51,7 @@
 
     a, a:hover{
       display: inline;
-      color: white;
+      color: #ccc;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
