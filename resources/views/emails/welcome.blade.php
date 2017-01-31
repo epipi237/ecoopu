@@ -49,16 +49,18 @@
       float: left;
     }
 
-    a, a:hover{
+    a {
       display: inline;
       text-align: center;
-      padding: 14px 16px;
       text-decoration: none;
+      color: #000000;
     }
 
-    li a {
+    li a{
       color: #ffffff;
+      padding: 10px 10px;
     }
+
     /* Change the link color to #111 (black) on hover */
     li a:hover {
       background-color: #D9534F !important;
@@ -66,8 +68,9 @@
     }
 
     p a{
-      color: #000000;
-      padding: 0px;
+      padding: 0px!important;
+      margin: 0px!important;
+      color: #000000!important;
     }
 
     p a:hover{
@@ -80,7 +83,7 @@
       margin: 2%!important;
     }
 
-    h3, span.user-name{
+    span.user-name{
       padding: 0px!important;
       margin: 0px!important;
       color: #000000!important;
@@ -104,7 +107,7 @@
   <div class="head">
     <span class="logo">
       <a href="http://ecoopu.com">
-        <img src="{{URL::to('images')}}/logo.gif" style="width: 30%; height: 30%;" /><br>
+        <img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
         <span style="padding-left: 10%;">eCoopu</span>
       </a>
     </span>
@@ -135,7 +138,7 @@
   <p class="p_text">
 
     Welcome to <a href="http://ecoopu.com">Ecoopu.com</a>. <a href="http://ecoopu.com">eCoopu</a> betters your buying deals and helps you buy at the cheapest rate. We encourage you to <a href="mailto:info@ecoopu.com">reply</a> to this email if you have some questions, thanks.
-    <br>
+    <br><br>
 
     Best Regards,
     <br>

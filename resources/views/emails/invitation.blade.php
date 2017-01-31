@@ -49,15 +49,16 @@
       float: left;
     }
 
-    a, a:hover{
+    a {
       display: inline;
       text-align: center;
-      padding: 14px 16px;
       text-decoration: none;
+      color: #000000;
     }
 
     li a{
       color: #ffffff;
+      padding: 10px 10px;
     }
 
     /* Change the link color to #111 (black) on hover */
@@ -67,8 +68,9 @@
     }
 
     p a{
-      color: #000000;
-      padding: 0px;
+      padding: 0px!important;
+      margin: 0px!important;
+      color: #000000!important;
     }
 
     p a:hover{
@@ -105,7 +107,7 @@
   <div class="head">
     <span class="logo">
       <a href="http://ecoopu.com">
-        <img src="{{URL::to('images')}}/logo.gif" style="width: 30%; height: 30%;" /><br>
+        <img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
         <span style="padding-left: 10%;">eCoopu</span>
       </a>
     </span>
