@@ -36,6 +36,7 @@
       display: inline-block;
       float: left;
       padding: 10px;
+      color: #ffffff!important;
     }
 
     ul{
@@ -70,7 +71,7 @@
     p a{
       padding: 0px!important;
       margin: 0px!important;
-      color: #000000!important;
+      color: #D9534F!important;
     }
 
     p a:hover{
@@ -108,7 +109,7 @@
     <span class="logo">
       <a href="http://ecoopu.com">
         <img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
-        <span style="padding-left: 10%;">eCoopu</span>
+        <span style="color: #ffffff!important;">eCoopu</span>
       </a>
     </span>
 
@@ -122,7 +123,7 @@
   <p class="p_text">
 
     <h3 > 
-      Hi <span class="user-name">{{$email}}</span>,  
+      Hi <span class="user-name"></span>,  
     </h3>
 
   </p>
