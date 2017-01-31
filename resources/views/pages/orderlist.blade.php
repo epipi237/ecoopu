@@ -262,8 +262,8 @@
 
 @if(!($price->price > 0))
 <!-- Modal -->
-<div id="myModal" class="modal modal-md fade" role="dialog">
-	<div class="modal-dialog modal-md">
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
 
 		<!-- Modal content-->
 		<div class="modal-content">
