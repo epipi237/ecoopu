@@ -59,7 +59,9 @@
 								<tr>
 									<td>{{ $orderItem->product }}</td>
 
-									<td>{{ str_limit($orderItem->description, 50) }}</td>
+									<td>
+										<a href="#" title="Full details" data-toggle="popover" data-trigger="hover" data-content="{{$orderItem->description}}">{{ str_limit($orderItem->description, 50) }}</a>
+									</td>
 
 									<td>{{ $orderItem->quantity }}</td>
 
@@ -334,5 +336,11 @@
 	</div>
 </div>
 @endif
+
+<script>
+	$(document).ready(function(){
+		$('[data-toggle="popover"]').popover();   
+	});
+</script>
 
 @endsection

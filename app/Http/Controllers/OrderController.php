@@ -111,9 +111,12 @@ class OrderController extends Controller{
         if($price->paidStatus == true){
             \Session::flash('status', 'Thanks for completing your platform charges, you can now update your delivery address. The seller will be notified of your payment and can contact you for your order.');
             \Session::flash('classAlert', 'success');
-        }elseif($price->paidStatus == false) {
-            \Session::flash('status', 'For your order to be delivered you need to pay a processing fee.'); 
-            \Session::flash('classAlert', 'danger text-center');
+        }elseif($price->paidStatus == false && $price->price < 0) {
+            \Session::flash('status', 'For you order to be delievered, you need to wait for an offer and then pay the processing fee.'); 
+            \Session::flash('classAlert', 'info text-center');
+        }elseif($price->paidStatus == false && $price->price > 0) {
+            \Session::flash('status', 'For you order to be delievered, pay the processing fee.'); 
+            \Session::flash('classAlert', 'info text-center');
         }
 
         $paypalUrl = 'http://ecoopu.webshinobis.com/pages/create/orderlist/'.$order->id;
@@ -243,20 +246,23 @@ class OrderController extends Controller{
     		$orderItem->user_id=Auth::user()->id;
     		$orderItem->product = Request::input('product');
             $orderItem->description = Request::input('details');
-    		$orderItem->quantity = Request::input('quantity');
+            $orderItem->quantity = Request::input('quantity');
             $orderItem->order_id=Request::input('orderid');
             $orderid=Request::input('orderid');
             $orderItem->save();
 
-            return \Redirect("pages/create/orderlist/$orderid")->with(['status' => 'Order list successfully created', 'classAlert' => 'success text-center']);
+            return \Redirect("pages/create/orderlist/$orderid")->with(['status' => 'Item successfully added', 'classAlert' => 'success text-center']);
         }
     }
 
     public function marketplace($id){
-        $orders=Order::whereUserId(Auth::user()->id)->where('country_id',$id)->orderBy('id','desc')->paginate(8);
+
+        $orders=Order::whereCountryId($id)->orderBy('id', 'desc')->paginate(8);
         $countries=country::all();
         $country = country::find($id);
+
         \Session::set('status', '');
+        \Session::set('classAlert', '');
 
         return view('pages.marketplaces',compact('orders','countries','country'));
     }
@@ -276,13 +282,26 @@ class OrderController extends Controller{
         return \Redirect::back()->with('message', 'Order successfully deleted');
     }
 
+    //handling errors in this page
+    public function customError($errno, $errstr) {
+        return 'EUR';
+    }
+
     /*
     *Getting the country from the request object
     *
     */
     function getCurrenyCode() {
+
+        //set error handler
+        //set_error_handler("customError", E_ALL);
+
         $ip = $_SERVER['REMOTE_ADDR'];
-        $country = file_get_contents("http://ipinfo.io/{$ip}/country");
+        try {
+            $country = file_get_contents("http://ipinfo.io/{$ip}/country");
+        }catch(Exception $e) {
+            return 'EUR';
+        }
 
         $currency_codes = array(
             'UK' => 'GBP',

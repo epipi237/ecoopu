@@ -178,7 +178,7 @@
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
 						<h5>Phone</h5>
-						<p>Telephone:  +0 000 0000 0000</p>
+						<p>Telephone:  +1 000 0000 0000</p>
 					</div>
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
@@ -187,6 +187,7 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
+
 				<br><br><br>
 				<div class="map-w3">
 					<h1>We have shops in the following countries</h1>
@@ -197,6 +198,7 @@
 		</div>
 	</div>
 </div>
+<br><br><br>
 
 <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
 <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
@@ -211,7 +213,7 @@ var map = AmCharts.makeChart("chartdiv", {
 	"projection": "eckert3",
 	"dataProvider": {
 		"map": "worldLow",
-		"getAreasFromMap": true;
+		"getAreasFromMap": true
 	},
 	"areasSettings": {
 		"selectedColor": "#d9534f",
@@ -247,13 +249,17 @@ var map = AmCharts.makeChart("chartdiv", {
  */
  function getSelectedCountries() {
  	var selected = ["DE","DK","FR","GB"];
+ 	console.log();
+ 	console.log(map.dataProvider.areas.length);
  	for(var i = 0; i < map.dataProvider.areas.length; i++) {
  		/*if(map.dataProvider.areas[i].showAsSelected)
- 			selected.push(map.dataProvider.areas[i].id);*/
- 			map.dataProvider.areas[i].showAsSelected;
- 			map.clickMapObject(map.dataProvider.areas[i]);
+ 		selected.push(map.dataProvider.areas[i].id);*/
+ 		console.log(map.dataProvider.areas[i].showAsSelected);
+ 		map.dataProvider.areas[i].showAsSelected = true;
+ 		map.clickMapObject(selected[i]);
+ 		map.dataProvider.areas[i].showAsSelected = true;
  	}
- 	return selected;
+ 	//return selected;
  }
 
  getSelectedCountries();
