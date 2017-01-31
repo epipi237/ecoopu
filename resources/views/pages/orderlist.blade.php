@@ -60,7 +60,7 @@
 									<td>{{ $orderItem->product }}</td>
 
 									<td>
-										<a href="#" title="Full details" data-toggle="popover" data-trigger="hover" data-content="{{$orderItem->description}}">{{ str_limit($orderItem->description, 50) }}</a>
+										<a href="#" title="Full details" data-toggle="popover" data-trigger="hover" data-content="{{$orderItem->description}}" data-placement="top">{{ str_limit($orderItem->description, 50) }}</a>
 									</td>
 
 									<td>{{ $orderItem->quantity }}</td>

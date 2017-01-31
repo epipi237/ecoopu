@@ -47,7 +47,7 @@
 								<tr>
 									<td>{{ ucfirst($orderItem->product) }}</td>
 									<td>
-										<a href="#" title="Full details" data-toggle="popover" data-trigger="hover" data-content="{{$orderItem->description}}">{{ str_limit($orderItem->description, 50) }}</a>
+										<a href="#" title="Full details" data-toggle="popover" data-trigger="hover" data-content="{{$orderItem->description}}" data-placement="top">{{ str_limit($orderItem->description, 50) }}</a>
 									</td>
 									<td>{{ $orderItem->quantity }}</td>
 									<td><input type="number" placeholder="{{$order->country->currency_symbol}}" class='form-control sub_price' name="{{$orderItem->id}}" id="{{$orderItem->id}}" value="{{$orderItem->price}}" required="required">	</td>
@@ -84,7 +84,7 @@
 							<tr>
 								<td>{{ ucfirst($orderItem->product) }}</td>
 								<td>
-									<a href="#" title="Full details" data-toggle="popover" data-trigger="hover" data-content="{{$orderItem->description}}">{{ str_limit($orderItem->description, 50) }}</a>
+									<a href="#" title="Full details" data-toggle="popover" data-trigger="hover" data-content="{{$orderItem->description}}" data-placement="top">{{ str_limit($orderItem->description, 50) }}</a>
 								</td>
 								<td>{{ $orderItem->quantity }}</td>
 								<td>{{$order->country->currency_symbol}} {{ $orderItem->price }}</td>
