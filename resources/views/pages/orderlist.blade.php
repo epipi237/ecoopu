@@ -338,9 +338,9 @@
 @endif
 
 <script>
-	$(document).ready(function(){
+//$(document).ready(function(){
 		$('[data-toggle="popover"]').popover();   
-	});
+		//});
 </script>
 
 @endsection
