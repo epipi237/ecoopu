@@ -108,7 +108,7 @@ class OrderController extends Controller{
             $orderlist_address->order_id = 0;
         }
 
-        if($price->paidStatus == true){
+        if($price->paidStatus == true && $price->price > 0){
             \Session::flash('status', 'Thanks for completing your platform charges, you can now update your delivery address. The seller will be notified of your payment and can contact you for your order.');
             \Session::flash('classAlert', 'success');
         }elseif($price->paidStatus == false && $price->price < 0) {
@@ -168,10 +168,10 @@ class OrderController extends Controller{
             $transaction->cc = $request['cc'];
             $transaction->status = $request['st'];
             $transaction->save();
-
+/*
             \Session::flash('status', 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
             \Session::flash('classAlert', 'success text-center');
-
+*/
             return $this->orderlist($id);
         }
 
