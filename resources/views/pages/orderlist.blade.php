@@ -165,7 +165,7 @@
 						<h4 class="text-center" style="font-size: 16px;">
 							@if($price->new_price > 0)
 							Processing Fee: <span class="label label-danger">{{$user_currency_symbol}} {{$price->new_price/10}} ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
-							else
+							@else
 							Processing Fee: <span class="label label-danger">{{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
 							@endif
 							<br><br><br>
@@ -225,7 +225,7 @@
 						<h4 class="text-center" style="font-size: 16px;">
 							@if($price->new_price > 0)
 							Processing Fee: <span class="label label-danger">{{$user_currency_symbol}} {{$price->new_price/10}} ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
-							else
+							@else
 							Processing Fee: <span class="label label-danger">{{$order->country->currency_symbol}} {{$processingFee}} (1% of Total Cost)</span>
 							@endif
 
