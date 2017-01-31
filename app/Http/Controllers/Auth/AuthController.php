@@ -147,7 +147,7 @@ class AuthController extends Controller
         //sending a welcome mail
         Mail::send('emails.welcome', $data, function ($message) use($data){
 
-            $message->from('info@ecoopu.com', 'Get the best deals for all your purchases');
+            $message->from('info@ecoopu.com', 'eCoopu | Get the best deals for all your purchases');
 
             $message->to($data['email'])->subject("Welcome to eCoopu");
         });

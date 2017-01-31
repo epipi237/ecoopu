@@ -72,6 +72,26 @@
       padding: 0px;
     }
 
+    h3{
+      color: black!important;
+      padding: 2%!important;
+    }
+
+    h3, span.user-name{
+      color: #000000!important;
+    }
+
+    img.img-sample{
+      width: 95%; 
+      height: 30%; 
+      margin: 1%;
+    }
+
+    .p_text {
+      color: black;
+      padding: 2%;
+    }
+
   </style>
 </head>
 
@@ -91,29 +111,37 @@
     </ul>
   </div>
 
-  <p style="color:black;padding: 2%;">
+  <p class="p_text">
 
-    @if(isset($email))
-    <h3 style="color:black!important;padding: 2%!important;">Hi {{$email}}, </h3>
-    @else
-    <h3 style="color:black!important;padding: 2%!important;"> Hi wleo37@gmail.com,  </h3>
-    @endif
+    <h3 > 
+      Hi <span class="user-name">{{$email}}</span>,  
+    </h3>
 
   </p>
 
   <div class="item">
-    <img class="img-responsive" style="width:95%; height:30%; margin: 1%;" src="{{URL::to('images')}}/main-slider3.jpg" alt="">
+    <img class="img-sample" src="{{URL::to('images')}}/main-slider3.jpg" alt="">
   </div>
 
   <div class="item">
-    <img class="img-responsive" style="width:95%; height:30%; margin: 1%;" src="{{URL::to('images')}}/main-slider5.jpg" alt="">
+    <img class="img-sample" src="{{URL::to('images')}}/main-slider5.jpg" alt="">
   </div>
 
-  <p style="color:black;padding: 2%;">
+  <p class="p_text">
+
     Welcome to <a href="http://ecoopu.com">Ecoopu.com</a>. <a href="http://ecoopu.com">eCoopu</a> betters your buying deals and helps you buy at the cheapest rate. We encourage you to <a href="mailto:info@ecoopu.com">reply</a> to this email if you have some questions, thanks.
-    You have been added as an administrator to this awesome project, here are you details:
-    Email: $email
-    Password: $password
+    <br>
+    You have been added as an administrator to this awesome platform, here are you details:
+    <br>
+    Email: {{$email}}
+    <br>
+    Password: {{$password}}
+
+    <br><br>
+
+    Best Regards,
+    The eCoopu Team.
+
   </p>
 
 </body>
