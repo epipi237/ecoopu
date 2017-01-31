@@ -37,6 +37,7 @@
 						<table class="table table-striped">
 							<thead>
 								<td>Product name</td>
+								<td>Description</td>
 								<td>Quantity</td>
 								<td>Price</td>
 							</thead>
@@ -45,6 +46,7 @@
 								@foreach($orderItems as $orderItem)
 								<tr>
 									<td>{{ ucfirst($orderItem->product) }}</td>
+									<td>{{ str_limit($orderItem->description, 50) }}</td>
 									<td>{{ $orderItem->quantity }}</td>
 									<td><input type="number" placeholder="{{$order->country->currency_symbol}}" class='form-control sub_price' name="{{$orderItem->id}}" id="{{$orderItem->id}}" value="{{$orderItem->price}}" required="required">	</td>
 								</tr>

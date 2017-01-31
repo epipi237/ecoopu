@@ -40,20 +40,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/login', function() {
 	$countries = country::all();
-	return view('auth.login',compact('countries'));
+	return view('auth.login', compact('countries'));
 });
 
 Route::get('/register', function() {
 	$countries = country::all();
-	return view('auth.register',compact('countries'));
+	return view('auth.register', compact('countries'));
 });
 
 Route::get('contact-us', function(){
-  return view('pages.contact-us');
+  $countries = country::all();
+  return view('pages.contact-us', compact('countries'));
 })->name('contact-us');
 
 Route::get('about-us', function(){
-  return view('pages.about-us');
+  $countries = country::all();
+  return view('pages.about-us', compact('countries'));
 })->name('about-us');
 
 Route::get('test_email', function(){

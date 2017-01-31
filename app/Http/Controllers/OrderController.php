@@ -242,6 +242,7 @@ class OrderController extends Controller{
     		$orderItem = new OrderItem;
     		$orderItem->user_id=Auth::user()->id;
     		$orderItem->product = Request::input('product');
+            $orderItem->description = Request::input('description');
     		$orderItem->quantity = Request::input('quantity');
             $orderItem->order_id=Request::input('orderid');
             $orderid=Request::input('orderid');

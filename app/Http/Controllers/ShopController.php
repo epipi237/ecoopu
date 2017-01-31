@@ -76,7 +76,11 @@ class ShopController extends Controller
 
     public function clients($id){
       $order=order::find($id);
-      if(!$order) return \Redirect::back()->with('status', 'Orderlist not found');
+      if($order == null) {
+          \Session::flash('status', 'Orderlist not found');
+          \Session::flash('classAlert', 'danger text-center');
+        return \Redirect::back();
+      }
 
       $order_id = $order->id;
       $countries = country::all();

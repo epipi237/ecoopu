@@ -35,9 +35,11 @@
 
 				<div class="col-md-12" style="margin-top: 0px;"> 
 					<h4>
-						<table class="table table-striped" style="margin-top: -5%; font-size: 16px;">
+						<table class="table table-striped" style="margin-top: -5%; font-size: 14px;">
 							<thead>
 								<td>Product name</td>
+
+								<td>Description</td>
 
 								<td>Quantity</td>
 
@@ -56,6 +58,8 @@
 								@foreach($orderItems as $orderItem)
 								<tr>
 									<td>{{ $orderItem->product }}</td>
+
+									<td>{{ str_limit($orderItem->description, 50) }}</td>
 
 									<td>{{ $orderItem->quantity }}</td>
 
@@ -162,7 +166,7 @@
 				<div class="col-md-12"> 
 
 					<div class="">
-						<h4 class="text-center" style="font-size: 16px;">
+						<h4 class="text-center" style="font-size: 14px;">
 							@if($price->new_price > 0)
 							Processing Fee: <span class="label label-danger">{{$user_currency_symbol}} {{$price->new_price/10}} ({{$order->country->currency_symbol}} {{$processingFee}}) (1% of Total Cost)</span>
 							@else
@@ -258,8 +262,8 @@
 
 @if(!($price->price > 0))
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+<div id="myModal" class="modal modal-md fade" role="dialog">
+	<div class="modal-dialog modal-md">
 
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -294,6 +298,19 @@
 							@if ($errors->has('quantity'))
 							<span class="help-block">
 								<strong>{{ $errors->first('quantity') }}</strong>
+							</span>
+							@endif
+						</div>
+					</div>
+
+					<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+						<label for="description" class="col-md-4 control-label">Description Name:</label>
+
+						<div class="col-md-6">
+							<input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}">
+							@if ($errors->has('description'))
+							<span class="help-block">
+								<strong>{{ $errors->first('description') }}</strong>
 							</span>
 							@endif
 						</div>
