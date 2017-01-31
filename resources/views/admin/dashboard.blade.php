@@ -286,6 +286,8 @@
 <script type="text/javascript">
 
     $(function () {
+        $('[data-toggle="popover"]').popover();   
+        
         $('#datetimepicker3').datetimepicker({
             format: 'LT'
         });

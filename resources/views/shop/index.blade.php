@@ -121,56 +121,56 @@
 
             <div class="navbar-collapse collapse" id="navigation" style="margin-left: -5%;">
 
-            <ul class="nav navbar-nav navbar-left">
-                @if(Auth::guest())
-                <li class="active">
-                    <a class="" href="{{ url('/') }}">Home</a>
-                </li>
-                @else 
-                <li class=""><a href="{{ route('shop_index') }}">Home</a>
-                </li> 
-                @endif
+                <ul class="nav navbar-nav navbar-left">
+                    @if(Auth::guest())
+                    <li class="active">
+                        <a class="" href="{{ url('/') }}">Home</a>
+                    </li>
+                    @else 
+                    <li class=""><a href="{{ route('shop_index') }}">Home</a>
+                    </li> 
+                    @endif
 
-                <li class=""><a href="{{route('about-us')}}">About Us</a></li>
-                <li class=""><a href="{{route('contact-us')}}">Contact Us</a></li>
-                <!-- <li class=""><a href="#">FAQ</a></li> -->
-            </ul>
+                    <li class=""><a href="{{route('about-us')}}">About Us</a></li>
+                    <li class=""><a href="{{route('contact-us')}}">Contact Us</a></li>
+                    <!-- <li class=""><a href="#">FAQ</a></li> -->
+                </ul>
+
+            </div>
+            <!--/.nav-collapse -->
+
+            <div class="navbar-buttons">
+
+                @if(!Auth::guest())
+                <div class="navbar-collapse collapse right" id="">
+                 <!--  <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Add Shop</span></a> -->
+                 <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Add Shop</button>
+             </div>
+
+             @endif
+             <!--/.nav-collapse -->
+             <div class="navbar-collapse collapse right" id="search-not-mobile">
+                <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
+                    <span class="sr-only">Toggle search</span>
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="collapse clearfix" id="search">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
 
         </div>
         <!--/.nav-collapse -->
-
-        <div class="navbar-buttons">
-
-            @if(!Auth::guest())
-            <div class="navbar-collapse collapse right" id="">
-               <!--  <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Add Shop</span></a> -->
-               <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Add Shop</button>
-           </div>
-
-           @endif
-           <!--/.nav-collapse -->
-           <div class="navbar-collapse collapse right" id="search-not-mobile">
-            <button type="button" class="btn navbar-btn btn-danger" data-toggle="collapse" data-target="#search">
-                <span class="sr-only">Toggle search</span>
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
     </div>
-
-    <div class="collapse clearfix" id="search">
-        <form class="navbar-form" role="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>
-
-    </div>
-    <!--/.nav-collapse -->
-</div>
-<!-- /.container -->
+    <!-- /.container -->
 </div>
 
 <!-- Modal for shop owners to add shops-->
@@ -400,6 +400,7 @@
 <script type="text/javascript">
 
     $(function () {
+        $('[data-toggle="popover"]').popover();   
 
         //calculating the total price when this page loads
         var total_price = document.getElementById('total_price');
