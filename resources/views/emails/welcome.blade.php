@@ -51,15 +51,18 @@
 
     a, a:hover{
       display: inline;
-      color: #ccc;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
     }
 
+    li a {
+      color: #ffffff;
+    }
     /* Change the link color to #111 (black) on hover */
     li a:hover {
       background-color: #D9534F !important;
+      color: #cccccc;
     }
 
     p a{
@@ -89,7 +92,7 @@
 
     .p_text {
       color: black;
-      padding: 2%;
+      margin: 2%;
     }
 
   </style>
