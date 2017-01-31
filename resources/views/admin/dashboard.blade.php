@@ -104,14 +104,14 @@
         </div>
 
         <div class="navbar-buttons">
-           <div class="nav navbar-nav pull-right">
-               <!-- Authentication Links -->
-               @if(Auth::guest())
-               <li><a href="{{ url('/login') }}">Login</a></li>
-               @else
-               <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
-               <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
-               <li class="dropdown">
+         <div class="nav navbar-nav pull-right">
+             <!-- Authentication Links -->
+             @if(Auth::guest())
+             <li><a href="{{ url('/login') }}">Login</a></li>
+             @else
+             <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
+             <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
+             <li class="dropdown">
                 <a href="{{url('/admin/dashboard')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     {{ ucfirst(Auth::user()->name) }} <span class="caret"></span>
                 </a>
@@ -288,51 +288,51 @@
     $(function () {
         $('[data-toggle="popover"]').popover();   
         
-        $('#datetimepicker3').datetimepicker({
+        /*$('#datetimepicker3').datetimepicker({
             format: 'LT'
-        });
+        });*/
 
-            // Sharing on social media
+        // Sharing on social media
 
-            var popupSize = {
-                width: 780,
-                height: 550
-            };
+        var popupSize = {
+            width: 780,
+            height: 550
+        };
 
-            $(document).on('click', '.social-buttons > a', function(e){
+        $(document).on('click', '.social-buttons > a', function(e){
 
-                var
-                verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
-                horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+            var
+            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
 
-                var popup = window.open($(this).prop('href'), 'social',
-                    'width='+popupSize.width+',height='+popupSize.height+
-                    ',left='+verticalPos+',top='+horisontalPos+
-                    ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+            var popup = window.open($(this).prop('href'), 'social',
+                'width='+popupSize.width+',height='+popupSize.height+
+                ',left='+verticalPos+',top='+horisontalPos+
+                ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
 
-                if (popup){
-                    popup.focus();
-                    e.preventDefault();
-                }
-
-            });
+            if (popup){
+                popup.focus();
+                e.preventDefault();
+            }
 
         });
-    </script>
-    
-    <script type="text/javascript">
-        function share(name,link,picture,caption,description){
-            FB.ui(
-            {
-                method: 'feed',
-                name: name,
-                link: link,
-                picture: picture,
-                caption: caption,
-                description: description,
-                message: ''
-            });  
-        }
-    </script>
+
+    });
+</script>
+
+<script type="text/javascript">
+    function share(name,link,picture,caption,description){
+        FB.ui(
+        {
+            method: 'feed',
+            name: name,
+            link: link,
+            picture: picture,
+            caption: caption,
+            description: description,
+            message: ''
+        });  
+    }
+</script>
 </body>
 </html>

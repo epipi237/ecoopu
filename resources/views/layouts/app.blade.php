@@ -374,52 +374,52 @@
 
     $(function () {
         $('[data-toggle="popover"]').popover();   
-        
+        /*
         $('#datetimepicker3').datetimepicker({
             format: 'LT'
         });
+        */
+        // Sharing on social media
 
-            // Sharing on social media
+        var popupSize = {
+            width: 780,
+            height: 550
+        };
 
-            var popupSize = {
-                width: 780,
-                height: 550
-            };
+        $(document).on('click', '.social-buttons > a', function(e){
 
-            $(document).on('click', '.social-buttons > a', function(e){
+            var
+            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
 
-                var
-                verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
-                horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+            var popup = window.open($(this).prop('href'), 'social',
+                'width='+popupSize.width+',height='+popupSize.height+
+                ',left='+verticalPos+',top='+horisontalPos+
+                ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
 
-                var popup = window.open($(this).prop('href'), 'social',
-                    'width='+popupSize.width+',height='+popupSize.height+
-                    ',left='+verticalPos+',top='+horisontalPos+
-                    ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
-
-                if (popup){
-                    popup.focus();
-                    e.preventDefault();
-                }
-
-            });
+            if (popup){
+                popup.focus();
+                e.preventDefault();
+            }
 
         });
-    </script>
-    
-    <script type="text/javascript">
-        function share(name,link,picture,caption,description){
-            FB.ui(
-            {
-                method: 'feed',
-                name: name,
-                link: link,
-                picture: picture,
-                caption: caption,
-                description: description,
-                message: ''
-            });  
-        }
-    </script>
+
+    });
+</script>
+
+<script type="text/javascript">
+    function share(name,link,picture,caption,description){
+        FB.ui(
+        {
+            method: 'feed',
+            name: name,
+            link: link,
+            picture: picture,
+            caption: caption,
+            description: description,
+            message: ''
+        });  
+    }
+</script>
 </body>
 </html>

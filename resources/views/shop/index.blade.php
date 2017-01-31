@@ -412,9 +412,9 @@
             calculateTotal(this);
         });
 
-        $('#datetimepicker3').datetimepicker({
+        /*$('#datetimepicker3').datetimepicker({
             format: 'LT'
-        });     
+        }); */    
 
         function calculateTotal(src) {
             var sum = 0,

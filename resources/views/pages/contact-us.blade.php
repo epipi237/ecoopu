@@ -190,7 +190,7 @@
 
 				<br><br><br>
 				<div class="map-w3">
-					<h1>We have shops in the following countries</h1>
+					<h2>Our Market Places</h2>
 					<div id="chartdiv"></div>
 					<!-- <div id="info">Seletced countries: <span id="selected">-</span></div> -->
 				</div>
@@ -200,68 +200,78 @@
 </div>
 <br><br><br>
 
-<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="{{URL::to('assets')}}/js/ammap.js"></script>
+<script src="{{URL::to('assets')}}/js/worldLow.js"></script>
+<script src="{{URL::to('assets')}}/js/light.js"></script>
 <script type="text/javascript">
-/**
-* Create the map
-*/
-var map = AmCharts.makeChart("chartdiv", {
-	"type": "map",
-	"theme": "light",
-	"projection": "eckert3",
-	"dataProvider": {
-		"map": "worldLow",
-		"getAreasFromMap": true
-	},
-	"areasSettings": {
-		"selectedColor": "#d9534f",
-		"selectable": false
-	},
 
-  /**
-   * Add click event to track country selection/unselection
-   */
-   "listeners": [{
-   	"event": "clickMapObject",
-   	"method": function(e) {
+	var map = AmCharts.makeChart("chartdiv", {
+		"type": "map",
+		"theme": "light",
+		"projection": "eckert3",
+		"dataProvider": {
+			"map": "worldLow",
+			"getAreasFromMap": true,
+			"areas": [
+			{ "id": "DE", "title": "Germany", "color": "#d9534f", "description":"Our Market Place in Germany" },
+			{ "id": "DK", "title": "Denmark", "color": "#d9534f", "description":"Our Market Place in Denmark" },
+			{ "id": "GB", "title": "United Kingdom", "color": "#d9534f", "description":"Our Market Place in the UK" },
+			{ "id": "FR", "title": "France", "color": "#d9534f", "description":"Our Market Place in France" },
+			]
+		},
+		"images": [
+		{
+			"top": 40,
+			"left": 60,
+			"width": 80,
+			"height": 40,
+			"pixelMapperLogo": true,
+			"imageURL": "http://pixelmap.amcharts.com/static/img/logo.svg",
+			"url": "http://www.amcharts.com"
+		}
+		],
+		"balloon": {
+			"horizontalPadding": 15,
+			"borderAlpha": 0,
+			"borderThickness": 1,
+			"verticalPadding": 15
+		},
+		"areasSettings": {
+			//"color": "rgba(129,129,129,1)",
+			//"outlineColor": "rgba(80,80,80,1)",
+			//"rollOverOutlineColor": "rgba(80,80,80,1)",
+			"rollOverBrightness": 20,
+			"selectedBrightness": 20,
+			"selectable": true,
+			"unlistedAreasAlpha": 0,
+			"unlistedAreasOutlineAlpha": 0
+		},
+		"imagesSettings": {
+			"alpha": 1,
+			"color": "rgba(129,129,129,1)",
+			"outlineAlpha": 0,
+			"rollOverOutlineAlpha": 0,
+			"outlineColor": "rgba(80,80,80,1)",
+			"rollOverBrightness": 20,
+			"selectedBrightness": 20,
+			"selectable": true
+		},
+		"zoomControl": {
+			"zoomControlEnabled": true,
+			"homeButtonEnabled": false,
+			"panControlEnabled": false,
+			"right": 38,
+			"bottom": 30,
+			"minZoomLevel": 0.25,
+			"gridHeight": 100,
+			"gridAlpha": 0.1,
+			"gridBackgroundAlpha": 0,
+			"gridColor": "#FFFFFF",
+			"draggerAlpha": 1,
+			"buttonCornerRadius": 2
+		},
 
-      // Ignore any click not on area
-      if (e.mapObject.objectType !== "MapArea")
-      	return;
-      
-      var area = e.mapObject;
-      
-      // Toggle showAsSelected
-      area.showAsSelected = !area.showAsSelected;
-      e.chart.returnInitialColor(area);
-      
-      // Update the list
-      /*document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());*/
-  }
-}]
-});
+	});
 
-/**
- * Function which extracts currently selected country list.
- * Returns array consisting of country ISO2 codes
- */
- function getSelectedCountries() {
- 	var selected = ["DE","DK","FR","GB"];
- 	console.log();
- 	console.log(map.dataProvider.areas.length);
- 	for(var i = 0; i < map.dataProvider.areas.length; i++) {
- 		/*if(map.dataProvider.areas[i].showAsSelected)
- 		selected.push(map.dataProvider.areas[i].id);*/
- 		console.log(map.dataProvider.areas[i].showAsSelected);
- 		map.dataProvider.areas[i].showAsSelected = true;
- 		map.clickMapObject(selected[i]);
- 		map.dataProvider.areas[i].showAsSelected = true;
- 	}
- 	//return selected;
- }
-
- getSelectedCountries();
 </script>
 @endsection
