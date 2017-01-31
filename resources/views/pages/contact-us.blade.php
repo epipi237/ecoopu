@@ -46,10 +46,10 @@
 	.mail-grid i {
 		font-size: 1.5em;
 		border-radius: 60px;
-		border: 2px solid #fbb005;
+		border: 2px solid #d9534f;
 		padding: 1em;
 		color: #fff;
-		background: #fbb005;
+		background: #d9534f;
 		transition: .5s all;
 		-webkit-transition: .5s all;
 		-moz-transition: .5s all;
@@ -71,7 +71,7 @@
 	.map-w3 iframe {
 		width: 100%;
 		height: 350px;
-		border: 7px double #fbb005;
+		border: 7px double #d9534f;
 	}
 
 	.mail-grid p {
@@ -178,7 +178,7 @@
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
 						<h5>Phone</h5>
-						<p>Telephone:  +1 800 603 6035</p>
+						<p>Telephone:  +0 000 0000 0000</p>
 					</div>
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
@@ -187,10 +187,11 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
+				<br><br><br>
 				<div class="map-w3">
-					<h1>Click countries to select</h1>
+					<h1>We have shops in the following countries</h1>
 					<div id="chartdiv"></div>
-					<div id="info">Seletced countries: <span id="selected">-</span></div>
+					<!-- <div id="info">Seletced countries: <span id="selected">-</span></div> -->
 				</div>
 			</div>
 		</div>
@@ -210,12 +211,13 @@ var map = AmCharts.makeChart("chartdiv", {
 	"projection": "eckert3",
 	"dataProvider": {
 		"map": "worldLow",
-		"getAreasFromMap": true
+		"getAreasFromMap": true;
 	},
 	"areasSettings": {
-		"selectedColor": "#CC0000",
-		"selectable": true
+		"selectedColor": "#d9534f",
+		"selectable": false
 	},
+
   /**
    * Add click event to track country selection/unselection
    */
@@ -234,7 +236,7 @@ var map = AmCharts.makeChart("chartdiv", {
       e.chart.returnInitialColor(area);
       
       // Update the list
-      document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());
+      /*document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());*/
   }
 }]
 });
@@ -246,10 +248,14 @@ var map = AmCharts.makeChart("chartdiv", {
  function getSelectedCountries() {
  	var selected = ["DE","DK","FR","GB"];
  	for(var i = 0; i < map.dataProvider.areas.length; i++) {
- 		if(map.dataProvider.areas[i].showAsSelected)
- 			selected.push(map.dataProvider.areas[i].id);
+ 		/*if(map.dataProvider.areas[i].showAsSelected)
+ 			selected.push(map.dataProvider.areas[i].id);*/
+ 			map.dataProvider.areas[i].showAsSelected;
+ 			map.clickMapObject(map.dataProvider.areas[i]);
  	}
  	return selected;
- }s
+ }
+
+ getSelectedCountries();
 </script>
 @endsection

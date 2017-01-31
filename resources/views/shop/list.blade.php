@@ -4,7 +4,7 @@
 
 @if (session('status'))
 <div class="container alert alert-{{ session('classAlert') }} alert-dismissable" data-dismiss="alert">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 	{{ session('status') }}
 </div>
 @endif
@@ -37,7 +37,7 @@
 						<table class="table table-striped">
 							<thead>
 								<td>Product name</td>
-								<td>Description</td>
+								<td>Details</td>
 								<td>Quantity</td>
 								<td>Price</td>
 							</thead>
@@ -72,6 +72,7 @@
 					<table class="table table-striped">
 						<thead>
 							<td>Product name</td>
+							<td>Details</td>
 							<td>Quantity</td>
 							<td>Price</td>
 						</thead>
@@ -80,6 +81,7 @@
 							@foreach($orderItems as $orderItem)
 							<tr>
 								<td>{{ ucfirst($orderItem->product) }}</td>
+								<td>{{ str_limit($orderItem->description, 50) }}</td>
 								<td>{{ $orderItem->quantity }}</td>
 								<td>{{$order->country->currency_symbol}} {{ $orderItem->price }}</td>
 							</tr>
@@ -112,7 +114,7 @@
 						@else
 						<input type="text" class="form-control blur" value="" style="width: 60%;" />
 						@endif
-								<br>
+						<br>
 					</div>
 
 				</div>

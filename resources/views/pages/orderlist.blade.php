@@ -39,7 +39,7 @@
 							<thead>
 								<td>Product name</td>
 
-								<td>Description</td>
+								<td>Details</td>
 
 								<td>Quantity</td>
 
@@ -304,13 +304,13 @@
 					</div>
 
 					<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-						<label for="description" class="col-md-4 control-label">Description Name:</label>
+						<label for="details" class="col-md-4 control-label">Details:</label>
 
 						<div class="col-md-6">
-							<input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}">
-							@if ($errors->has('description'))
+							<input id="details" type="text" class="form-control" name="details" value="{{ old('details') }}">
+							@if ($errors->has('details'))
 							<span class="help-block">
-								<strong>{{ $errors->first('description') }}</strong>
+								<strong>{{ $errors->first('details') }}</strong>
 							</span>
 							@endif
 						</div>
