@@ -42,8 +42,7 @@
     ul{
       list-style-type: none;
       display: inline-block;
-      width: 70%;
-      padding-top: 3%;
+      float: right;
     }
 
     li {
@@ -87,7 +86,7 @@
     span.user-name{
       padding: 0px!important;
       margin: 0px!important;
-      color: #000000!important;
+      color: #D9534F!important;
     }
 
     img.img-sample{
@@ -113,17 +112,19 @@
       </a>
     </span>
 
-    <ul>
-      <li><a href="http://ecoopu.com">Home</a></li>
-      <li><a href="http://ecoopu.com/contact">Contact</a></li>
-      <li style="float:right"><a class="active" href="http://ecoopu.com/about">About</a></li>
-    </ul>
+    <span style="width: 60%;">
+      <ul>
+        <li><a href="http://ecoopu.com">Home</a></li>
+        <li><a href="http://ecoopu.com/contact">Contact</a></li>
+        <li><a class="active" href="http://ecoopu.com/about">About</a></li>
+      </ul>
+    </span>
   </div>
 
   <p class="p_text">
 
-    <h3 > 
-      Hi <span class="user-name"></span>,  
+    <h3> 
+      Hi <span class="user-name">{{$email}}</span>,  
     </h3>
 
   </p>
