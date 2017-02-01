@@ -127,7 +127,6 @@
 		Hi <span class="user-name">{{$user->email}}</span>,  
 		</h3>
 
-	</p>
 		You asked to reset your password <br><br>
 
 
