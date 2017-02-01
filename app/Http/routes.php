@@ -59,7 +59,9 @@ Route::get('/about-us', function(){
 })->name('about-us');
 
 Route::get('/test_email', function(){
-  return view('emails.welcome');
+  $user = App\User::find(3);
+  $token = '2034293412073042803';
+  return view('auth.emails.password', compact('user', 'token'));
 })->name('test_email');
 
 Route::get('user/edit/account','SettingsAccount@index')->name('account');

@@ -103,7 +103,12 @@
 		span.message{
 			color: #000000!important;
 			margin: 2%!important;
-			padding: 2$!important;
+			padding: 2%!important;
+		}
+
+		span.message2{
+			color: #000000!important;
+			margin: 2%!important;
 		}
 
 	</style>
@@ -112,7 +117,7 @@
 <body>
 	<div class="head">
 		<span class="logo">
-			<a href="{{url(/)}}">
+			<a href="{{url('/')}}">
 				<img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
 				<span style="color: #ffffff!important;">eCoopu</span>
 			</a>
@@ -120,9 +125,9 @@
 
 		<span style="width: 60%;">
 			<ul>
-				<li><a href="{{url(/)}}">Home</a></li>
-				<li><a href="{{url(/)}}/contact-us">Contact</a></li>
-				<li><a class="active" href="{{url(/)}}/about-us">About</a></li>
+				<li><a href="{{url('/')}}">Home</a></li>
+				<li><a href="{{url('/')}}/contact-us">Contact</a></li>
+				<li><a class="active" href="{{url('/')}}/about-us">About</a></li>
 			</ul>
 		</span>
 	</div>
@@ -133,20 +138,17 @@
 			Hi <span class="user-name">{{$user->email}}</span>,  
 		</h3>
 
+		<span class="message">You asked to reset your password </span>
+		<br><br>
+		<span class="message">Click the link below to reset your password:</span>
+		<br><br>
 		<span class="message">
-			You asked to reset your password <br><br>
-
-
-			Click here to reset your password: 
-			<br><br>
 			<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}" style="color: #D9534F"> {{ $link }} </a>
-			<br><br>
-
-
-			Best Regards,
-			<br>
-			The eCoopu Team.
 		</span>
+		<br><br>
+		<span class="message2">Best Regards,</span>
+		<br>
+		<span class="message2">The eCoopu Team.</span>
 
 	</p>
 
