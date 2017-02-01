@@ -4,7 +4,7 @@
 
 @if (session('status'))
 <div class="container alert alert-{{ session('classAlert') }} alert-dismissable" data-dismiss="alert">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 	{{ session('status') }}
 </div>
 @endif
@@ -14,7 +14,7 @@
 	<div class="box text-center" style="margin-left: 9%! important; margin-right: 9%! important;">
 		<div class="container">
 			<div class="col-md-12">
-				<h2>Current Orderlists in <b>{{$country->name}}</b></h2>
+				<h2>Current Orderlists for <b>{{$shop->name}}</b></h2>
 			</div>
 		</div>
 	</div>

@@ -78,7 +78,7 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin');
 /*
 |
 |
-|Pages route
+|Pages routes
 |
 |
 */
@@ -105,13 +105,23 @@ Route::get('pages/market-places/{id}', 'OrderController@marketplace');
 
 Route::get('removeorder/{id}','OrderController@removeorder');
 
-Route::get('shops_and_orderlists', 'OrderController@listShopsAndOrderlists')->name('list_shops_and_orderlists');
+
+/*
+|
+|
+|Visitor Shop routes
+|
+|
+*/
+
+Route::get('shops_and_orderlists', 'ProductController@listShopsAndOrderlists')->name('list_shops_and_orderlists');
+Route::get('shop/{id}', 'ProductController@listOrders')->name('shop_orders');
 
 
 /*
 |
 |
-|Shop  route
+|Shop routes
 |
 |
 */

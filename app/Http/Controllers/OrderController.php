@@ -280,15 +280,6 @@ class OrderController extends Controller{
         return \Redirect::back()->with('message', 'Order successfully deleted');
     }
 
-    //listing all shops and orders
-    public function listShopsAndOrderlists(Request $request) {
-        $countries=country::all();
-        $shops = Shop::orderBy('id', 'desc')->paginate(5);
-        $orderlist = Order::orderBy('id', 'desc')->paginate(5);
-
-        return view('pages.shop_and_orderlists', compact('countries', 'shops', 'orderlist'));
-    }
-
     /*
     *Getting the country from the request object
     *

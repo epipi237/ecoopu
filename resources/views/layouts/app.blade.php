@@ -148,6 +148,8 @@
                     </li> 
                     @endif
 
+                    <li class=""><a href="{{route('list_shops_and_orderlists')}}">Shops</a></li>
+                    
                     <li class="dropdown">
                         @if(Auth::check())
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Market Places <b class="caret"></b></a>
@@ -170,7 +172,6 @@
                         </ul>
                     </li>
 
-                    <li class=""><a href="{{route('list_shops_and_orderlists')}}">Shops</a></li>
                     <li class=""><a href="{{route('about-us')}}">About Us</a></li>
                     <li class=""><a href="{{route('contact-us')}}">Contact Us</a></li>
                     <!-- <li class=""><a href="#">FAQ</a>
