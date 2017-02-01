@@ -12,6 +12,7 @@ use App\Orderlist_address;
 use Auth;
 use App\country;
 use App\price;
+use App\Shop;
 use App\transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -168,10 +169,7 @@ class OrderController extends Controller{
             $transaction->cc = $request['cc'];
             $transaction->status = $request['st'];
             $transaction->save();
-/*
-            \Session::flash('status', 'Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at www.paypal.com to view details of this transaction.');
-            \Session::flash('classAlert', 'success text-center');
-*/
+
             return $this->orderlist($id);
         }
 
@@ -221,13 +219,13 @@ class OrderController extends Controller{
         return Redirect::back()->with(['status' => 'Successfully updated your shipping address', 'classAlert' => 'success text-center']);
     }
 
-    public function removeitem($id){
+    public function removeItem($id){
         $item=orderItem::find($id);
         $item->delete();
         return \Redirect::back()->with(['status' => 'Item successfully deleted', 'classAlert' => 'success text-center']);
     }
 
-    public function createOrderList(){
+    public function addItem(){
     	$rules = array(
     		'product' => 'required',
     		'quantity' => 'required',
@@ -282,9 +280,13 @@ class OrderController extends Controller{
         return \Redirect::back()->with('message', 'Order successfully deleted');
     }
 
-    //handling errors in this page
-    public function customError($errno, $errstr) {
-        return 'EUR';
+    //listing all shops and orders
+    public function listShopsAndOrderlists(Request $request) {
+        $countries=country::all();
+        $shops = Shop::orderBy('id', 'desc')->paginate(5);
+        $orderlist = Order::orderBy('id', 'desc')->paginate(5);
+
+        return view('pages.shop_and_orderlists', compact('countries', 'shops', 'orderlist'));
     }
 
     /*
@@ -292,9 +294,6 @@ class OrderController extends Controller{
     *
     */
     function getCurrenyCode() {
-
-        //set error handler
-        //set_error_handler("customError", E_ALL);
 
         $ip = $_SERVER['REMOTE_ADDR'];
         try {

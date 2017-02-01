@@ -213,23 +213,12 @@
 			"map": "worldLow",
 			"getAreasFromMap": true,
 			"areas": [
-			{ "id": "DE", "title": "Germany", "color": "#d9534f", "description":"Our Market Place in Germany" },
-			{ "id": "DK", "title": "Denmark", "color": "#d9534f", "description":"Our Market Place in Denmark" },
-			{ "id": "GB", "title": "United Kingdom", "color": "#d9534f", "description":"Our Market Place in the UK" },
-			{ "id": "FR", "title": "France", "color": "#d9534f", "description":"Our Market Place in France" },
+			{ "id": "DK", "title": "<a href='/pages/market-places/1'>Denmark</a>", "color": "#d9534f", "description":"<a href='/pages/market-places/1'>Our Market Place in Denmark</a>" },
+			{ "id": "DE", "title": "<a href='/pages/market-places/2'>Germany</a>", "color": "#d9534f", "description":"<a href='/pages/market-places/2'>Our Market Place in Germany</a>" },
+			{ "id": "GB", "title": "<a href='/pages/market-places/3'>United Kingdom</a>", "color": "#d9534f", "description":"<a href='/pages/market-places/3'>Our Market Place in the UK</a>" },
+			{ "id": "FR", "title": "<a href='/pages/market-places/4'>France</a>", "color": "#d9534f", "description":"<a href='/pages/market-places/4'>Our Market Place in France</a>" },
 			]
 		},
-		"images": [
-		{
-			"top": 40,
-			"left": 60,
-			"width": 80,
-			"height": 40,
-			"pixelMapperLogo": true,
-			"imageURL": "http://pixelmap.amcharts.com/static/img/logo.svg",
-			"url": "http://www.amcharts.com"
-		}
-		],
 		"balloon": {
 			"horizontalPadding": 15,
 			"borderAlpha": 0,
@@ -237,9 +226,6 @@
 			"verticalPadding": 15
 		},
 		"areasSettings": {
-			//"color": "rgba(129,129,129,1)",
-			//"outlineColor": "rgba(80,80,80,1)",
-			//"rollOverOutlineColor": "rgba(80,80,80,1)",
 			"rollOverBrightness": 20,
 			"selectedBrightness": 20,
 			"selectable": true,

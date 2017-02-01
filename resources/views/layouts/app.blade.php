@@ -170,6 +170,7 @@
                         </ul>
                     </li>
 
+                    <li class=""><a href="{{route('list_shops_and_orderlists')}}">Shops</a></li>
                     <li class=""><a href="{{route('about-us')}}">About Us</a></li>
                     <li class=""><a href="{{route('contact-us')}}">Contact Us</a></li>
                     <!-- <li class=""><a href="#">FAQ</a>

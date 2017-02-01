@@ -97,13 +97,16 @@ Route::get('pages/create/orderlist/paymentStatusIPN', 'OrderController@paymentSt
 
 Route::post('pages/order/update_shipping_address', 'OrderController@updateShippingAddress')->name('update_shipping_address');
 
-Route::post('pages/create/orderlist', 'OrderController@createOrderList')->name('create_order');
+Route::post('pages/create/orderlist', 'OrderController@addItem')->name('create_order');
 
-Route::get('itemremove/{id}','OrderController@removeitem');
+Route::get('itemremove/{id}','OrderController@removeItem');
 
 Route::get('pages/market-places/{id}', 'OrderController@marketplace');
 
 Route::get('removeorder/{id}','OrderController@removeorder');
+
+Route::get('shops_and_orderlists', 'OrderController@listShopsAndOrderlists')->name('list_shops_and_orderlists');
+
 
 /*
 |
