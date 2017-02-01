@@ -139,7 +139,7 @@
 
   <p class="p_text">
 
-    Welcome to <a href="http://ecoopu.com">Ecoopu.com</a>. <a href="http://ecoopu.com">eCoopu</a> betters your buying deals and helps you buy at the cheapest rate. We encourage you to <a href="mailto:info@ecoopu.com">reply</a> to this email if you have some questions, thanks.
+  Welcome to <a href="{{url('/')}}">ecoopu.com</a>. <a href="{{url('/')}}">eCoopu</a> betters your buying deals and helps you buy at the cheapest rate. We encourage you to <a href="mailto:info@ecoopu.com">reply</a> to this email if you have some questions, thanks.
     <br><br>
 
     Best Regards,

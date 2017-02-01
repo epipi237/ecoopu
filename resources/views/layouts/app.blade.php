@@ -148,7 +148,7 @@
                     </li> 
                     @endif
 
-                    <li class=""><a href="{{route('list_shops_and_orderlists')}}">Shops</a></li>
+                    <li class=""><a href="{{route('list_shops_and_orderlists')}}">Shops & Orderlists</a></li>
                     
                     <li class="dropdown">
                         @if(Auth::check())
@@ -185,14 +185,20 @@
         </div>
         <!--/.nav-collapse -->
 
-        <div class="navbar-buttons">
+        <div class="navbar-buttons right">
 
             @if(!Auth::guest())
+
             <div class="navbar-collapse collapse right" id="basket-overview">
-                <a href="{{ route('order') }}" class="btn btn-danger navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span></a>
+                <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn">
+                <i class="fa fa-stack-overflow"></i><span class="hidden-sm">Expired orderlist</span>
+                </a>
             </div>
-            <div class="navbar-collapse collapse right" id="">
-                <a href="{{ route('expired') }}" class="btn btn-danger navbar-btn"><i class=""></i><span class="hidden-sm">Expired orderlist</span></a>
+
+            <div class="navbar-collapse collapse right">
+                <a href="{{ route('order') }}" class="btn btn-danger navbar-btn">
+                    <i class="fa fa-shopping-cart"></i><span class="hidden-sm">Create an orderlist</span>
+                </a>
             </div>
 
             @endif
