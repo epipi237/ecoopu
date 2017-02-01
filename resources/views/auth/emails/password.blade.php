@@ -100,6 +100,11 @@
 			margin: 2%;
 		}
 
+		p span{
+			color: black!important;
+			margin: 2%!important;
+		}
+
 	</style>
 </head>
 
@@ -124,21 +129,23 @@
 	<p class="p_text">
 
 		<h3> 
-		Hi <span class="user-name">{{$user->email}}</span>,  
+			Hi <span class="user-name">{{$user->email}}</span>,  
 		</h3>
 
-		You asked to reset your password <br><br>
+		<span>
+			You asked to reset your password <br><br>
 
 
-		Click here to reset your password: 
-		<br><br>
-		<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>
-		<br><br>
+			Click here to reset your password: 
+			<br><br>
+			<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>
+			<br><br>
 
 
-		Best Regards,
-		<br>
-		The eCoopu Team.
+			Best Regards,
+			<br>
+			The eCoopu Team.
+		</span>
 
 	</p>
 
