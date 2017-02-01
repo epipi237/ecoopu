@@ -128,19 +128,13 @@
 		</h3>
 
 	</p>
-
-	<div class="item">
-		<img class="img-sample" src="{{URL::to('images')}}/main-slider3.jpg" alt="">
-	</div>
-
-	<div class="item">
-		<img class="img-sample" src="{{URL::to('images')}}/main-slider5.jpg" alt="">
-	</div>
-
-	<p class="p_text">
+		You asked to reset your password <br><br>
 
 
-		Click here to reset your password: <a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>
+		Click here to reset your password: 
+		<br><br>
+		<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>
+		<br><br>
 
 
 		Best Regards,
