@@ -79,7 +79,7 @@
 		}
 
 		h3{
-			color: black!important;
+			color: black;
 			margin: 2%!important;
 		}
 
@@ -138,7 +138,7 @@
 
 			Click here to reset your password: 
 			<br><br>
-			<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>
+			<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}" style="color: #D9534F"> {{ $link }} </a>
 			<br><br>
 
 

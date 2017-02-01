@@ -79,7 +79,7 @@
     }
 
     h3{
-      color: black!important;
+      color: black;
       margin: 2%!important;
     }
 
