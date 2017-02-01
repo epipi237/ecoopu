@@ -120,7 +120,7 @@
 
 		<span style="width: 60%;">
 			<ul>
-				<li><a href="{{url(/)}}/">Home</a></li>
+				<li><a href="{{url(/)}}">Home</a></li>
 				<li><a href="{{url(/)}}/contact-us">Contact</a></li>
 				<li><a class="active" href="{{url(/)}}/about-us">About</a></li>
 			</ul>
