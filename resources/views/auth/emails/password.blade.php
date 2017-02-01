@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:type"               content="article" />
-	<meta property="og:title"              content="eCoopu.The best" />
-	<meta property="og:description"        content="eCoopu is an awesome platform that helps you in making better deals by buying together with other people. Join eCoopu and make better buying deals." />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="eCoopu.The best" />
+	<meta property="og:description" content="eCoopu is an awesome platform that helps you in making better deals by buying together with other people. Join eCoopu and make better buying deals." />
 
 	<title>
 		eCoopu
@@ -95,14 +95,15 @@
 			margin: 1%;
 		}
 
-		.p_text {
+		p.p_text {
 			color: black;
 			margin: 2%;
 		}
 
-		p span{
-			color: black!important;
+		span.message{
+			color: #000000!important;
 			margin: 2%!important;
+			padding: 2$!important;
 		}
 
 	</style>
@@ -111,7 +112,7 @@
 <body>
 	<div class="head">
 		<span class="logo">
-			<a href="http://ecoopu.com">
+			<a href="/">
 				<img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
 				<span style="color: #ffffff!important;">eCoopu</span>
 			</a>
@@ -119,9 +120,9 @@
 
 		<span style="width: 60%;">
 			<ul>
-				<li><a href="http://ecoopu.com">Home</a></li>
-				<li><a href="http://ecoopu.com/contact">Contact</a></li>
-				<li><a class="active" href="http://ecoopu.com/about">About</a></li>
+				<li><a href="/">Home</a></li>
+				<li><a href="/contact-us">Contact</a></li>
+				<li><a class="active" href="/about-us">About</a></li>
 			</ul>
 		</span>
 	</div>
@@ -132,7 +133,7 @@
 			Hi <span class="user-name">{{$user->email}}</span>,  
 		</h3>
 
-		<span>
+		<span class="message">
 			You asked to reset your password <br><br>
 
 

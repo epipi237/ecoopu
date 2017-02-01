@@ -48,17 +48,17 @@ Route::get('/register', function() {
 	return view('auth.register', compact('countries'));
 });
 
-Route::get('contact-us', function(){
+Route::get('/contact-us', function(){
   $countries = country::all();
   return view('pages.contact-us', compact('countries'));
 })->name('contact-us');
 
-Route::get('about-us', function(){
+Route::get('/about-us', function(){
   $countries = country::all();
   return view('pages.about-us', compact('countries'));
 })->name('about-us');
 
-Route::get('test_email', function(){
+Route::get('/test_email', function(){
   return view('emails.welcome');
 })->name('test_email');
 

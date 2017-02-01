@@ -105,49 +105,50 @@
 
 <body>
   <div class="head">
-    <span class="logo">
-      <a href="http://ecoopu.com">
-        <img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
-        <span style="color: #ffffff!important;">eCoopu</span>
-      </a>
-    </span>
+    <div class="head">
+      <span class="logo">
+        <a href="/">
+          <img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
+          <span style="color: #ffffff!important;">eCoopu</span>
+        </a>
+      </span>
 
-    <span style="width: 60%;">
-      <ul>
-        <li><a href="http://ecoopu.com">Home</a></li>
-        <li><a href="http://ecoopu.com/contact">Contact</a></li>
-        <li><a class="active" href="http://ecoopu.com/about">About</a></li>
-      </ul>
-    </span>
-  </div>
+      <span style="width: 60%;">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/contact-us">Contact</a></li>
+          <li><a class="active" href="/about-us">About</a></li>
+        </ul>
+      </span>
+    </div>
 
-  <p class="p_text">
+    <p class="p_text">
 
-    <h3> 
-      Hi <span class="user-name">{{$email}}</span>,  
-    </h3>
+      <h3> 
+        Hi <span class="user-name">{{$email}}</span>,  
+      </h3>
 
-  </p>
+    </p>
 
-  <div class="item">
-    <img class="img-sample" src="{{URL::to('images')}}/main-slider3.jpg" alt="">
-  </div>
+    <div class="item">
+      <img class="img-sample" src="{{URL::to('images')}}/main-slider3.jpg" alt="">
+    </div>
 
-  <div class="item">
-    <img class="img-sample" src="{{URL::to('images')}}/main-slider5.jpg" alt="">
-  </div>
+    <div class="item">
+      <img class="img-sample" src="{{URL::to('images')}}/main-slider5.jpg" alt="">
+    </div>
 
-  <p class="p_text">
+    <p class="p_text">
 
-    Welcome to <a href="http://ecoopu.com">Ecoopu.com</a>. <a href="http://ecoopu.com">eCoopu</a> betters your buying deals and helps you buy at the cheapest rate. We encourage you to <a href="mailto:info@ecoopu.com">reply</a> to this email if you have some questions, thanks.
-    <br><br>
+      Welcome to <a href="http://ecoopu.com">Ecoopu.com</a>. <a href="http://ecoopu.com">eCoopu</a> betters your buying deals and helps you buy at the cheapest rate. We encourage you to <a href="mailto:info@ecoopu.com">reply</a> to this email if you have some questions, thanks.
+      <br><br>
 
-    Best Regards,
-    <br>
-    The eCoopu Team.
+      Best Regards,
+      <br>
+      The eCoopu Team.
 
-  </p>
+    </p>
 
-</body>
+  </body>
 
-</html>
+  </html>

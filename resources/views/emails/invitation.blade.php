@@ -106,7 +106,7 @@
 <body>
   <div class="head">
     <span class="logo">
-      <a href="http://ecoopu.com">
+      <a href="/">
         <img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
         <span style="color: #ffffff!important;">eCoopu</span>
       </a>
@@ -114,9 +114,9 @@
 
     <span style="width: 60%;">
       <ul>
-        <li><a href="http://ecoopu.com">Home</a></li>
-        <li><a href="http://ecoopu.com/contact">Contact</a></li>
-        <li><a class="active" href="http://ecoopu.com/about">About</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/contact-us">Contact</a></li>
+        <li><a class="active" href="/about-us">About</a></li>
       </ul>
     </span>
   </div>
