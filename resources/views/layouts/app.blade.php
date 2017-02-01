@@ -166,7 +166,7 @@
                                                 </li>
                                                 @endforeach
                                                 @else
-                                                <li><a>No market places found</a></li>
+                                                <li><a>Market places can't be shown here</a></li>
                                                 @endif
                                             </ul>
                                         </div>
@@ -279,10 +279,14 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <ul>
+                                        @if(isset($countries))
                                         @foreach($countries as $country)
                                         <li><a href="/pages/market-places/{{$country->id}}">{{$country->name}}</a>
                                         </li>
                                         @endforeach
+                                        @else
+                                        <li><a>Market places can't be shown here</a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
