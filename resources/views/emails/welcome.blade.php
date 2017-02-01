@@ -107,7 +107,7 @@
   <div class="head">
     <div class="head">
       <span class="logo">
-        <a href="/">
+        <a href="{{url(/)}}">
           <img src="{{URL::to('images')}}/logo.gif" style="width: 40%; height: 60%;" /><br>
           <span style="color: #ffffff!important;">eCoopu</span>
         </a>
@@ -115,9 +115,9 @@
 
       <span style="width: 60%;">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/contact-us">Contact</a></li>
-          <li><a class="active" href="/about-us">About</a></li>
+          <li><a href="{{url(/)}}/">Home</a></li>
+          <li><a href="{{url(/)}}/contact-us">Contact</a></li>
+          <li><a class="active" href="{{url(/)}}/about-us">About</a></li>
         </ul>
       </span>
     </div>
