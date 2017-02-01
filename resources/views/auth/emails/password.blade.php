@@ -124,7 +124,7 @@
 	<p class="p_text">
 
 		<h3> 
-			Hi <span class="user-name">{{$email}}</span>,  
+		Hi <span class="user-name">{{$user->email}}</span>,  
 		</h3>
 
 	</p>
