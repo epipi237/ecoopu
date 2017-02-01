@@ -124,11 +124,11 @@
                         <i class="fa fa-search"></i>
                     </button>
                     @if(!Auth::guest())
+                    <a class="btn btn-default navbar-toggle" href="{{ route('expired') }}">
+                        <i class="fa fa-stack-overflow"></i></i>  <span class="hidden-xs">Expired order List</span>
+                    </a>
                     <a class="btn btn-default navbar-toggle" href="{{ route('order') }}">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Creat an order list</span>
-                    </a>
-                    <a class="btn btn-default navbar-toggle" href="{{ route('expired') }}">
-                        <i class=""></i>  <span class="hidden-xs">Expired order List</span>
                     </a>
                     @endif
                 </div>

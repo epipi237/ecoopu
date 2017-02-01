@@ -54,7 +54,7 @@
 			@if(count($orders) > 0)
 
 			@foreach($orders as $order)
-			<div class="col-sm-3">
+			<div class="col-xs-12 col-sm-4 col-md-3">
 				<div class="box same-height clickable">
 					<h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a 
 						@if(Auth::check())
