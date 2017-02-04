@@ -21,7 +21,7 @@
 							<thead>
 								<tr>
 									<th>Shop No</th>
-									<th>Shop</th>
+									<th>Name of Shop</th>
 									<th>Market Place</th>
 									<th>Action</th>
 								</tr>

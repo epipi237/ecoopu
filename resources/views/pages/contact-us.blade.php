@@ -178,7 +178,7 @@
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
 						<h5>Phone</h5>
-						<p>Telephone:  +1 000 0000 0000</p>
+						<p>Telephone: +45 23 92 91 59</p>
 					</div>
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>

@@ -184,8 +184,7 @@
                     <div class="post">
                         <h4><a href="">Our Mission</a></h4>
                         <hr>
-                        <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                        <p class="intro">Our goal is to make our clients make better deals with their sellers. By improving our clients shopping habits, we enrich both the clients and the sellers of the goods.</p>
                         </p>
                     </div>
                 </div>
@@ -194,8 +193,7 @@
                     <div class="post">
                         <h4><a href="">Our Vision</a></h4>
                         <hr>
-                        <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                        <p class="intro">We believe in reducing the cost of purchasing goods and services. This will not only save our clients money but enrich our sellers to make a gains by selling in bulk.</p>
                         </p>
                     </div>
                 </div>
