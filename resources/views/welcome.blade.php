@@ -41,12 +41,9 @@
                         <img class="img-responsive" src="{{URL::to('images')}}/main-slider6.jpg" alt="">
                     </div>
                 </div>
-                <!-- /#main-slider -->
             </div>
         </div>
 
-        <!-- *** ADVANTAGES HOMEPAGE ***
-        _________________________________________________________ -->
         <div id="advantages">
 
             <div class="container">
@@ -81,10 +78,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
 
             </div>
-            <!-- /.container -->
 
         </div>
         
@@ -131,79 +126,67 @@
                                 echo '<b>Time Left: </b>  ' . $DateInterval->d .' day(s)'. '  '. $DateInterval->h.' hour(s)';
                                 ?>
                             </p>
-                                <!-- <p class="social text-center">
-                                    <a href="{{url('/facebook')}}" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                                    <a href="{{url('/twitter')}}" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
-                                </p> -->
 
-                                <p>
-                                    @include('share.share', [
-                                    'url' => request()->fullUrl(),
-                                    'description' => 'Join by orderlist to shop from {{$order->shop}}',
-                                    ])
-                                </p>
-                                
-                            </div>
+                            <p>
+                                @include('share.share', [
+                                'url' => request()->fullUrl(),
+                                'description' => 'Join by orderlist to shop from {{$order->shop}}',
+                                ])
+                            </p>
+
                         </div>
-                        @endforeach
-                        <!-- /.row -->
                     </div>
-                    <!-- /.row -->
+                    @endforeach
+
                 </div>
 
-
             </div>
 
-            <div class="container center" >
-                <span align="center">{{$orders->links()}}</span>
 
-            </div>
-            <!-- /.product-slider -->
         </div>
-        <!-- /.container -->
+
+        <div class="container center" >
+            <span align="center">{{$orders->links()}}</span>
+        </div>
 
     </div>
 
-    <div class="box text-center" data-animate="fadeInUp" style="margin-left: 9.5%! important; margin-right: 9.5%! important;">
-        <div class="container">
-            <div class="col-md-12">
-                <h3 class="text-uppercase">Cantact Us</h3>
-
-                <p class="lead">Want to hear from us? contact us <a href="{{route('contact-us')}}">here</a>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-
-        <div class="col-md-12" data-animate="fadeInUp">
-
-            <div id="blog-homepage" class="row" style="padding-left: 1%;">
-                <div class="col-sm-6">
-                    <div class="post">
-                        <h4><a href="">Our Mission</a></h4>
-                        <hr>
-                        <p class="intro">Our goal is to make our clients make better deals with their sellers. By improving our clients shopping habits, we enrich both the clients and the sellers of the goods.</p>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="post">
-                        <h4><a href="">Our Vision</a></h4>
-                        <hr>
-                        <p class="intro">We believe in reducing the cost of purchasing goods and services. This will not only save our clients money but enrich our sellers to make a gains by selling in bulk.</p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- /#blog-homepage -->
-        </div>
-    </div>
-    <!-- /.container -->
-    <!-- *** BLOG HOMEPAGE END *** -->
 </div>
-<!-- /#content -->
+
+<div class="box text-center" data-animate="fadeInUp" style="margin-left: 9.5%! important; margin-right: 9.5%! important;">
+    <div class="container">
+        <div class="col-md-12">
+            <h3 class="text-uppercase">Cantact Us</h3>
+
+            <p class="lead">Want to hear from us? contact us <a href="{{route('contact-us')}}">here</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="col-md-12" data-animate="fadeInUp">
+
+        <div id="blog-homepage" class="row" style="padding-left: 1%;">
+            <div class="col-sm-6">
+                <div class="post">
+                    <h4><a href="">Our Mission</a></h4>
+                    <hr>
+                    <p class="intro">Our goal is to make our clients make better deals with their sellers. By improving our clients shopping habits, we enrich both the clients and the sellers of the goods.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="post">
+                    <h4><a href="">Our Vision</a></h4>
+                    <hr>
+                    <p class="intro">We believe in reducing the cost of purchasing goods and services. This will not only save our clients money but enrich our sellers to make gains by selling in bulk.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 @endsection

@@ -69,7 +69,7 @@
                 <div  class="box text-center">
                     <div class="container" style="width: 50%!important;">
                         <div class="col-md-12">
-                            <h3>Orders You Might Be Intereseted In</h3>
+                        <h3>Order Lists You Might Be Intereseted In Joining</h3>
                         </div>
                     </div>
                     <div class="same-height-row">
@@ -149,7 +149,7 @@
             </div>
 
         </div>
-        
+
     </div>
 </div>
 

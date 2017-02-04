@@ -28,7 +28,7 @@
 							<thead>
 								<tr>
 									<th>Orderlists No</th>
-									<th>Shop</th>
+									<th>Name of Shop</th>
 									<th>No. of Items</th>
 									<th>Action</th>
 								</tr>
@@ -62,7 +62,6 @@
 								</tr>
 							</thead>
 							<tbody>
-
 								@foreach($shops as $shop)
 								<tr>
 									<td>{{ucfirst($shop->name)}}</td>
