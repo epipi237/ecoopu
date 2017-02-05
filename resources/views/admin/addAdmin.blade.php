@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 
+@section('title', 'Add Administrator eCoopu')
+
+@section('active-add-admin', 'active')
+
 @section('content')
 
 @if (session('status'))

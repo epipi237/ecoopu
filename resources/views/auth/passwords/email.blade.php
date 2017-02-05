@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-<!-- Main Content -->
+@section('title', 'Password eCoopu')
+
 @section('content')
 <div class="container">
     <div class="row">

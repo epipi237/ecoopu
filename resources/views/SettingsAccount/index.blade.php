@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Edit Account eCoopu')
+
 @section('content')
 
 @if (session('status'))

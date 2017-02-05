@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 
+@section('title', 'Administrator eCoopu')
+
+@section('active-home', 'active')
+
 @section('content')
 
 @if (session('status'))

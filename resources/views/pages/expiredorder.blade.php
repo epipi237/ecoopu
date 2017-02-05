@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Expired Order Lists eCoopu')
+
 @section('content')
 
 @if (session('status'))

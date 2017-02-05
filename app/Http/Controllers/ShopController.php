@@ -33,8 +33,7 @@ class ShopController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(){
-
+    public function index(Request $request){
       $user_id = Auth::user()->id;
       $shops = Shop::where('user_id', $user_id)->get();
       $countries = country::all();

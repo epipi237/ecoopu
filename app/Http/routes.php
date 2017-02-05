@@ -117,7 +117,7 @@ Route::get('removeorder/{id}','OrderController@removeorder');
 */
 
 Route::get('shops_and_orderlists', 'ProductController@listShopsAndOrderlists')->name('list_shops_and_orderlists');
-Route::get('shop/{id}', 'ProductController@listOrders')->name('shop_orders');
+//Route::get('shop/{id}', 'ProductController@listOrders')->name('shop_orders');
 
 
 /*

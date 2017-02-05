@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('title', 'Create Order Lists eCoopu')
+
 @section('content')
 
 @if (session('status'))
 <div class="container alert alert-{{ session('classAlert') }} alert-dismissable" data-dismiss="alert">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 	{{ session('status') }}
 </div>
 @endif
@@ -110,10 +112,6 @@
 						}
 						?>
 					</p>
-<!-- 					<p class="social text-center">
-						<a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
-					</p> -->
 
 					<p>
 						@include('share.share', [

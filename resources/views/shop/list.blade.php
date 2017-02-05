@@ -1,5 +1,7 @@
 @extends('shop.index')
 
+@section('title', 'Order eCoopu')
+
 @section('content')
 
 @if (session('status'))

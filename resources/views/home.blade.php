@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Home eCoopu')
+
+@section('active-home', 'active')
+
 @section('content')
 
 @if (session('status'))

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        eCoopu
+        @yield('title')
     </title>
 
     <!-- Fonts -->
@@ -54,27 +54,27 @@
             <div class="navbar-header">
                 <a class="navbar-brand home" href="" data-animate-hover="bounce" style="">
                     <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="hidden-xs" 
-                    style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
-                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs" style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    style="height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs" style="height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
                     <span class="sr-only">eCoopu - go to homepage</span>
                 </a>
             </div>
 
             <!--/.navbar-header -->
 
-            <div class="navbar-collapse collapse" id="navigation" style="margin-left: -5%;">
+            <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
                     @if(Auth::guest())
-                    <li class="active">
+                    <li class="@yield('active-home')">
                         <a class="" href="{{ url('/') }}">Home</a>
                     </li>
                     @else 
-                    <li class=""><a href="{{ route('admin') }}">Home</a>
+                    <li class="@yield('active-home')"><a href="{{ route('admin') }}">Home</a>
                     </li> 
                     @endif
 
-                    <li class="dropdown">
+                    <li class="dropdown @yield('active-market-places')">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Market Places <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -100,36 +100,36 @@
                         </ul>
                     </li>
 
-                    <li><a href="{{route('contact-us')}}">Contact</a></li>
-                    <li><a href="{{route('about-us')}}">About</a></li>
+                    <li class="@yield('active-about-us')"><a href="{{route('about-us')}}">About</a></li>
+                    <li class="@yield('active-contact-us')"><a href="{{route('contact-us')}}">Contact</a></li>
 
                 </li>
             </ul>
         </div>
 
         <div class="navbar-buttons">
-         <div class="nav navbar-nav pull-right">
-             <!-- Authentication Links -->
-             @if(Auth::guest())
-             <li><a href="{{ url('/login') }}">Login</a></li>
-             @else
-             <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
-             <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
-             <li class="dropdown">
-                <a href="{{url('/admin/dashboard')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    {{ ucfirst(Auth::user()->name) }} <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ URL::route('account') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
-                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                </ul>
-            </li>
-            @endif
+            <div class="nav navbar-nav pull-right">
+                <!-- Authentication Links -->
+                @if(Auth::guest())
+                <li><a href="{{ url('/login') }}">Login</a></li>
+                @else
+                <li><a href="{{ URL::route('addAdmin') }}"><i class=""></i>Add Admin</a></li>
+                <li><a href="{{ URL::route('market') }}"><i class=""></i>Market Places</a></li>
+                <li class="dropdown">
+                    <a href="{{url('/admin/dashboard')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ ucfirst(Auth::user()->name) }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ URL::route('account') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
+                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                    </ul>
+                </li>
+                @endif
+            </div>
         </div>
-    </div>
 
-</div>
-<!-- /.container -->
+    </div>
+    <!-- /.container -->
 </div>
 <!-- /#navbar -->
 

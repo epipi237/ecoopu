@@ -41,11 +41,7 @@ class ProductController extends Controller{
     public function listShopsAndOrderlists(Request $request) {
         $countries=country::all();
 
-        $shops = Shop::/*select('shops.*')->leftJoin('orders', function($query){
-            $query->where('orders.shop', 'LIKE', 'shops.name');
-        })->*/orderBy('shops.id', 'desc')->paginate(5);
-
-        //dd($shops);
+        $shops = Shop::orderBy('shops.id', 'desc')->paginate(5);
 
         $orders = Order::orderBy('id', 'desc')->paginate(4);
 

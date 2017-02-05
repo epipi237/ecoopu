@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        eCoopu
+        @yield('title')
     </title>
 
     <!-- Fonts -->
@@ -93,8 +93,8 @@
             <div class="navbar-header">
                 <a class="navbar-brand home" href="" data-animate-hover="bounce" style="">
                     <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="hidden-xs" 
-                    style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
-                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs" style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    style="height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs" style="height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
                     <span class="sr-only">eCoopu - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
@@ -119,20 +119,20 @@
 
             <!--/.navbar-header -->
 
-            <div class="navbar-collapse collapse" id="navigation" style="margin-left: -5%;">
+            <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
                     @if(Auth::guest())
-                    <li class="active">
+                    <li class="@yield('active-home')">
                         <a class="" href="{{ url('/') }}">Home</a>
                     </li>
                     @else 
-                    <li class=""><a href="{{ route('shop_index') }}">Home</a>
+                    <li class="@yield('active-home')"><a href="{{ route('shop_index') }}">Home</a>
                     </li> 
                     @endif
 
-                    <li class=""><a href="{{route('about-us')}}">About Us</a></li>
-                    <li class=""><a href="{{route('contact-us')}}">Contact Us</a></li>
+                    <li class="@yield('active-about-us')"><a href="{{route('about-us')}}">About Us</a></li>
+                    <li class="@yield('active-contact-us')"><a href="{{route('contact-us')}}">Contact Us</a></li>
                     <!-- <li class=""><a href="#">FAQ</a></li> -->
                 </ul>
 

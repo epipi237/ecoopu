@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="eCoopu.The best" />
-    <meta property="og:description"        content="eCoopu is an awesome platform that helps you in making better deals by buying together with other people. Join eCoopu and make better buying deals." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="eCoopu.The best" />
+    <meta property="og:description" content="eCoopu is an awesome platform that helps you in making better deals by buying together with other people. Join eCoopu and make better buying deals." />
 
     <title>
-        eCoopu
+        @yield('title')
     </title>
 
     <!-- Fonts -->
@@ -110,8 +110,8 @@
             <div class="navbar-header">
                 <a class="navbar-brand home" href="" data-animate-hover="bounce" style="">
                     <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="hidden-xs" 
-                    style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
-                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs" style="width: 45%; height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    style="height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
+                    <img src="{{URL::to('images')}}/logo.gif" alt="eCoopu logo" class="visible-xs" style="height: 100%; margin: 0px; padding: 0px; margin-right: 0px;" />
                     <span class="sr-only">eCoopu - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
@@ -136,21 +136,21 @@
 
             <!--/.navbar-header -->
 
-            <div class="navbar-collapse collapse" id="navigation" style="margin-left: -5%;">
+            <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
                     @if(Auth::guest())
-                    <li class="active">
+                    <li class="@yield('active-home')">
                         <a class="" href="{{ url('/') }}">Home</a>
                     </li>
                     @else 
-                    <li class=""><a href="{{ url('/home') }}">Home</a>
+                    <li class="@yield('active-home')"><a href="{{ url('/home') }}">Home</a>
                     </li> 
                     @endif
 
-                    <li class=""><a href="{{route('list_shops_and_orderlists')}}">Shops & Orderlists</a></li>
+                    <li class="@yield('active-shops-orderlists')"><a href="{{route('list_shops_and_orderlists')}}">Shops & Orderlists</a></li>
                     
-                    <li class="dropdown">
+                    <li class="dropdown @yield('active-market-places')">
                         @if(Auth::check())
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Market Places <b class="caret"></b></a>
                         @endif
@@ -176,8 +176,8 @@
                         </ul>
                     </li>
 
-                    <li class=""><a href="{{route('about-us')}}">About Us</a></li>
-                    <li class=""><a href="{{route('contact-us')}}">Contact Us</a></li>
+                    <li class="@yield('active-about-us')"><a href="{{route('about-us')}}">About Us</a></li>
+                    <li class="@yield('active-contact-us')"><a href="{{route('contact-us')}}">Contact Us</a></li>
                     <!-- <li class=""><a href="#">FAQ</a>
                 </li> -->
             </ul>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Market Places eCoopu')
+
+@section('active-market-places', 'active')
+
 @section('content')
 
 @if (session('status'))

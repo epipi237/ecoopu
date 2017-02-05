@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Contact Us eCoopu')
+
+@section('active-contact-us', 'active')
+
 @section('content')
 
 @if (session('status'))

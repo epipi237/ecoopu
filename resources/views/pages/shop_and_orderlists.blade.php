@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Shops & Orderlists eCoopu')
+
+@section('active-shops-orderlists', 'active')
+
 @section('content')
 
 @if (session('status'))
@@ -84,7 +88,7 @@
 					</p>
 					<p class="social text-center">
 						<a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>                            
+						<a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
 					</p>
 				</div>
 			</div>
