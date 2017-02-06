@@ -177,17 +177,22 @@
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
 						<h5>Address</h5>
-						<p>13/25 New Avenue New Heaven 45Y 73J Denmark </p>
+						<p>Amaliegade </p> 
+						<p> 16 E 3 8700 </p> 
+						<p> Horsens Denmark </p>
 					</div>
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
 						<h5>Phone</h5>
 						<p>Telephone: +45 23 92 91 59</p>
+						<p> Monday to Saturday </p>
+						<p> 12.00pm - 5.00pm </p>
 					</div>
 					<div class="col-md-4 mail-grid">
 						<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
 						<h5>E-mail</h5>
 						<p>E-mail:<a href="mailto:info@ecoopu.com"> info@ecoopu.com</a></p>
+						<p> Send us a mail anytime</p>
 					</div>
 					<div class="clearfix"></div>
 				</div>

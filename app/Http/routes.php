@@ -53,10 +53,10 @@ Route::get('/contact-us', function(){
   return view('pages.contact-us', compact('countries'));
 })->name('contact-us');
 
-Route::get('/about-us', function(){
+/*Route::get('/about-us', function(){
   $countries = country::all();
   return view('pages.about-us', compact('countries'));
-})->name('about-us');
+})->name('about-us');*/
 
 Route::get('/test_email', function(){
   $user = App\User::find(3);

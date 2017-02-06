@@ -58,7 +58,7 @@
                             </div>
 
                             <h3><a href="#">We love our customers</a></h3>
-                            <p>We are known to provide best possible service ever</p>
+                            <p>We are known to provide best possible service while offering the best deals ever.</p>
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@
                             </div>
 
                             <h3><a href="#">Best prices</a></h3>
-                            <p>You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
+                            <p>Sellers set the prices per the demand of that good. This gives you the opportunity to get the best deals while ensuring a profit margin for our sellers.</p>
                         </div>
                     </div>
 
@@ -78,9 +78,10 @@
                             </div>
 
                             <h3><a href="#">100% satisfaction guaranteed</a></h3>
-                            <p>Free returns on everything for 3 months.</p>
+                            <p>Free refunds on everything for 3 months.</p>
                         </div>
                     </div>
+                        
                 </div>
 
             </div>

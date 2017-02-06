@@ -100,7 +100,7 @@
                         </ul>
                     </li>
 
-                    <li class="@yield('active-about-us')"><a href="{{route('about-us')}}">About</a></li>
+                    <!-- <li class="@yield('active-about-us')"><a href="">About</a></li> -->
                     <li class="@yield('active-contact-us')"><a href="{{route('contact-us')}}">Contact</a></li>
 
                 </li>
@@ -150,7 +150,7 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><!-- <a href="#"> -->Market Places<!-- </a> --></li>
-                    <li><a href="{{route('about-us')}}">About us</a></li>
+                    <!-- <li><a href="">About us</a></li> -->
                     <li><a href="{{route('contact-us')}}">Contact Us</a></li>
                     <!-- <li><a href="#">FAQ</a></li> -->
                 </ul>
@@ -215,10 +215,9 @@
                 <h4>Where to find us</h4>
 
                 <p><strong>eCoopu Ltd.</strong>
-                    <br>13/25 New Avenue
-                    <br>New Heaven
-                    <br>45Y 73J
-                    <br>Denmark
+                    <br>Amaliegade 
+                    <br>16 E 3 8700 
+                    <br>Horsens Denmark
                     <br>
                     <strong></strong>
                 </p>
