@@ -77,7 +77,7 @@
                             <div class="icon"><i class="fa fa-thumbs-up"></i>
                             </div>
 
-                            <h3><a href="#">100% satisfaction guaranteed</a></h3>
+                            <h3><a href="#">Your satisfaction guaranteed</a></h3>
                             <p>Free refunds on everything for 3 months.</p>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
             <div class="box text-center" style="margin-left: 9.5%! important; margin-right: 9.5%! important;">
                 <div class="container">
                     <div class="col-md-12">
-                        <h2>Start from here and join any market place</h2>
+                        <h2>We buy together to get better deals</h2>
                     </div>
                 </div>
             </div>

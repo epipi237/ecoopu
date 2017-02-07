@@ -37,7 +37,7 @@
 									<td>{{ucfirst($shop->name)}}</td>
 									<td>{{$shop->country->name}}</td>
 									<td>
-										<a href="/shop/{{$shop->id}}"><button type="button" class="btn btn-info"> More</button>
+										<a href="/shops/{{$shop->id}}"><button type="button" class="btn btn-info"> More</button>
 										</a>
 									</td>
 								</tr>
