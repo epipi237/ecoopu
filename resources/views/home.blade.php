@@ -71,7 +71,7 @@
             <div id="hot" class="col-md-6">
 
                 <div  class="box text-center">
-                    <div class="container" style="width: 50%!important;">
+                    <div class="container" style="width: 100%!important;">
                         <div class="col-md-12">
                         <h3>Order Lists You Might Be Intereseted In Joining</h3>
                         </div>
@@ -113,7 +113,7 @@
 
             <div id="hot" class="col-md-6">
                 <div class="box text-center">
-                    <div class="container" style="width: 50%!important;">
+                    <div class="container" style="width: 100%!important;">
                         <div class="col-md-12">
                             <h3>Shops</h3>
                         </div>
