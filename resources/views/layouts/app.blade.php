@@ -341,6 +341,11 @@
                     <a href="mailto:info@ecoopu.com" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
                 </p>
 
+                <p>
+                    We accept these credit cards<br>
+                    <a href="#"><img alt="We accept these credit cards" title="We accept these credit cards"  src="{{URL::to('images')}}/credit_card_logos.png" width="188" height="32" border="0" /></a>
+                </p>
+
 
             </div>
             <!-- /.col-md-3 -->

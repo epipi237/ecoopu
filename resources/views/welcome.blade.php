@@ -68,7 +68,7 @@
                             </div>
 
                             <h3><a href="#">Best prices</a></h3>
-                            <p>Sellers set the prices per the demand of that good. This gives you the opportunity to get the best deals while ensuring a profit margin for our sellers.</p>
+                            <p>Sellers set the prices per the demand of that good. This gives you the opportunity to get the best discounts while ensuring a profit margin for our sellers.</p>
                         </div>
                     </div>
 
@@ -77,8 +77,8 @@
                             <div class="icon"><i class="fa fa-thumbs-up"></i>
                             </div>
 
-                            <h3><a href="#">Your satisfaction guaranteed</a></h3>
-                            <p>Free refunds on everything for 3 months.</p>
+                            <h3><a href="#">Use your favorite store and get discount</a></h3>
+                            <p>Get the best discounts for everything you purchase plus refunds on everything within 3 months.</p>
                         </div>
                     </div>
                         

@@ -30,7 +30,9 @@
                 <div class="same-height-row">
                     <div class="same-height-row">
                         <?php
-                        $orders = App\Order::whereUserId(Auth::user()->id)->paginate(4);
+                        $orders = App\Order::join('order_items', function($query){
+                            $query->on('orders.id', '=', 'order_items.order_id')->where('order_items.user_id', '=', Auth::user()->id);
+                        })->paginate(4);
                         ?>
                         @foreach($orders as $order)
                         <div class="col-sm-3">
@@ -113,7 +115,8 @@
 
             <div id="hot" class="col-md-6">
                 <div class="box text-center">
-                    <div class="container" style="width: 100%!important;">
+                    <div class="container" style="width: 10=p
+                7/8xnfb0%!important;">
                         <div class="col-md-12">
                             <h3>Shops</h3>
                         </div>
