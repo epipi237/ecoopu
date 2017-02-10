@@ -115,8 +115,7 @@
 
             <div id="hot" class="col-md-6">
                 <div class="box text-center">
-                    <div class="container" style="width: 10=p
-                7/8xnfb0%!important;">
+                    <div class="container" style="width: 100%!important;">
                         <div class="col-md-12">
                             <h3>Shops</h3>
                         </div>
