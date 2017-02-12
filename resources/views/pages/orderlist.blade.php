@@ -68,7 +68,7 @@
 									<td>{{ $orderItem->quantity }}</td>
 
 									@if($orderItem->price == '')
-									<td>{{ 'Not yet set by the seller' }}</td>
+									<td>{{ 'Not set' }}</td>
 									@else
 									@if($orderItem->new_price > 0)
 									<td>{{$user_currency_symbol}} {{$orderItem->new_price}} ({{$order->country->currency_symbol}} {{ $orderItem->price }})</td>
@@ -111,7 +111,7 @@
 							<span class="badge">{{$order->country->currency_symbol}} {{$price->price}}</span>
 							@endif
 							@else
-							<span class="badge">Not yet set by the seller</span>
+							<span class="badge">Not set</span>
 							@endif
 
 						</div>
@@ -243,7 +243,7 @@
 								<input type="hidden" name="id" value="{{$orderlist_address->id}}"/>
 								<input type="hidden" name="order_id" value="{{$order->id}}" />
 								Shipping Address: 
-								@if($orderlist_address->description == 'Not yet specified by the client')
+								@if($orderlist_address->description == 'Not set')
 								<input type="text" class="form-control" name="shipping_address" value="" style="display: inline-block; width: 70%;" />
 								@else
 								<input type="text" class="form-control" name="shipping_address" value="{{$orderlist_address->description}}" style="display: inline-block; width: 70%;" required="required" />
