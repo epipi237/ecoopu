@@ -262,7 +262,7 @@ class OrderController extends Controller{
         \Session::set('status', '');
         \Session::set('classAlert', '');
 
-        return view('pages.marketplaces',compact('orders','countries','country'));
+        return view('pages.marketplaces', compact('orders','countries','country'));
     }
 
     public function expired(){
