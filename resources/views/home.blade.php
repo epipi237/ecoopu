@@ -30,14 +30,15 @@
                 <div class="same-height-row">
                     <div class="same-height-row">
                         <?php
-                        $orders = App\Order::join('order_items', function($query){
+                        $orders = App\Order::select('orders.*')->join('order_items', function($query){
                             $query->on('orders.id', '=', 'order_items.order_id')->where('order_items.user_id', '=', Auth::user()->id);
                         })->paginate(4);
                         ?>
                         @foreach($orders as $order)
+                        
                         <div class="col-sm-3">
                             <div class="box same-height clickable">
-                                <h3><a href="/pages/create/orderlist/{{$order->order_id}}">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->order_id}}">add items</a>)</a></h3>
+                                <h3><a href="/pages/create/orderlist/{{$order->id}}">{{count($order->orderItems)}} items (<a href="/pages/create/orderlist/{{$order->id}}">add items</a>)</a></h3>
                                 <p>Shop: {{$order->shop}}</p>
                                 <p>Country: <b>{{$order->country->name}}</b></p>
                                 <p>
